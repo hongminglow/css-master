@@ -23,7 +23,7 @@ export const heightVsMinHeight: Topic = {
           subtitle: "Watch what happens to the wrapper box when the dynamic internal content unexpectedly doubles in size.",
           left: {
             label: "❌ Using direct height",
-            code: ".card {\n  /* Box locks strictly to 200px */\n  height: 200px;\n  background: white;\n}\n/* Large text will bleed outside the box */",
+            code: ".card {\n  /* Box locks strictly to 100px */\n  height: 100px;\n  background: white;\n}\n/* Large text will bleed outside the box */",
             html: `
 <div class="mock-device">
   <div class="card bad-height">
@@ -45,13 +45,13 @@ export const heightVsMinHeight: Topic = {
 
 /* The Flaw */
 .bad-height {
-  height: 200px;
+  height: 100px;
 }
             `
           },
           right: {
             label: "✅ Using min-height",
-            code: ".card {\n  /* Starts at 200px, but grows! */\n  min-height: 200px;\n  background: white;\n}\n/* Securely wraps all content */",
+            code: ".card {\n  /* Starts at 100px, but grows! */\n  min-height: 100px;\n  background: white;\n}\n/* Securely wraps all content */",
             html: `
 <div class="mock-device">
   <div class="card good-height">
@@ -73,7 +73,7 @@ export const heightVsMinHeight: Topic = {
 
 /* The Fix */
 .good-height {
-  min-height: 200px; 
+  min-height: 100px; 
 }
             `
           }
