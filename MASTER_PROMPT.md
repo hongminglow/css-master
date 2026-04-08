@@ -382,7 +382,7 @@ interface ContentSection {
 
 ### Global App UI/UX Standards
 
-1. **Typography** - Use smooth, modern sans-serif fonts like `Inter` for standard text and UI elements for a polished, readable look.
+1. **Typography** - Use smooth, modern sans-serif fonts like `Outfit` (or standard tech monospaces like `JetBrains Mono`) for standard text and UI elements for a polished, readable, and bold look.
 2. **Scrollbars** - Ensure `index.css` overrides default bulky scrollbars with thin, custom scrollbars that match the dark theme (e.g., `width: 6px`, dark slate thumb).
 
 ## Content Guidelines
