@@ -40,6 +40,8 @@ import {
   stickyFooter,
   hasSelectorParent,
   cssLogicalProperties,
+  isolationIsolate,
+  heightVsMinHeight,
 } from "./layout";
 
 import { objectFitImages, the100vhTrap, containerQueries } from "./responsive";
@@ -61,6 +63,8 @@ export const topics: Topic[] = [
   stickyFooter,
   hasSelectorParent,
   cssLogicalProperties,
+  isolationIsolate,
+  heightVsMinHeight,
 
   // Animations
   gpuAcceleratedAnimations,

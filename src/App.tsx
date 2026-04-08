@@ -2,12 +2,14 @@ import { AppLayout } from "@/components/layout/AppLayout";
 import { SearchModal } from "@/components/search/SearchModal";
 import { topics } from "@/data/topics/index";
 import { useKeyboardShortcut } from "@/hooks/useKeyboardShortcut";
-import { useRoute } from "@/hooks/useRoute";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 function App() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const { currentPath, navigate } = useRoute();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const currentPath = location.pathname;
 
   // Global search shortcut (Cmd+K or Ctrl+K)
   useKeyboardShortcut("k", () => setIsSearchOpen(true), { metaKey: true });

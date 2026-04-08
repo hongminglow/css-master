@@ -13,3 +13,5 @@ export { gridAutoFit } from "./grid-auto-fit";
 export { stickyFooter } from "./sticky-footer";
 export { hasSelectorParent } from "./has-selector-parent";
 export { cssLogicalProperties } from "./css-logical-properties";
+export { isolationIsolate } from "./isolation-isolate";
+export { heightVsMinHeight } from "./height-vs-min-height";

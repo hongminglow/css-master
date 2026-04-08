@@ -26,7 +26,7 @@
 - **Build Tool**: Vite 8
 - **Styling**: Tailwind 4 (CSS-based configuration, NO tailwind.config.js)
 - **Language**: TypeScript 6
-- **Routing**: Custom client-side routing using History API
+- **Routing**: standard `react-router-dom` (via `createBrowserRouter`)
 - **Search**: Custom fuzzy search with debouncing
 - **Testing**: fast-check for property-based testing
 
@@ -40,11 +40,11 @@ src/
 │   ├── layout/          # AppLayout, Sidebar, MainContent
 │   ├── navigation/      # CategoryAccordion, TopicLink
 │   ├── search/          # SearchModal, SearchInput, SearchResults
-│   ├── content/         # 11 content visualization components (see PROJECT_CONFIG.md)
+│   ├── content/         # 12 content visualization components
 │   └── common/          # Icon, Button, CategoryIcon
-├── services/            # searchService, routeService, scrollService
-├── hooks/               # useKeyboardShortcut, useScrollRestoration, useSearch, useRoute, useDebounce
-├── data/                # categories.ts, tags.ts, topics/ (category folders)
+├── services/            # dataService, searchService
+├── hooks/               # useKeyboardShortcut, useDebounce
+├── data/                # categories.ts, topics/ (category folders)
 ├── types/               # topic.ts, category.ts, search.ts
 ├── utils/               # fuzzyMatch.ts, routeUtils.ts
 ├── styles/              # index.css
@@ -324,12 +324,10 @@ interface ContentSection {
 - Scroll to top for new routes
 - Store in memory (Map), not localStorage
 
-### 5. Unique Routes
+### 5. Standard React Routing
 
-- Format: `/topics/{topic-id}`
-- Use History API (pushState, popstate)
-- Update URL without page reload
-- Handle browser back/forward
+- We utilize standard `react-router-dom` (`createBrowserRouter`).
+- Do **not** build custom History API services. Rely on standard ecosystem tools as recorded in `package.json`. Use `<ScrollRestoration />` natively.
 
 ## UX Best Practices & Patterns
 
@@ -469,9 +467,9 @@ Test user flows end-to-end:
 
 1. Create `tailwind.config.js` (Tailwind 4 doesn't need it)
 2. Hardcode content in components
-3. Use React Router (we use custom routing)
+3. Invent custom routers or history APIs. We use standard `react-router-dom`.
 4. Use Fuse.js or similar (custom fuzzy search)
-5. Store scroll positions in localStorage
+5. Store scroll positions in localStorage manually when React Router does it automatically.
 6. Create light mode (dark theme only)
 7. Use emojis as icons (use SVG)
 8. Forget cursor-pointer on clickable elements
@@ -488,9 +486,9 @@ Test user flows end-to-end:
 
 1. Use Tailwind utility classes everywhere
 2. Keep content in `src/data/` constants
-3. Use History API for routing
+3. Use `react-router-dom` and strictly follow the documented `package.json` tools.
 4. Implement custom fuzzy search with debouncing
-5. Store scroll in memory (Map)
+5. Leverage `<ScrollRestoration>` natively directly from react-router-dom.
 6. Maintain dark theme consistently
 7. Use Heroicons or Lucide icons (SVG)
 8. Add cursor-pointer to interactive elements
