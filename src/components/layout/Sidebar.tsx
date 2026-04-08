@@ -1,7 +1,8 @@
+import { CategoryIcon } from "@/components/common/CategoryIcon";
 import { categories } from "@/data/categories";
 import { topics } from "@/data/topics";
 import type { Topic } from "@/types/topic";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface SidebarProps {
   currentTopicId?: string;
@@ -18,6 +19,20 @@ export function Sidebar({
     new Set(["layout"]),
   );
   const [isCollapsed, setIsCollapsed] = useState(false);
+
+  // Auto-expand category when a topic is selected
+  useEffect(() => {
+    if (currentTopicId) {
+      const currentTopic = topics.find((t) => t.id === currentTopicId);
+      if (currentTopic) {
+        setExpandedCategories((prev) => {
+          const next = new Set(prev);
+          next.add(currentTopic.categoryId);
+          return next;
+        });
+      }
+    }
+  }, [currentTopicId]);
 
   const toggleCategory = (categoryId: string) => {
     setExpandedCategories((prev) => {
@@ -37,14 +52,17 @@ export function Sidebar({
 
   return (
     <aside
-      className={`h-full bg-slate-800 flex flex-col gap-4 p-6 overflow-y-auto transition-all duration-300 relative ${
+      className={`h-full bg-slate-800 flex flex-col gap-4 p-6 overflow-y-auto overflow-x-hidden transition-all duration-300 relative ${
         isCollapsed ? "w-[72px]" : "w-[280px]"
       }`}
     >
-      {/* Toggle Button */}
+      {/* Toggle Button - Floating outside */}
       <button
         onClick={() => setIsCollapsed(!isCollapsed)}
-        className="absolute top-6 -right-3 w-6 h-6 bg-slate-700 rounded-full flex items-center justify-center hover:bg-slate-600 transition-colors cursor-pointer z-10 border-2 border-slate-800"
+        className="fixed top-6 w-6 h-6 bg-slate-700 rounded-full flex items-center justify-center hover:bg-slate-600 transition-all duration-300 cursor-pointer z-50 border-2 border-slate-900 shadow-lg"
+        style={{
+          left: isCollapsed ? "60px" : "268px",
+        }}
         title={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
       >
         <svg
@@ -70,8 +88,28 @@ export function Sidebar({
           CSS Tricks
         </h1>
       ) : (
-        <div className="text-2xl font-bold text-slate-50 font-mono text-center">
-          CT
+        <div className="flex items-center justify-center">
+          <svg
+            className="w-8 h-8 text-blue-500"
+            viewBox="0 0 48 48"
+            fill="none"
+          >
+            <path
+              d="M24 8L36 12L34 32L24 36L14 32L12 12L24 8Z"
+              fill="currentColor"
+            />
+            <text
+              x="24"
+              y="26"
+              fontFamily="monospace"
+              fontSize="10"
+              fontWeight="bold"
+              fill="#f8fafc"
+              textAnchor="middle"
+            >
+              CSS
+            </text>
+          </svg>
         </div>
       )}
 
@@ -122,6 +160,10 @@ export function Sidebar({
                     <span className="text-xs text-slate-400">
                       {isExpanded ? "▼" : "▶"}
                     </span>
+                    <CategoryIcon
+                      icon={category.icon}
+                      className="w-4 h-4 text-slate-400"
+                    />
                     <span className="text-sm font-semibold text-slate-50 flex-1 text-left">
                       {category.name}
                     </span>
@@ -130,9 +172,10 @@ export function Sidebar({
                     </span>
                   </>
                 ) : (
-                  <span className="text-xs font-semibold text-slate-50 mx-auto">
-                    {category.name.charAt(0)}
-                  </span>
+                  <CategoryIcon
+                    icon={category.icon}
+                    className="w-5 h-5 text-slate-400 mx-auto"
+                  />
                 )}
               </button>
 
