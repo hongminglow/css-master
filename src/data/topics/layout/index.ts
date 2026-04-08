@@ -11,3 +11,4 @@ export { positionStickyGotchas } from "./position-sticky-gotchas";
 export { boxSizingBorderBox } from "./box-sizing-border-box";
 export { gridAutoFit } from "./grid-auto-fit";
 export { stickyFooter } from "./sticky-footer";
+export { hasSelectorParent } from "./has-selector-parent";

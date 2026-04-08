@@ -38,9 +38,12 @@ import {
   boxSizingBorderBox,
   gridAutoFit,
   stickyFooter,
+  hasSelectorParent,
 } from "./layout";
 
-import { objectFitImages } from "./responsive";
+import { objectFitImages, the100vhTrap } from "./responsive";
+
+import { gpuAcceleratedAnimations } from "./animations";
 
 // ── Master list ───────────────────────────────────────────────────────────────
 // Order controls the sidebar and the home page quick-links order.
@@ -53,7 +56,12 @@ export const topics: Topic[] = [
   boxSizingBorderBox,
   gridAutoFit,
   stickyFooter,
+  hasSelectorParent,
+
+  // Animations
+  gpuAcceleratedAnimations,
 
   // Responsive
   objectFitImages,
+  the100vhTrap,
 ];
