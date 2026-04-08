@@ -312,6 +312,21 @@ interface ContentSection {
 
 ## UX Best Practices & Patterns
 
+### Text Truncation & Tooltips
+
+**Long Text Handling**:
+- Use `truncate` class for text that may overflow
+- Always add `title` attribute with full text for tooltip
+- Apply to topic names, category names, and any dynamic text
+- Ensures clean UI while maintaining accessibility
+
+**Example**:
+```tsx
+<button title={topic.name}>
+  <span className="truncate">{topic.name}</span>
+</button>
+```
+
 ### Search Experience
 
 1. **Debounce user input** - Use 300ms delay to prevent excessive searches
@@ -445,12 +460,14 @@ Test user flows end-to-end:
 13. Use clean, minimal search result design
 14. Auto-expand categories when topics selected
 15. Use fixed positioning for floating elements
+16. Truncate long text with ellipsis and add tooltips
 
 ## Implementation Checklist
 
 ### Sidebar
+
 - [ ] Collapsible with smooth 300ms transition
-- [ ] Expanded: 280px, Collapsed: 80px
+- [ ] Expanded: 280px with px-4 py-6, Collapsed: 80px with p-4
 - [ ] Large icons when collapsed (w-6 h-6)
 - [ ] Tall buttons when collapsed (h-12)
 - [ ] Large logo when collapsed (w-12 h-12)
@@ -459,6 +476,8 @@ Test user flows end-to-end:
 - [ ] Auto-expand category on topic selection
 - [ ] Version label at bottom (expanded only)
 - [ ] Tooltips on collapsed icons
+- [ ] Topic names truncated with ellipsis
+- [ ] Full topic name shown in tooltip
 
 ### Search
 - [ ] Debounced input (300ms delay)

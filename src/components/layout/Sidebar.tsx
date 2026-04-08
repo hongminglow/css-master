@@ -53,7 +53,7 @@ export function Sidebar({
   return (
     <aside
       className={`h-full bg-slate-800 flex flex-col gap-4 overflow-y-auto overflow-x-hidden transition-all duration-300 relative ${
-        isCollapsed ? "w-[80px] p-4" : "w-[280px] p-6"
+        isCollapsed ? "w-[80px] p-4" : "w-[280px] px-4 py-6"
       }`}
     >
       {/* Toggle Button - Floating outside */}
@@ -212,8 +212,9 @@ export function Sidebar({
                             ? "bg-blue-600 text-white"
                             : "text-slate-300 hover:bg-slate-700"
                         }`}
+                        title={topic.name}
                       >
-                        {topic.name}
+                        <span className="truncate">{topic.name}</span>
                       </button>
                     );
                   })}
