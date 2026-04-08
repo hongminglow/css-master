@@ -1,6 +1,6 @@
+import { TailwindTest } from "@/components/common/TailwindTest";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import { TailwindTest } from "./TailwindTest";
 
 describe("TailwindTest Component", () => {
   it("should render the component", () => {

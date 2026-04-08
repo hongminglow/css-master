@@ -4,12 +4,12 @@
  * Validates: Requirements 8.1, 8.2, 8.3
  */
 
-import { categories } from "../data/categories";
-import type { Tag } from "../data/tags";
-import { tags } from "../data/tags";
-import { topics } from "../data/topics";
-import type { Category } from "../types/category";
-import type { Topic } from "../types/topic";
+import { categories } from "@/data/categories";
+import type { Tag } from "@/data/tags";
+import { tags } from "@/data/tags";
+import { topics } from "@/data/topics";
+import type { Category } from "@/types/category";
+import type { Topic } from "@/types/topic";
 
 /**
  * Retrieve a topic by its ID

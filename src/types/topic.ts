@@ -1,16 +1,11 @@
-/**
- * Topic type definitions for CSS Tricks Platform
- * Validates: Requirements 7.4, 8.5
- */
-
 export interface Topic {
-  id: string; // Unique identifier (kebab-case)
-  name: string; // Display name
-  categoryId: string; // Parent category ID
-  description: string; // Brief description
-  tags: string[]; // Associated tags for search
-  content: TopicContent; // Content structure
-  route: string; // URL path (e.g., "/topics/flexbox-centering")
+  id: string;
+  name: string;
+  categoryId: string;
+  description: string;
+  tags: string[];
+  route: string;
+  content: TopicContent;
 }
 
 export interface TopicContent {
@@ -18,17 +13,17 @@ export interface TopicContent {
 }
 
 export interface ContentSection {
-  type: "card" | "workflow" | "code";
-  data: CardData | WorkflowData | CodeData;
+  type: "card" | "workflow" | "code" | "preview";
+  data: CardData | WorkflowData | CodeData | PreviewData;
 }
 
 export interface CardData {
   title: string;
   content: string;
-  variant?: "default" | "highlight" | "warning";
 }
 
 export interface WorkflowData {
+  title: string;
   steps: WorkflowStep[];
 }
 
@@ -39,7 +34,12 @@ export interface WorkflowStep {
 }
 
 export interface CodeData {
-  code: string;
   language: string;
+  code: string;
   title?: string;
+}
+
+export interface PreviewData {
+  html: string;
+  css: string;
 }

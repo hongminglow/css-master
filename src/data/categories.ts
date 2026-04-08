@@ -1,35 +1,14 @@
-/**
- * Category data constants for CSS Tricks Platform
- * Validates: Requirements 8.2
- */
-
-import { Category } from "../types/category";
+export interface Category {
+  id: string;
+  name: string;
+  icon: string;
+  order: number;
+}
 
 export const categories: Category[] = [
-  {
-    id: "layout",
-    name: "Layout",
-    description:
-      "CSS layout techniques including Flexbox, Grid, and positioning",
-    order: 1,
-  },
-  {
-    id: "visual-effects",
-    name: "Visual Effects",
-    description:
-      "Styling tricks for shadows, gradients, and visual enhancements",
-    order: 2,
-  },
-  {
-    id: "animations",
-    name: "Animations",
-    description: "CSS animations, transitions, and motion effects",
-    order: 3,
-  },
-  {
-    id: "responsive",
-    name: "Responsive Design",
-    description: "Techniques for building responsive and adaptive layouts",
-    order: 4,
-  },
+  { id: "layout", name: "Layout", icon: "layout", order: 1 },
+  { id: "typography", name: "Typography", icon: "type", order: 2 },
+  { id: "colors", name: "Colors & Effects", icon: "palette", order: 3 },
+  { id: "animations", name: "Animations", icon: "zap", order: 4 },
+  { id: "responsive", name: "Responsive", icon: "smartphone", order: 5 },
 ];

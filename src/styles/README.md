@@ -4,12 +4,18 @@ This directory contains the Tailwind 4 CSS-based configuration for the CSS Trick
 
 ## Overview
 
-Tailwind 4 uses CSS-based configuration instead of a JavaScript config file. All configuration is done through CSS custom properties in the `@theme` directive.
+Tailwind 4 uses CSS-based configuration via `@import "tailwindcss"` instead of a JavaScript config file. All styling is done through Tailwind utility classes and custom CSS properties.
 
 ## Files
 
-- `index.css` - Main stylesheet with Tailwind imports, theme configuration, and global styles
+- `index.css` - Main stylesheet with Tailwind import, Google Fonts, and global styles
 - `index.test.ts` - Tests to verify the theme configuration
+
+## Configuration
+
+- NO `tailwind.config.js` file (Tailwind 4 CSS-based configuration)
+- NO `postcss.config.js` file (Vite plugin handles it)
+- Vite plugin: `@tailwindcss/vite` in `vite.config.ts`
 
 ## Dark Theme Color Palette
 

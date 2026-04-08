@@ -1,24 +1,21 @@
-/**
- * Sidebar component for CSS Tricks Platform
- * Validates: Requirements 2.1, 2.2, 1.1
- */
-
+import { categories } from "@/data/categories";
+import { topics } from "@/data/topics";
+import type { Topic } from "@/types/topic";
 import { useState } from "react";
-import { Category } from "../../types/category";
 
 interface SidebarProps {
-  categories: Category[];
-  currentTopicId: string | null;
-  onTopicSelect: (topicId: string) => void;
+  currentTopicId?: string;
+  onTopicSelect: (topic: Topic) => void;
+  onSearchClick: () => void;
 }
 
 export function Sidebar({
-  categories,
   currentTopicId,
   onTopicSelect,
+  onSearchClick,
 }: SidebarProps) {
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(
-    new Set(["layout"]), // Default first category expanded
+    new Set(["layout"]),
   );
 
   const toggleCategory = (categoryId: string) => {
@@ -33,56 +30,73 @@ export function Sidebar({
     });
   };
 
-  // Sort categories by order
-  const sortedCategories = [...categories].sort((a, b) => a.order - b.order);
+  const getTopicsByCategory = (categoryId: string) => {
+    return topics.filter((topic) => topic.categoryId === categoryId);
+  };
 
   return (
-    <aside className="fixed left-0 top-0 h-screen w-64 bg-slate-900 border-r border-slate-800 overflow-y-auto">
-      <div className="p-6">
-        <h1 className="text-xl font-bold text-white mb-2">CSS Tricks</h1>
-        <p className="text-sm text-slate-400 mb-6">
-          Discover overlooked CSS techniques
-        </p>
+    <aside className="w-[280px] h-full bg-slate-800 flex flex-col gap-4 p-6 overflow-y-auto">
+      {/* Platform Title */}
+      <h1 className="text-2xl font-bold text-slate-50 font-mono">CSS Tricks</h1>
 
-        <nav className="space-y-2">
-          {sortedCategories.map((category) => (
-            <div key={category.id}>
-              {/* CategoryAccordion will be implemented next - placeholder for now */}
+      {/* Search Hint */}
+      <button
+        onClick={onSearchClick}
+        className="w-full h-10 bg-slate-700 rounded-lg flex items-center gap-2 px-3 hover:bg-slate-600 transition-colors cursor-pointer"
+      >
+        <span className="text-xs font-semibold text-slate-400">⌘K</span>
+        <span className="text-sm text-slate-400">Search tricks...</span>
+      </button>
+
+      {/* Categories */}
+      <nav className="flex flex-col gap-4">
+        {categories.map((category) => {
+          const categoryTopics = getTopicsByCategory(category.id);
+          const isExpanded = expandedCategories.has(category.id);
+
+          return (
+            <div key={category.id} className="flex flex-col gap-2">
+              {/* Category Header */}
               <button
                 onClick={() => toggleCategory(category.id)}
-                className="w-full flex items-center justify-between px-3 py-2 text-left text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg transition-colors duration-200 cursor-pointer"
+                className="w-full h-9 bg-slate-700 rounded-md flex items-center gap-2 px-3 hover:bg-slate-600 transition-colors cursor-pointer"
               >
-                <span className="font-medium">{category.name}</span>
-                <svg
-                  className={`w-5 h-5 transition-transform duration-200 ${
-                    expandedCategories.has(category.id) ? "rotate-90" : ""
-                  }`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
+                <span className="text-xs text-slate-400">
+                  {isExpanded ? "▼" : "▶"}
+                </span>
+                <span className="text-sm font-semibold text-slate-50 flex-1 text-left">
+                  {category.name}
+                </span>
+                <span className="w-6 h-5 bg-slate-600 rounded-full flex items-center justify-center text-xs font-semibold text-slate-50">
+                  {categoryTopics.length}
+                </span>
               </button>
 
-              {/* Topics list - will be replaced with CategoryAccordion */}
-              {expandedCategories.has(category.id) && (
-                <div className="ml-3 mt-1 space-y-1 border-l border-slate-700 pl-3">
-                  {/* Topics will be rendered here by CategoryAccordion */}
-                  <div className="text-sm text-slate-500 py-2">
-                    Topics will appear here
-                  </div>
+              {/* Topic List */}
+              {isExpanded && (
+                <div className="flex flex-col gap-1 pl-4">
+                  {categoryTopics.map((topic) => {
+                    const isActive = topic.id === currentTopicId;
+                    return (
+                      <button
+                        key={topic.id}
+                        onClick={() => onTopicSelect(topic)}
+                        className={`w-full h-8 rounded px-2 flex items-center text-sm transition-colors cursor-pointer ${
+                          isActive
+                            ? "bg-blue-600 text-white"
+                            : "text-slate-300 hover:bg-slate-700"
+                        }`}
+                      >
+                        {topic.name}
+                      </button>
+                    );
+                  })}
                 </div>
               )}
             </div>
-          ))}
-        </nav>
-      </div>
+          );
+        })}
+      </nav>
     </aside>
   );
 }

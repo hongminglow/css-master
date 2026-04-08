@@ -377,7 +377,7 @@ npm run type-check
   - `design.md` - Technical design and architecture
   - `tasks.md` - Implementation task list
 - **Design System**: `design-system/css-tricks-platform/MASTER.md`
-- **Pencil Designs**: `/Volumes/External Hardisk/Project/css-master/pencil-new.pen`
+- **Pencil Designs**: `./pencil-new.pen`
 
 ## When Making Changes
 
