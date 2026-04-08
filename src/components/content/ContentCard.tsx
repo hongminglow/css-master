@@ -1,4 +1,4 @@
-import type { CardData } from "@/data/topics";
+import type { CardData } from "@/types/topic";
 
 interface ContentCardProps {
   data: CardData;

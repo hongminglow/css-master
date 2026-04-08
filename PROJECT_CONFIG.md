@@ -62,7 +62,7 @@ Use Tailwind's default spacing scale:
 
 ### Available Content Components
 
-This platform provides 11 content visualization components. Each serves a specific purpose for presenting information effectively.
+This platform provides 12 content visualization components. Each serves a specific purpose for presenting information effectively.
 
 #### 1. ContentCard
 **Purpose**: General explanations, concepts, or contextual information
@@ -324,6 +324,25 @@ This platform provides 11 content visualization components. Each serves a specif
     ]
   }
 }
+}
+```
+
+#### 12. LiveComparisonCard
+**Purpose**: Side-by-side comparison with live iframed preview results
+**When to use**:
+- Showing code on both sides where seeing the immediate visual difference is important
+- Comparing a bug with its fix
+
+**Example**:
+```typescript
+{
+  type: "livecomparison",
+  data: {
+    title: "Why z-index: 999 Still Loses",
+    left: { label: "❌ Child trapped", code: "z-index: 1", html: "...", css: "..." },
+    right: { label: "✓ Fixed", code: "position: relative", html: "...", css: "..." }
+  }
+}
 ```
 
 ### Component Selection Guidelines
@@ -338,6 +357,7 @@ This platform provides 11 content visualization components. Each serves a specif
 **For simple lists**: Use ListCard
 **For highlighting principles**: Use QuoteCard
 **For best practices**: Use DosDontsCard
+**For bug/fix visual comparison**: Use LiveComparisonCard
 
 ### Topic Content Sections
 
@@ -351,6 +371,7 @@ This platform uses flexible content sections. Mix and match components based on 
 5. CodeSnippet - Full code example
 6. PreviewCard - Live demonstration
 7. DosDontsCard - Best practices
+8. LiveComparisonCard - Advanced interactive comparison
 
 **Alternative Structure for Historical Content**:
 1. ContentCard - Introduction

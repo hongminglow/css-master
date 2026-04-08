@@ -1,4 +1,4 @@
-import type { PreviewData } from "@/data/topics";
+import type { PreviewData } from "@/types/topic";
 import { useEffect, useRef } from "react";
 
 interface PreviewCardProps {

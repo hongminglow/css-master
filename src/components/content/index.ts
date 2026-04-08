@@ -10,3 +10,4 @@ export { TableCard } from "./TableCard";
 export { ListCard } from "./ListCard";
 export { QuoteCard } from "./QuoteCard";
 export { DosDontsCard } from "./DosDontsCard";
+export { LiveComparisonCard } from "./LiveComparisonCard";

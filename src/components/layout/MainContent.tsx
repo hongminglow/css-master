@@ -1,15 +1,31 @@
 import { CodeSnippet } from "@/components/content/CodeSnippet";
+import { ComparisonCard } from "@/components/content/ComparisonCard";
 import { ContentCard } from "@/components/content/ContentCard";
+import { DosDontsCard } from "@/components/content/DosDontsCard";
+import { ListCard } from "@/components/content/ListCard";
+import { LiveComparisonCard } from "@/components/content/LiveComparisonCard";
 import { PreviewCard } from "@/components/content/PreviewCard";
+import { QuoteCard } from "@/components/content/QuoteCard";
+import { TableCard } from "@/components/content/TableCard";
+import { TimelineCard } from "@/components/content/TimelineCard";
+import { TipCard } from "@/components/content/TipCard";
 import { WorkflowCard } from "@/components/content/WorkflowCard";
 import { categories } from "@/data/categories";
+import { topics } from "@/data/topics";
 import type {
   CardData,
   CodeData,
+  ComparisonData,
+  DosDontsData,
+  ListData,
+  LiveComparisonData,
   PreviewData,
+  QuoteData,
+  TableData,
+  TimelineData,
+  TipData,
   WorkflowData,
-} from "@/data/topics";
-import { topics } from "@/data/topics";
+} from "@/types/topic";
 import type { Topic } from "@/types/topic";
 
 interface MainContentProps {
@@ -111,7 +127,7 @@ export function MainContent({ topic, onTopicSelect }: MainContentProps) {
                       Live Code Preview
                     </h3>
                     <p className="text-sm text-slate-400">
-                      See CSS code alongside visual demonstrations
+                      See CSS code alongside visual demonstrations in real-time
                     </p>
                   </div>
                 </div>
@@ -238,8 +254,8 @@ export function MainContent({ topic, onTopicSelect }: MainContentProps) {
                   2
                 </span>
                 <p className="text-sm">
-                  Click on any trick to see detailed explanations and code
-                  examples
+                  Click on any trick to see detailed explanations, code
+                  comparisons, and live previews
                 </p>
               </div>
               <div className="flex items-start gap-3">
@@ -280,25 +296,33 @@ export function MainContent({ topic, onTopicSelect }: MainContentProps) {
           </div>
         </header>
 
-        {/* Content Sections */}
+        {/* Content Sections — all 12 types handled */}
         {topic.content.sections.map((section, index) => {
           switch (section.type) {
             case "card":
-              return (
-                <ContentCard key={index} data={section.data as CardData} />
-              );
+              return <ContentCard key={index} data={section.data as CardData} />;
             case "workflow":
-              return (
-                <WorkflowCard key={index} data={section.data as WorkflowData} />
-              );
+              return <WorkflowCard key={index} data={section.data as WorkflowData} />;
             case "code":
-              return (
-                <CodeSnippet key={index} data={section.data as CodeData} />
-              );
+              return <CodeSnippet key={index} data={section.data as CodeData} />;
             case "preview":
-              return (
-                <PreviewCard key={index} data={section.data as PreviewData} />
-              );
+              return <PreviewCard key={index} data={section.data as PreviewData} />;
+            case "comparison":
+              return <ComparisonCard key={index} data={section.data as ComparisonData} />;
+            case "timeline":
+              return <TimelineCard key={index} data={section.data as TimelineData} />;
+            case "tip":
+              return <TipCard key={index} data={section.data as TipData} />;
+            case "table":
+              return <TableCard key={index} data={section.data as TableData} />;
+            case "list":
+              return <ListCard key={index} data={section.data as ListData} />;
+            case "quote":
+              return <QuoteCard key={index} data={section.data as QuoteData} />;
+            case "dosd\u043e\u043dts":
+              return <DosDontsCard key={index} data={section.data as DosDontsData} />;
+            case "livecomparison":
+              return <LiveComparisonCard key={index} data={section.data as LiveComparisonData} />;
             default:
               return null;
           }

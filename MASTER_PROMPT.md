@@ -10,7 +10,6 @@
 
 **PROJECT_CONFIG.md**: Refer project specific configuration and requirements here
 
-
 ## Core Features
 
 - **Collapsible Sidebar** - Category-based navigation with icon-only mode
@@ -45,7 +44,7 @@ src/
 │   └── common/          # Icon, Button, CategoryIcon
 ├── services/            # searchService, routeService, scrollService
 ├── hooks/               # useKeyboardShortcut, useScrollRestoration, useSearch, useRoute, useDebounce
-├── data/                # topics.ts, categories.ts, tags.ts
+├── data/                # categories.ts, tags.ts, topics/ (category folders)
 ├── types/               # topic.ts, category.ts, search.ts
 ├── utils/               # fuzzyMatch.ts, routeUtils.ts
 ├── styles/              # index.css
@@ -55,25 +54,29 @@ src/
 
 ### 2. Content Component Philosophy
 
-This platform provides 11 pre-built content visualization components. When starting a new project:
+This platform provides 12 pre-built content visualization components. When starting a new project:
 
 **Step 1: Evaluate Existing Components**
+
 - Review all components in `src/components/content/`
 - Read usage guidelines in PROJECT_CONFIG.md
 - Check if they cover your content visualization needs
 
 **Step 2: Assess Sufficiency**
-- Existing components: ContentCard, WorkflowCard, CodeSnippet, PreviewCard, ComparisonCard, TimelineCard, TipCard, TableCard, ListCard, QuoteCard, DosDontsCard
+
+- Existing components: ContentCard, WorkflowCard, CodeSnippet, PreviewCard, ComparisonCard, TimelineCard, TipCard, TableCard, ListCard, QuoteCard, DosDontsCard, LiveComparisonCard
 - These cover most common content visualization patterns
 - Suitable for documentation, tutorials, comparisons, and reference materials
 
 **Step 3: Extend When Needed**
+
 - If your domain requires unique visualizations (e.g., interactive diagrams, 3D previews, video embeds, charts), create new components
 - Follow established patterns and design principles
 - Maintain visual consistency with existing components
 
 **Step 4: Update Documentation**
 When adding new components:
+
 1. Define data interface in `src/types/topic.ts`
 2. Update ContentSection type union
 3. Create component in `src/components/content/`
@@ -116,6 +119,7 @@ export function YourComponent({ data }: YourComponentProps) {
 ```
 
 **Component Design Principles**:
+
 - Use consistent dark theme styling (bg-slate-800, text-slate-300)
 - Follow Tailwind utility-first approach
 - Keep components focused and single-purpose
@@ -124,10 +128,11 @@ export function YourComponent({ data }: YourComponentProps) {
 - Maintain visual consistency with existing components
 - Use rounded-xl for cards, p-6 for padding
 - Follow existing spacing patterns (gap-3, gap-4)
-├── styles/              # index.css
-├── App.tsx
-└── main.tsx
-```
+  ├── styles/ # index.css
+  ├── App.tsx
+  └── main.tsx
+
+````
 
 ### 3. Separation of Concerns
 
@@ -140,10 +145,10 @@ export function YourComponent({ data }: YourComponentProps) {
 
 ### 4. Content-Driven Design
 
-All content (topics, categories, tags) lives in `src/data/` as TypeScript constants. Changing content NEVER requires touching component code.
+All content lives in `src/data/topics/` separated by category. Changing content NEVER requires touching component code.
 
 **See PROJECT_CONFIG.md for**:
-- All 11 available content components
+- All 12 available content components
 - Component selection guidelines
 - When to use each component type
 - Example topic structures with multiple components
@@ -172,17 +177,19 @@ All content (topics, categories, tags) lives in `src/data/` as TypeScript consta
   --color-primary: #2563eb;
   --color-bg-dark: #0f172a;
 }
-```
+````
 
 ### Component Patterns
 
 **DO**:
+
 - Extract reusable components
 - Use TypeScript interfaces for props
 - Keep components small and focused
 - Use composition over inheritance
 
 **DON'T**:
+
 - Put business logic in components
 - Hardcode content in components
 - Create monolithic components
@@ -190,14 +197,15 @@ All content (topics, categories, tags) lives in `src/data/` as TypeScript consta
 ### Data Structure
 
 **Topic Structure**:
+
 ```typescript
 interface Topic {
-  id: string;              // kebab-case
+  id: string; // kebab-case
   name: string;
   categoryId: string;
   description: string;
   tags: string[];
-  route: string;           // /topics/{id}
+  route: string; // /topics/{id}
   content: TopicContent;
 }
 
@@ -216,6 +224,7 @@ interface ContentSection {
 ### 1. Collapsible Sidebar with Category Navigation
 
 **Expanded State (280px width)**:
+
 - Full category names with icons
 - Item count badges
 - Expand/collapse arrows
@@ -224,6 +233,7 @@ interface ContentSection {
 - Platform name/logo
 
 **Collapsed State (80px width)**:
+
 - Category icons only (w-6 h-6, 24px)
 - Larger app logo (w-12 h-12, 48px)
 - Search icon only
@@ -231,18 +241,21 @@ interface ContentSection {
 - Click icon to navigate to first topic in category
 
 **Toggle Button**:
+
 - Fixed position, floating outside sidebar
 - Smooth transition (300ms)
 - Position: 268px (expanded), 68px (collapsed)
 - Arrow icon rotates 180° when collapsed
 
 **Auto-Expand on Selection**:
+
 - When topic selected from search, automatically expand its category
 - Uses `useEffect` to detect currentTopicId changes
 
 ### 2. Global Search (Ctrl+K / Cmd+K)
 
 **Search Modal Design**:
+
 - Full-screen overlay with backdrop blur
 - Centered modal (560px width)
 - Table-like results (not card-like)
@@ -250,17 +263,20 @@ interface ContentSection {
 - SVG search icon (not emoji)
 
 **Debounced Search**:
+
 - 300ms debounce delay using `useDebounce` hook
 - Prevents excessive re-renders
 - Query updates immediately, results update after delay
 
 **Search Results**:
+
 - Clean, minimal design with border separators
 - Selected item: blue background with arrow icon
 - Hover state: subtle background change
 - Each result shows: topic name + tags (separated by •)
 
 **Keyboard Navigation**:
+
 - ↑↓ arrows to navigate
 - Enter to select
 - Escape to close
@@ -269,16 +285,19 @@ interface ContentSection {
 ### 3. Meaningful Home Content
 
 **Hero Section**:
+
 - Large title with platform name
 - Descriptive subtitle explaining the platform
 - Professional, welcoming tone
 
 **Quick Stats Grid** (3 columns):
+
 - Total content count
 - Number of categories
 - Key feature highlight
 
 **Features Grid** (2x2 or 2x3):
+
 - Fuzzy Search with ⌘K hint
 - Content organization
 - Keyboard Navigation
@@ -286,12 +305,14 @@ interface ContentSection {
 - Each with icon and description
 
 **Browse by Category Section**:
+
 - All categories listed with content counts
 - Quick links to first 6 topics per category
 - Clickable topic buttons that navigate
 - "+X more" indicator for additional topics
 
 **Getting Started Guide**:
+
 - Numbered steps (1, 2, 3)
 - Clear, actionable instructions
 - Visual step indicators (blue circles)
@@ -315,12 +336,14 @@ interface ContentSection {
 ### Text Truncation & Tooltips
 
 **Long Text Handling**:
+
 - Use `truncate` class for text that may overflow
 - Always add `title` attribute with full text for tooltip
 - Apply to topic names, category names, and any dynamic text
 - Ensures clean UI while maintaining accessibility
 
 **Example**:
+
 ```tsx
 <button title={topic.name}>
   <span className="truncate">{topic.name}</span>
@@ -361,6 +384,7 @@ interface ContentSection {
 ### Writing Topics
 
 **Structure**:
+
 1. Title (clear, concise)
 2. Description (one sentence explaining the content)
 3. Tags (3-5 relevant keywords)
@@ -388,18 +412,19 @@ fc.assert(
     results.forEach((result) => {
       const matchesName = fuzzyMatch(query, result.topic.name) > 0;
       const matchesTags = result.topic.tags.some(
-        (tag) => fuzzyMatch(query, tag) > 0
+        (tag) => fuzzyMatch(query, tag) > 0,
       );
       expect(matchesName || matchesTags).toBe(true);
     });
   }),
-  { numRuns: 100 }
+  { numRuns: 100 },
 );
 ```
 
 ### Integration Tests
 
 Test user flows end-to-end:
+
 - Search → Navigate → Scroll Restore
 - Category Click → Topic Select → Content Display
 - Direct URL → Content Load → Sidebar Highlight
@@ -480,6 +505,7 @@ Test user flows end-to-end:
 - [ ] Full topic name shown in tooltip
 
 ### Search
+
 - [ ] Debounced input (300ms delay)
 - [ ] Table-like results with border separators
 - [ ] SVG search icon (not emoji)
@@ -490,6 +516,7 @@ Test user flows end-to-end:
 - [ ] Centered modal (560px)
 
 ### Home Content
+
 - [ ] Hero section with title and description
 - [ ] Quick stats grid (3 columns)
 - [ ] Features grid with icons
@@ -498,6 +525,7 @@ Test user flows end-to-end:
 - [ ] All sections properly spaced
 
 ### General
+
 - [ ] Custom favicon with minimal padding
 - [ ] Proper page title and meta description
 - [ ] All icons from consistent set
@@ -530,8 +558,7 @@ pnpm run type-check
 
 ## File References
 
-- **AI Agent Guide**: `AI_AGENT_GUIDE.md` - Quick start for AI agents working on new projects
-- **Component Ecosystem**: `COMPONENT_ECOSYSTEM.md` - Visual guide to all 11 components
+- **Component Ecosystem**: `COMPONENT_ECOSYSTEM.md` - Visual guide to all 12 components
 - **Component README**: `src/components/content/README.md` - Developer quick reference
 - **Project Config**: `PROJECT_CONFIG.md` - CSS Tricks Platform specific settings
 - **Spec Files**: `.kiro/specs/css-tricks-platform/` - Requirements, design, tasks
@@ -543,10 +570,10 @@ pnpm run type-check
 
 1. **Read AI_AGENT_GUIDE.md** - Comprehensive guide for AI agents
 2. **Review existing components** - Check `src/components/content/` and `COMPONENT_ECOSYSTEM.md`
-3. **Assess sufficiency** - Determine if 11 existing components are enough
+3. **Assess sufficiency** - Determine if 12 existing components are enough
 4. **Extend if needed** - Create new components following established patterns
 5. **Update documentation** - Keep PROJECT_CONFIG.md and related docs current
 
 **Template Version**: 1.2
 **Last Updated**: 2026-04-08
-**Components**: 11 content visualization components ready to use
+**Components**: 12 content visualization components ready to use

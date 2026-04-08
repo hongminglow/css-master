@@ -1,4 +1,4 @@
-import type { CodeData } from "@/data/topics";
+import type { CodeData } from "@/types/topic";
 
 interface CodeSnippetProps {
   data: CodeData;

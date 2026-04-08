@@ -1,4 +1,4 @@
-import type { WorkflowData } from "@/data/topics";
+import type { WorkflowData } from "@/types/topic";
 
 interface WorkflowCardProps {
   data: WorkflowData;
@@ -14,7 +14,7 @@ export function WorkflowCard({ data }: WorkflowCardProps) {
       {data.steps.map((step) => (
         <div key={step.number} className="flex gap-3">
           {/* Step Number */}
-          <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+          <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center shrink-0">
             <span className="text-base font-bold text-white">
               {step.number}
             </span>

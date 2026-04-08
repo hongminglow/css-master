@@ -59,7 +59,7 @@ export function Sidebar({
       {/* Toggle Button - Floating outside */}
       <button
         onClick={() => setIsCollapsed(!isCollapsed)}
-        className="fixed top-6 w-6 h-6 bg-slate-700 rounded-full flex items-center justify-center hover:bg-slate-600 transition-all duration-300 cursor-pointer z-50 border-2 border-slate-900 shadow-lg"
+        className="fixed top-6 size-8 bg-slate-700 rounded-full flex items-center justify-center hover:bg-slate-600 transition-all duration-300 cursor-pointer z-50 border-2 border-slate-900 shadow-lg"
         style={{
           left: isCollapsed ? "68px" : "268px",
         }}
