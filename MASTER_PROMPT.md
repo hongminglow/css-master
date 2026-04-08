@@ -482,6 +482,7 @@ Test user flows end-to-end:
 13. Create card-like search results (use table-like with borders)
 14. Forget to auto-expand category on search selection
 15. Use absolute positioning for toggle button (use fixed)
+16. Unintentionally leak scroll positions across routes. Single Page Apps (SPAs) mutate the DOM instead of causing hard browser refetches! If you don't affirmatively trace and restore `container.scrollTop` on `location` change, navigating from Topic A to Topic B will leave the user stuck in the exact middle of the screen because the browser doesn't know the "page" changed. Fix this by using a `useScrollRestoration` hook mapping to a global `Map()`.
 
 ### ✅ DO
 
