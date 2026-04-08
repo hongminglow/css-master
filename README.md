@@ -1,75 +1,163 @@
-# React + TypeScript + Vite
+# CSS Tricks Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🎨 Modern CSS Learning & Development Platform
 
-Currently, two official plugins are available:
+**CSS Tricks Platform** is a comprehensive, developer-focused platform for discovering, learning, and sharing CSS techniques, tricks, and best practices. Built with modern web technologies, this platform provides interactive examples, comprehensive tutorials, and a community-driven approach to mastering CSS.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ Features
 
-## React Compiler
+### 🚀 Interactive Learning
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- **Live Code Editor**: Edit CSS examples with instant visual feedback
+- **Interactive Tutorials**: Step-by-step guides with hands-on exercises
+- **Visual CSS Playground**: Experiment with CSS properties in real-time
 
-Note: This will impact Vite dev & build performances.
+### 📚 Comprehensive Resources
 
-## Expanding the ESLint configuration
+- **CSS Techniques Library**: Hundreds of categorized CSS tricks and solutions
+- **Design System Showcase**: Real-world examples of component libraries
+- **Performance Optimization**: CSS optimization tips and best practices
+- **Accessibility Guides**: WCAG-compliant examples and accessibility-first approaches
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 👥 Community & Collaboration
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **User Contributions**: Submit and share your own CSS tricks
+- **Code Reviews**: Community feedback on CSS implementations
+- **Trending Techniques**: Discover popular and emerging CSS patterns
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### 🎯 Target Audience
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Frontend developers improving CSS skills
+- Design system engineers building component libraries
+- UI/UX designers seeking CSS implementation guidance
+- Technical teams establishing design system standards
+- Students and educators learning modern CSS techniques
+
+## 🛠️ Technology Stack
+
+### Frontend
+
+- **React 19** with TypeScript
+- **Vite** for fast development and builds
+- **Tailwind CSS 4** with CSS-based configuration
+- **React Compiler** for optimized performance
+- **Vitest** for testing
+
+### Design System
+
+- **Dark Theme First**: Slate-based color palette with accessibility focus
+- **Modern Typography**: IBM Plex Sans (body) + JetBrains Mono (code/headings)
+- **Responsive Design**: Mobile-first approach with breakpoint utilities
+- **Component Library**: Reusable, accessible UI components
+
+### Development Tools
+
+- **ESLint** with TypeScript and React rules
+- **Prettier** for code formatting
+- **PNPM** for package management
+- **Git** for version control
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18+ or 20+
+- PNPM 9+ (recommended) or npm/yarn
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/hongminglow/css-master.git
+cd css-master
+
+# Install dependencies
+pnpm install
+
+# Start development server
+pnpm dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Development Commands
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+# Start development server
+pnpm dev
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Build for production
+pnpm build
+
+# Run tests
+pnpm test
+
+# Lint code
+pnpm lint
+
+# Format code
+pnpm format
 ```
+
+## 📁 Project Structure
+
+```
+css-master/
+├── src/
+│   ├── components/     # React components
+│   │   ├── common/     # Shared UI components
+│   │   ├── layout/     # Layout components
+│   │   ├── navigation/ # Navigation components
+│   │   └── content/    # Content display components
+│   ├── styles/         # Tailwind 4 configuration
+│   │   ├── index.css   # Main stylesheet
+│   │   └── README.md   # Design system documentation
+│   ├── data/          # Static data and types
+│   ├── services/      # API and data services
+│   ├── hooks/         # Custom React hooks
+│   └── utils/         # Utility functions
+├── public/            # Static assets
+├── design-system/     # Design system documentation
+└── .kiro/specs/      # Project specifications and requirements
+```
+
+## 🎨 Design System
+
+The platform uses a comprehensive dark theme design system built with Tailwind 4:
+
+### Color Palette
+
+- **Background**: `slate-900` (#0f172a)
+- **Cards**: `slate-800` (#1e293b)
+- **Borders**: `slate-700` (#334155)
+- **Accent**: `blue-600` (#2563eb) for interactive elements
+
+### Typography
+
+- **Body**: IBM Plex Sans (sans-serif)
+- **Code/Headings**: JetBrains Mono (monospace)
+- **Responsive scaling**: Fluid typography system
+
+### Accessibility
+
+- WCAG AA compliance (4.5:1 contrast ratio)
+- Reduced motion support
+- Keyboard navigation focus indicators
+- Semantic HTML structure
+
+## 🤝 Contributing
+
+We welcome contributions! Please see our contributing guidelines for details on:
+
+- Submitting CSS tricks and techniques
+- Reporting issues or bugs
+- Suggesting new features
+- Improving documentation
+
+## 🙏 Acknowledgments
+
+- Built with modern web technologies and best practices
+- Inspired by the CSS Tricks community and resources
+- Designed with accessibility and performance in mind
+
+---
+
+**Start exploring CSS like never before!** 🚀
