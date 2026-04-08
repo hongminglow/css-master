@@ -11,7 +11,7 @@ import { TimelineCard } from "@/components/content/TimelineCard";
 import { TipCard } from "@/components/content/TipCard";
 import { WorkflowCard } from "@/components/content/WorkflowCard";
 import { categories } from "@/data/categories";
-import { topics } from "@/data/topics";
+import { topics } from "@/data/topics/index";
 import type {
   CardData,
   CodeData,

@@ -1,4 +1,4 @@
-import { topics } from "@/data/topics";
+import { topics } from "@/data/topics/index";
 import { useDebounce } from "@/hooks/useDebounce";
 import { searchService } from "@/services/searchService";
 import type { Topic } from "@/types/topic";
@@ -23,10 +23,7 @@ export function SearchModal({ onClose, onTopicSelect }: SearchModalProps) {
     inputRef.current?.focus();
   }, []);
 
-  // Reset selected index when query changes
-  useEffect(() => {
-    setSelectedIndex(0);
-  }, [query]);
+
 
   // Handle keyboard navigation
   useEffect(() => {
@@ -77,7 +74,10 @@ export function SearchModal({ onClose, onTopicSelect }: SearchModalProps) {
             ref={inputRef}
             type="text"
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={(e) => {
+              setQuery(e.target.value);
+              setSelectedIndex(0);
+            }}
             placeholder="Search tricks..."
             className="flex-1 bg-transparent text-base text-slate-50 outline-none placeholder-slate-400"
           />

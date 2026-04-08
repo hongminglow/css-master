@@ -1,6 +1,6 @@
 import { CategoryIcon } from "@/components/common/CategoryIcon";
 import { categories } from "@/data/categories";
-import { topics } from "@/data/topics";
+import { topics } from "@/data/topics/index";
 import type { Topic } from "@/types/topic";
 import { useEffect, useState } from "react";
 

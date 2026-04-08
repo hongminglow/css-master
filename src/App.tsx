@@ -1,6 +1,6 @@
 import { AppLayout } from "@/components/layout/AppLayout";
 import { SearchModal } from "@/components/search/SearchModal";
-import { topics } from "@/data/topics";
+import { topics } from "@/data/topics/index";
 import { useKeyboardShortcut } from "@/hooks/useKeyboardShortcut";
 import { useRoute } from "@/hooks/useRoute";
 import { useState } from "react";

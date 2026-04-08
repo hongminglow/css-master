@@ -7,7 +7,7 @@
 import { categories } from "@/data/categories";
 import type { Tag } from "@/data/tags";
 import { tags } from "@/data/tags";
-import { topics } from "@/data/topics";
+import { topics } from "@/data/topics/index";
 import type { Category } from "@/types/category";
 import type { Topic } from "@/types/topic";
 
