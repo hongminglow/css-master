@@ -52,8 +52,8 @@ export function Sidebar({
 
   return (
     <aside
-      className={`h-full bg-slate-800 flex flex-col gap-4 p-6 overflow-y-auto overflow-x-hidden transition-all duration-300 relative ${
-        isCollapsed ? "w-[72px]" : "w-[280px]"
+      className={`h-full bg-slate-800 flex flex-col gap-4 overflow-y-auto overflow-x-hidden transition-all duration-300 relative ${
+        isCollapsed ? "w-[80px] p-4" : "w-[280px] p-6"
       }`}
     >
       {/* Toggle Button - Floating outside */}
@@ -61,7 +61,7 @@ export function Sidebar({
         onClick={() => setIsCollapsed(!isCollapsed)}
         className="fixed top-6 w-6 h-6 bg-slate-700 rounded-full flex items-center justify-center hover:bg-slate-600 transition-all duration-300 cursor-pointer z-50 border-2 border-slate-900 shadow-lg"
         style={{
-          left: isCollapsed ? "60px" : "268px",
+          left: isCollapsed ? "68px" : "268px",
         }}
         title={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
       >
@@ -90,7 +90,7 @@ export function Sidebar({
       ) : (
         <div className="flex items-center justify-center">
           <svg
-            className="w-8 h-8 text-blue-500"
+            className="w-12 h-12 text-blue-500"
             viewBox="0 0 48 48"
             fill="none"
           >
@@ -116,7 +116,9 @@ export function Sidebar({
       {/* Search Hint */}
       <button
         onClick={onSearchClick}
-        className="w-full h-10 bg-slate-700 rounded-lg flex items-center gap-2 px-3 hover:bg-slate-600 transition-colors cursor-pointer"
+        className={`w-full bg-slate-700 rounded-lg flex items-center justify-center hover:bg-slate-600 transition-colors cursor-pointer ${
+          isCollapsed ? "h-12 p-0" : "h-10 gap-2 px-3"
+        }`}
         title="Search (⌘K)"
       >
         {!isCollapsed ? (
@@ -126,7 +128,7 @@ export function Sidebar({
           </>
         ) : (
           <svg
-            className="w-5 h-5 text-slate-400 mx-auto"
+            className="w-6 h-6 text-slate-400"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -151,9 +153,26 @@ export function Sidebar({
             <div key={category.id} className="flex flex-col gap-2">
               {/* Category Header */}
               <button
-                onClick={() => toggleCategory(category.id)}
-                className="w-full h-9 bg-slate-700 rounded-md flex items-center gap-2 px-3 hover:bg-slate-600 transition-colors cursor-pointer"
-                title={isCollapsed ? category.name : undefined}
+                onClick={() => {
+                  if (isCollapsed) {
+                    // When collapsed, navigate to first topic in category
+                    const firstTopic = categoryTopics[0];
+                    if (firstTopic) {
+                      onTopicSelect(firstTopic);
+                    }
+                  } else {
+                    // When expanded, toggle category
+                    toggleCategory(category.id);
+                  }
+                }}
+                className={`w-full bg-slate-700 rounded-md flex items-center hover:bg-slate-600 transition-colors cursor-pointer ${
+                  isCollapsed ? "h-12 justify-center p-0" : "h-9 gap-2 px-3"
+                }`}
+                title={
+                  isCollapsed
+                    ? `${category.name} - Click to open first topic`
+                    : undefined
+                }
               >
                 {!isCollapsed ? (
                   <>
@@ -174,7 +193,7 @@ export function Sidebar({
                 ) : (
                   <CategoryIcon
                     icon={category.icon}
-                    className="w-5 h-5 text-slate-400 mx-auto"
+                    className="w-6 h-6 text-slate-400"
                   />
                 )}
               </button>
