@@ -41,7 +41,7 @@ src/
 │   ├── layout/          # AppLayout, Sidebar, MainContent
 │   ├── navigation/      # CategoryAccordion, TopicLink
 │   ├── search/          # SearchModal, SearchInput, SearchResults
-│   ├── content/         # Card, Workflow, CodeSnippet, Preview
+│   ├── content/         # 11 content visualization components (see PROJECT_CONFIG.md)
 │   └── common/          # Icon, Button, CategoryIcon
 ├── services/            # searchService, routeService, scrollService
 ├── hooks/               # useKeyboardShortcut, useScrollRestoration, useSearch, useRoute, useDebounce
@@ -53,7 +53,83 @@ src/
 └── main.tsx
 ```
 
-### 2. Separation of Concerns
+### 2. Content Component Philosophy
+
+This platform provides 11 pre-built content visualization components. When starting a new project:
+
+**Step 1: Evaluate Existing Components**
+- Review all components in `src/components/content/`
+- Read usage guidelines in PROJECT_CONFIG.md
+- Check if they cover your content visualization needs
+
+**Step 2: Assess Sufficiency**
+- Existing components: ContentCard, WorkflowCard, CodeSnippet, PreviewCard, ComparisonCard, TimelineCard, TipCard, TableCard, ListCard, QuoteCard, DosDontsCard
+- These cover most common content visualization patterns
+- Suitable for documentation, tutorials, comparisons, and reference materials
+
+**Step 3: Extend When Needed**
+- If your domain requires unique visualizations (e.g., interactive diagrams, 3D previews, video embeds, charts), create new components
+- Follow established patterns and design principles
+- Maintain visual consistency with existing components
+
+**Step 4: Update Documentation**
+When adding new components:
+1. Define data interface in `src/types/topic.ts`
+2. Update ContentSection type union
+3. Create component in `src/components/content/`
+4. Update PROJECT_CONFIG.md with usage guidelines and examples
+
+### Creating New Content Components
+
+Follow this pattern for consistency:
+
+```typescript
+// 1. Define data interface in src/types/topic.ts
+export interface YourComponentData {
+  title: string;
+  // ... your fields
+}
+
+// 2. Update ContentSection type
+export interface ContentSection {
+  type: "card" | "workflow" | ... | "yourcomponent";
+  data: CardData | WorkflowData | ... | YourComponentData;
+}
+
+// 3. Create component in src/components/content/YourComponent.tsx
+interface YourComponentProps {
+  data: YourComponentData;
+}
+
+export function YourComponent({ data }: YourComponentProps) {
+  return (
+    <div className="bg-slate-800 rounded-xl p-6">
+      {/* Your implementation */}
+    </div>
+  );
+}
+
+// 4. Update PROJECT_CONFIG.md with:
+// - Component purpose and when to use it
+// - Usage examples
+// - Selection guidelines
+```
+
+**Component Design Principles**:
+- Use consistent dark theme styling (bg-slate-800, text-slate-300)
+- Follow Tailwind utility-first approach
+- Keep components focused and single-purpose
+- Accept data via props, no hardcoded content
+- Use TypeScript interfaces for type safety
+- Maintain visual consistency with existing components
+- Use rounded-xl for cards, p-6 for padding
+- Follow existing spacing patterns (gap-3, gap-4)
+├── styles/              # index.css
+├── App.tsx
+└── main.tsx
+```
+
+### 3. Separation of Concerns
 
 - **Components**: Pure UI, receive data via props
 - **Services**: Business logic, data transformations
@@ -62,9 +138,17 @@ src/
 - **Types**: TypeScript interfaces
 - **Utils**: Pure functions, no side effects
 
-### 3. Content-Driven Design
+### 4. Content-Driven Design
 
 All content (topics, categories, tags) lives in `src/data/` as TypeScript constants. Changing content NEVER requires touching component code.
+
+**See PROJECT_CONFIG.md for**:
+- All 11 available content components
+- Component selection guidelines
+- When to use each component type
+- Example topic structures with multiple components
+- Design system (colors, typography, spacing)
+- Category icons and organization
 
 ## Critical Implementation Rules
 
@@ -424,15 +508,26 @@ pnpm test -- --grep "Property"
 # Type check
 pnpm run type-check
 ```
+
+## File References
+
+- **AI Agent Guide**: `AI_AGENT_GUIDE.md` - Quick start for AI agents working on new projects
+- **Component Ecosystem**: `COMPONENT_ECOSYSTEM.md` - Visual guide to all 11 components
+- **Component README**: `src/components/content/README.md` - Developer quick reference
+- **Project Config**: `PROJECT_CONFIG.md` - CSS Tricks Platform specific settings
+- **Spec Files**: `.kiro/specs/css-tricks-platform/` - Requirements, design, tasks
+- **Design System**: `design-system/css-tricks-platform/MASTER.md`
+
 ---
 
 ## Getting Started with This Template
 
-1. Copy this template to your project as `PLATFORM_TEMPLATE.md`
-2. Create a `PROJECT_CONFIG.md` file with your specific configuration
-3. Reference both files in your main `MASTER_PROMPT.md`
-4. Update `PROJECT_CONFIG.md` with your platform's unique details
-5. Keep the template unchanged for reusability across projects
+1. **Read AI_AGENT_GUIDE.md** - Comprehensive guide for AI agents
+2. **Review existing components** - Check `src/components/content/` and `COMPONENT_ECOSYSTEM.md`
+3. **Assess sufficiency** - Determine if 11 existing components are enough
+4. **Extend if needed** - Create new components following established patterns
+5. **Update documentation** - Keep PROJECT_CONFIG.md and related docs current
 
-**Template Version**: 1.0
+**Template Version**: 1.2
 **Last Updated**: 2026-04-08
+**Components**: 11 content visualization components ready to use

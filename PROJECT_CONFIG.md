@@ -60,14 +60,303 @@ Use Tailwind's default spacing scale:
 
 ## Content Structure
 
+### Available Content Components
+
+This platform provides 11 content visualization components. Each serves a specific purpose for presenting information effectively.
+
+#### 1. ContentCard
+**Purpose**: General explanations, concepts, or contextual information
+
+**When to use**:
+- Explaining why a technique works
+- Providing background context
+- Describing use cases
+- General informational content
+
+**Example**:
+```typescript
+{
+  type: "card",
+  data: {
+    title: "Why This Works",
+    content: "Flexbox's justify-content and align-items properties provide a powerful way to center elements..."
+  }
+}
+```
+
+#### 2. WorkflowCard
+**Purpose**: Step-by-step instructions or sequential processes
+
+**When to use**:
+- Implementation guides
+- Multi-step tutorials
+- Sequential processes
+- How-to instructions
+
+**Example**:
+```typescript
+{
+  type: "workflow",
+  data: {
+    title: "Implementation Steps",
+    steps: [
+      { number: 1, title: "Set display: flex", description: "Apply flexbox to the container" },
+      { number: 2, title: "Center horizontally", description: "Use justify-content: center" }
+    ]
+  }
+}
+```
+
+#### 3. CodeSnippet
+**Purpose**: Display code examples with syntax highlighting
+
+**When to use**:
+- Showing CSS, HTML, or JavaScript code
+- Providing copy-paste ready examples
+- Demonstrating syntax
+
+**Example**:
+```typescript
+{
+  type: "code",
+  data: {
+    language: "css",
+    code: ".container {\n  display: flex;\n  justify-content: center;\n}",
+    title: "CSS"
+  }
+}
+```
+
+#### 4. PreviewCard
+**Purpose**: Live visual demonstration of code output
+
+**When to use**:
+- Showing visual results of CSS
+- Demonstrating layout techniques
+- Interactive examples
+- Visual proof of concept
+
+**Example**:
+```typescript
+{
+  type: "preview",
+  data: {
+    html: "<div class='container'>Centered!</div>",
+    css: ".container { display: flex; justify-content: center; }"
+  }
+}
+```
+
+#### 5. ComparisonCard
+**Purpose**: Side-by-side comparison of two approaches
+
+**When to use**:
+- Comparing old vs new methods
+- Showing wrong vs right approaches
+- Before/after examples
+- Alternative solutions
+
+**Example**:
+```typescript
+{
+  type: "comparison",
+  data: {
+    title: "Old vs New Approach",
+    left: {
+      label: "Old Method",
+      code: "position: absolute;\ntop: 50%;\nleft: 50%;",
+      description: "Requires transform hack"
+    },
+    right: {
+      label: "Modern Method",
+      code: "display: flex;\njustify-content: center;\nalign-items: center;",
+      description: "Clean and intuitive"
+    }
+  }
+}
+```
+
+#### 6. TimelineCard
+**Purpose**: Chronological progression or evolution of techniques
+
+**When to use**:
+- Showing CSS evolution over time
+- Progressive enhancement steps
+- Historical context
+- Sequential development stages
+
+**Example**:
+```typescript
+{
+  type: "timeline",
+  data: {
+    title: "Evolution of Centering",
+    events: [
+      {
+        title: "CSS 1 (1996)",
+        description: "Limited centering options",
+        code: "text-align: center;"
+      },
+      {
+        title: "CSS 2 (1998)",
+        description: "Absolute positioning introduced"
+      }
+    ]
+  }
+}
+```
+
+#### 7. TipCard
+**Purpose**: Highlight important notes, warnings, or tips
+
+**When to use**:
+- Important warnings
+- Pro tips
+- Success indicators
+- Critical information
+
+**Variants**: info (blue), warning (yellow), success (green), danger (red)
+
+**Example**:
+```typescript
+{
+  type: "tip",
+  data: {
+    variant: "warning",
+    title: "Browser Support",
+    content: "Flexbox is supported in all modern browsers, but IE11 has some quirks."
+  }
+}
+```
+
+#### 8. TableCard
+**Purpose**: Structured data in rows and columns
+
+**When to use**:
+- Property comparisons
+- Browser support tables
+- Feature matrices
+- Structured reference data
+
+**Example**:
+```typescript
+{
+  type: "table",
+  data: {
+    title: "Browser Support",
+    headers: ["Property", "Chrome", "Firefox", "Safari"],
+    rows: [
+      ["display: flex", "✓", "✓", "✓"],
+      ["gap", "✓", "✓", "✓"]
+    ]
+  }
+}
+```
+
+#### 9. ListCard
+**Purpose**: Bulleted or numbered lists
+
+**When to use**:
+- Feature lists
+- Requirements
+- Checklists
+- Enumerated items
+
+**Example**:
+```typescript
+{
+  type: "list",
+  data: {
+    title: "Key Benefits",
+    ordered: false,
+    items: [
+      { text: "Easy to understand", subtext: "Intuitive syntax" },
+      { text: "Widely supported", subtext: "Works in all modern browsers" }
+    ]
+  }
+}
+```
+
+#### 10. QuoteCard
+**Purpose**: Highlight important quotes or principles
+
+**When to use**:
+- CSS specifications quotes
+- Best practice principles
+- Expert opinions
+- Key takeaways
+
+**Example**:
+```typescript
+{
+  type: "quote",
+  data: {
+    quote: "Flexbox is designed for one-dimensional layouts, while Grid is designed for two-dimensional layouts.",
+    author: "CSS Working Group"
+  }
+}
+```
+
+#### 11. DosDontsCard
+**Purpose**: Clear do's and don'ts side by side
+
+**When to use**:
+- Best practices vs anti-patterns
+- Common mistakes to avoid
+- Recommended vs discouraged approaches
+- Quick reference guides
+
+**Example**:
+```typescript
+{
+  type: "dosdонts",
+  data: {
+    title: "Flexbox Best Practices",
+    dos: [
+      "Use flexbox for one-dimensional layouts",
+      "Combine with gap for spacing",
+      "Use flex-wrap for responsive designs"
+    ],
+    donts: [
+      "Don't use for complex 2D grids",
+      "Avoid negative margins for spacing",
+      "Don't rely on order property for accessibility"
+    ]
+  }
+}
+```
+
+### Component Selection Guidelines
+
+**For explaining concepts**: Use ContentCard
+**For step-by-step guides**: Use WorkflowCard
+**For code examples**: Use CodeSnippet + PreviewCard (side by side)
+**For comparing approaches**: Use ComparisonCard
+**For historical context**: Use TimelineCard
+**For important notes**: Use TipCard
+**For structured data**: Use TableCard
+**For simple lists**: Use ListCard
+**For highlighting principles**: Use QuoteCard
+**For best practices**: Use DosDontsCard
+
 ### Topic Content Sections
 
-This platform uses 4 content section types:
+This platform uses flexible content sections. Mix and match components based on what you're explaining:
 
-1. **Card**: Explanation of why/when to use the technique
-2. **Workflow**: Step-by-step implementation guide
-3. **Code**: Actual CSS code with syntax highlighting
-4. **Preview**: Live visual demonstration of the technique
+**Typical CSS Trick Structure**:
+1. ContentCard - Explain the concept
+2. TipCard - Important browser support note
+3. WorkflowCard - Implementation steps
+4. ComparisonCard - Old vs new approach
+5. CodeSnippet - Full code example
+6. PreviewCard - Live demonstration
+7. DosDontsCard - Best practices
+
+**Alternative Structure for Historical Content**:
+1. ContentCard - Introduction
+2. TimelineCard - Evolution of the technique
+3. CodeSnippet - Modern implementation
+4. PreviewCard - Visual result
 
 ### Example Topic
 
@@ -89,12 +378,37 @@ This platform uses 4 content section types:
         }
       },
       {
+        type: "tip",
+        data: {
+          variant: "info",
+          title: "Browser Support",
+          content: "Flexbox is supported in all modern browsers since 2015."
+        }
+      },
+      {
         type: "workflow",
         data: {
+          title: "Implementation Steps",
           steps: [
             { number: 1, title: "Set display: flex", description: "..." },
             { number: 2, title: "Center horizontally", description: "..." }
           ]
+        }
+      },
+      {
+        type: "comparison",
+        data: {
+          title: "Old vs New",
+          left: {
+            label: "Old Method",
+            code: "position: absolute;\ntop: 50%;\nleft: 50%;",
+            description: "Requires transform hack"
+          },
+          right: {
+            label: "Flexbox Method",
+            code: "display: flex;\njustify-content: center;",
+            description: "Clean and simple"
+          }
         }
       },
       {
@@ -109,7 +423,21 @@ This platform uses 4 content section types:
         type: "preview",
         data: {
           html: "<div class='container'>Centered!</div>",
-          css: ".container { display: flex; justify-content: center; align-items: center; }"
+          css: ".container { display: flex; justify-content: center; align-items: center; height: 200px; }"
+        }
+      },
+      {
+        type: "dosdонts",
+        data: {
+          title: "Best Practices",
+          dos: [
+            "Use for simple centering needs",
+            "Combine with gap for spacing"
+          ],
+          donts: [
+            "Don't use for complex 2D layouts",
+            "Avoid when Grid is more appropriate"
+          ]
         }
       }
     ]
@@ -193,6 +521,8 @@ Unique to this platform:
 
 ## File References
 
+- **Component Ecosystem**: `COMPONENT_ECOSYSTEM.md` - Visual guide to all components
+- **Component README**: `src/components/content/README.md` - Developer quick reference
 - **Spec Files**: `.kiro/specs/css-tricks-platform/`
   - `requirements.md` - All requirements with acceptance criteria
   - `design.md` - Technical design and architecture

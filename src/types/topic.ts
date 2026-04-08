@@ -13,8 +13,8 @@ export interface TopicContent {
 }
 
 export interface ContentSection {
-  type: "card" | "workflow" | "code" | "preview";
-  data: CardData | WorkflowData | CodeData | PreviewData;
+  type: "card" | "workflow" | "code" | "preview" | "comparison" | "timeline" | "tip" | "table" | "list" | "quote" | "dosdонts";
+  data: CardData | WorkflowData | CodeData | PreviewData | ComparisonData | TimelineData | TipData | TableData | ListData | QuoteData | DosDontsData;
 }
 
 export interface CardData {
@@ -42,4 +42,63 @@ export interface CodeData {
 export interface PreviewData {
   html: string;
   css: string;
+}
+
+export interface ComparisonData {
+  title: string;
+  left: {
+    label: string;
+    code: string;
+    description?: string;
+  };
+  right: {
+    label: string;
+    code: string;
+    description?: string;
+  };
+}
+
+export interface TimelineData {
+  title: string;
+  events: TimelineEvent[];
+}
+
+export interface TimelineEvent {
+  title: string;
+  description: string;
+  code?: string;
+}
+
+export interface TipData {
+  variant: "info" | "warning" | "success" | "danger";
+  title: string;
+  content: string;
+}
+
+export interface TableData {
+  title: string;
+  headers: string[];
+  rows: string[][];
+}
+
+export interface ListData {
+  title: string;
+  ordered: boolean;
+  items: ListItem[];
+}
+
+export interface ListItem {
+  text: string;
+  subtext?: string;
+}
+
+export interface QuoteData {
+  quote: string;
+  author?: string;
+}
+
+export interface DosDontsData {
+  title: string;
+  dos: string[];
+  donts: string[];
 }
