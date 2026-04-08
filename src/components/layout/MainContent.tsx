@@ -12,6 +12,7 @@ import { TipCard } from "@/components/content/TipCard";
 import { WorkflowCard } from "@/components/content/WorkflowCard";
 import { categories } from "@/data/categories";
 import { topics } from "@/data/topics/index";
+import { useScrollRestoration } from "@/hooks/useScrollRestoration";
 import type {
   CardData,
   CodeData,
@@ -34,9 +35,11 @@ interface MainContentProps {
 }
 
 export function MainContent({ topic, onTopicSelect }: MainContentProps) {
+  const scrollRef = useScrollRestoration<HTMLElement>();
+
   if (!topic) {
     return (
-      <main className="flex-1 bg-slate-900 min-w-0">
+      <main ref={scrollRef} className="flex-1 bg-slate-900 overflow-y-auto min-w-0">
         <div className="max-w-5xl mx-auto p-8 flex flex-col gap-8">
           {/* Hero Section */}
           <header className="flex flex-col gap-4 pt-8">
@@ -274,7 +277,7 @@ export function MainContent({ topic, onTopicSelect }: MainContentProps) {
   }
 
   return (
-    <main className="flex-1 bg-slate-900 min-w-0">
+    <main ref={scrollRef} className="flex-1 bg-slate-900 overflow-y-auto min-w-0">
       <div className="max-w-5xl mx-auto p-8 flex flex-col gap-6">
         {/* Content Header */}
         <header className="flex flex-col gap-3">

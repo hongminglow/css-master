@@ -327,7 +327,8 @@ interface ContentSection {
 ### 5. Standard React Routing
 
 - We utilize standard `react-router-dom` (`createBrowserRouter`).
-- Do **not** build custom History API services. Rely on standard ecosystem tools as recorded in `package.json`. Use `<ScrollRestoration />` natively.
+- Do **not** build custom History API services. Rely on standard ecosystem tools as recorded in `package.json`.
+- Note: Since we use an isolated 2-pane fixed layout (`h-screen overflow-hidden` App wrapper with separate scrolling for Sidebar and MainContent), native `<ScrollRestoration />` does not work because it strictly listens to browser `window` scroll. You MUST use a custom `useScrollRestoration` hook for the inner `.overflow-y-auto` child node.
 
 ## UX Best Practices & Patterns
 
@@ -488,7 +489,7 @@ Test user flows end-to-end:
 2. Keep content in `src/data/` constants
 3. Use `react-router-dom` and strictly follow the documented `package.json` tools.
 4. Implement custom fuzzy search with debouncing
-5. Leverage `<ScrollRestoration>` natively directly from react-router-dom.
+5. Understand scroll contexts! Use custom `useScrollRestoration` hooks specifically because we employ a fixed `h-screen overflow-hidden` wrapper with independent scrolling panels.
 6. Maintain dark theme consistently
 7. Use Heroicons or Lucide icons (SVG)
 8. Add cursor-pointer to interactive elements
