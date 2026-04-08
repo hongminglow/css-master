@@ -42,7 +42,7 @@ export const isolationIsolate: Topic = {
 </div>`,
             css: `
 .mock-device { height: 100%; position: relative; background: #e2e8f0; border-radius: 8px; font-family: sans-serif; display:flex; align-items:center; justify-content:center;}
-.tooltip { position: absolute; top: 0; left: 0; right: 0; background: #3b82f6; color: white; padding: 10px; font-weight: bold; text-align: center; z-index: 50; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+.tooltip { position: absolute; top: 0; left: 0; right: 0; background: #1e293b; color: #f8fafc; padding: 12px; font-weight: 600; text-align: center; z-index: 50; border-bottom: 2px solid #3b82f6; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
 .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); position: relative; width: 220px; height: 140px;}
 .card h4 { margin: 0 0 10px 0; color: #1e293b; }
 
@@ -63,7 +63,7 @@ export const isolationIsolate: Topic = {
 </div>`,
             css: `
 .mock-device { height: 100%; position: relative; background: #e2e8f0; border-radius: 8px; font-family: sans-serif; display:flex; align-items:center; justify-content:center;}
-.tooltip { position: absolute; top: 0; left: 0; right: 0; background: #3b82f6; color: white; padding: 10px; font-weight: bold; text-align: center; z-index: 50; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+.tooltip { position: absolute; top: 0; left: 0; right: 0; background: #1e293b; color: #f8fafc; padding: 12px; font-weight: 600; text-align: center; z-index: 50; border-bottom: 2px solid #3b82f6; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
 .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); position: relative; width: 220px; height: 140px;}
 .card h4 { margin: 0 0 10px 0; color: #1e293b; }
 .escaped-child { position: absolute; top: -20px; right: -20px; background: #ef4444; color: white; padding: 10px; font-weight: bold; border-radius: 4px; box-shadow: 0 4px 6px rgba(0,0,0,0.2); z-index: 999;}

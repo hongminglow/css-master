@@ -63,7 +63,8 @@ export function Sidebar({
         style={{
           left: isCollapsed ? "68px" : "268px",
         }}
-        title={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+        data-tooltip={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+        data-tooltip-position="right"
       >
         <svg
           className={`w-4 h-4 text-slate-300 transition-transform ${
@@ -119,7 +120,8 @@ export function Sidebar({
         className={`w-full bg-slate-700 rounded-lg shrink-0 flex items-center justify-center hover:bg-slate-600 transition-colors cursor-pointer ${
           isCollapsed ? "h-12 p-0" : "h-10 gap-2 px-3"
         }`}
-        title="Search (⌘K)"
+        data-tooltip="Search (⌘K)"
+        data-tooltip-position={isCollapsed ? "right" : "top"}
       >
         {!isCollapsed ? (
           <>
@@ -168,11 +170,12 @@ export function Sidebar({
                 className={`w-full bg-slate-700 rounded-md flex items-center hover:bg-slate-600 transition-colors cursor-pointer ${
                   isCollapsed ? "h-12 justify-center p-0" : "h-9 gap-2 px-3"
                 }`}
-                title={
+                data-tooltip={
                   isCollapsed
                     ? `${category.name} - Click to open first topic`
                     : undefined
                 }
+                data-tooltip-position="right"
               >
                 {!isCollapsed ? (
                   <>
@@ -212,7 +215,7 @@ export function Sidebar({
                             ? "bg-blue-600 text-white"
                             : "text-slate-300 hover:bg-slate-700"
                         }`}
-                        title={topic.name}
+                        data-tooltip={topic.name}
                       >
                         <span className="truncate">{topic.name}</span>
                       </button>

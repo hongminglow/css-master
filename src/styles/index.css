@@ -70,3 +70,96 @@
     background: #64748b;
   }
 }
+
+@theme {
+  --color-tooltip-bg: #1e293b;
+  --color-tooltip-text: #f8fafc;
+  --color-tooltip-border: #334155;
+}
+
+@layer utilities {
+  [data-tooltip] {
+    position: relative;
+  }
+
+  [data-tooltip]::before,
+  [data-tooltip]::after {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    z-index: 100;
+  }
+
+  /* Tooltip text bubble */
+  [data-tooltip]::before {
+    content: attr(data-tooltip);
+    background: var(--color-tooltip-bg);
+    color: var(--color-tooltip-text);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 500;
+    white-space: nowrap;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--color-tooltip-border);
+  }
+
+  /* Default top position */
+  [data-tooltip]:not([data-tooltip-position])::before,
+  [data-tooltip][data-tooltip-position="top"]::before {
+    bottom: 140%;
+    left: 50%;
+    transform: translateX(-50%) translateY(8px);
+  }
+
+  [data-tooltip]:not([data-tooltip-position])::after,
+  [data-tooltip][data-tooltip-position="top"]::after {
+    content: "";
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid var(--color-tooltip-border);
+    bottom: 140%;
+    left: 50%;
+    transform: translateX(-50%) translateY(14px);
+    margin-bottom: -6px;
+  }
+
+  /* Right position (good for sidebar) */
+  [data-tooltip][data-tooltip-position="right"]::before {
+    left: 140%;
+    top: 50%;
+    transform: translateY(-50%) translateX(-8px);
+  }
+
+  [data-tooltip][data-tooltip-position="right"]::after {
+    content: "";
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-right: 6px solid var(--color-tooltip-border);
+    left: 140%;
+    top: 50%;
+    transform: translateY(-50%) translateX(-14px);
+    margin-left: -6px;
+  }
+
+  [data-tooltip]:hover::before,
+  [data-tooltip]:hover::after {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  [data-tooltip]:not([data-tooltip-position]):hover::before,
+  [data-tooltip][data-tooltip-position="top"]:hover::before,
+  [data-tooltip]:not([data-tooltip-position]):hover::after,
+  [data-tooltip][data-tooltip-position="top"]:hover::after {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  [data-tooltip][data-tooltip-position="right"]:hover::before,
+  [data-tooltip][data-tooltip-position="right"]:hover::after {
+    transform: translateY(-50%) translateX(0);
+  }
+}
+
