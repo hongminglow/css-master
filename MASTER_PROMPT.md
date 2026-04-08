@@ -378,6 +378,12 @@ interface ContentSection {
 2. **Brand colors** - Match platform theme
 3. **Clear iconography** - Recognizable symbol
 4. **Proper meta tags** - Include title and description
+5. **No background plate** - SVG should be raw and fill the canvas, without a solid `<rect>` background filling the box.
+
+### Global App UI/UX Standards
+
+1. **Typography** - Use smooth, modern sans-serif fonts like `Inter` for standard text and UI elements for a polished, readable look.
+2. **Scrollbars** - Ensure `index.css` overrides default bulky scrollbars with thin, custom scrollbars that match the dark theme (e.g., `width: 6px`, dark slate thumb).
 
 ## Content Guidelines
 
@@ -397,6 +403,15 @@ interface ContentSection {
 - Use clear, descriptive names
 - Assign appropriate icons
 - Order by popularity/importance
+
+### Adding New Topics (Instructions for AI Agents)
+
+When an AI Agent is asked to add a new topic, it MUST autonomously execute these steps without needing a reminder:
+
+1. **Deep Dive & Research** - Conduct thorough technical research, summarize the best practices, and architect solid CSS code examples. Provide high-quality content; do not just output placeholder text.
+2. **File Creation** - Determine the correct category (`layout`, `responsive`, etc.) and create a new file specifically for it at `src/data/topics/<category>/<topic-name>.ts`. Use the 12 available visualization components to build the sections.
+3. **Architecture Registration** - Export the new topic safely from the category barrel and add it to the master index array inside `src/data/topics/index.ts`.
+4. **Component Ecosystem Updates** - If a *new* visualization component type was created to serve the topic, be sure to update `COMPONENT_ECOSYSTEM.md` and `PROJECT_CONFIG.md` to reflect the new addition.
 
 ## Testing Strategy
 

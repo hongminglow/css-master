@@ -116,7 +116,7 @@ export function Sidebar({
       {/* Search Hint */}
       <button
         onClick={onSearchClick}
-        className={`w-full bg-slate-700 rounded-lg flex items-center justify-center hover:bg-slate-600 transition-colors cursor-pointer ${
+        className={`w-full bg-slate-700 rounded-lg shrink-0 flex items-center justify-center hover:bg-slate-600 transition-colors cursor-pointer ${
           isCollapsed ? "h-12 p-0" : "h-10 gap-2 px-3"
         }`}
         title="Search (⌘K)"

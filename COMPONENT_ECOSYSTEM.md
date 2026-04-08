@@ -3,7 +3,7 @@
 ## Component Hierarchy
 
 ```
-Content Visualization Components (11 Total)
+Content Visualization Components (12 Total)
 │
 ├── Informational Components
 │   ├── ContentCard          → General explanations, concepts
@@ -18,7 +18,8 @@ Content Visualization Components (11 Total)
 ├── Code Components
 │   ├── CodeSnippet          → Code examples
 │   ├── PreviewCard          → Live visual demos
-│   └── ComparisonCard       → Side-by-side code comparison
+│   ├── ComparisonCard       → Side-by-side code comparison
+│   └── LiveComparisonCard   → Interactive side-by-side bug/fix demo
 │
 └── Data Components
     ├── TableCard            → Structured data in rows/columns
@@ -39,6 +40,11 @@ PreviewCard → Shows the result
 ```
 ComparisonCard → Shows old vs new code
 PreviewCard    → Shows visual difference
+```
+
+**Live Comparison (Bug vs Fix)**
+```
+LiveComparisonCard → Shows side-by-side code with isolated live iframes
 ```
 
 **Card + Workflow + Code**
@@ -74,7 +80,8 @@ What do you need to show?
 ├── Code example?
 │   ├── Just code? → Use CodeSnippet
 │   ├── Code + visual? → Use CodeSnippet + PreviewCard
-│   └── Comparing approaches? → Use ComparisonCard
+│   ├── Comparing approaches? → Use ComparisonCard
+│   └── Bug vs Fix visual proof? → Use LiveComparisonCard
 │
 ├── Structured data?
 │   ├── Rows and columns? → Use TableCard
@@ -142,6 +149,7 @@ What do you need to show?
 | TableCard | Medium | 3 | Medium |
 | TimelineCard | Medium | 2 | High |
 | ComparisonCard | High | 3 | Very High |
+| LiveComparisonCard | High | 4 | Very High |
 | DosDontsCard | High | 3 | High |
 
 ## Visual Design Patterns
@@ -305,7 +313,7 @@ sections: [
 
 ## Summary
 
-- **11 components** covering all common visualization needs
+- **12 components** covering all common visualization needs
 - **4 categories**: Informational, Instructional, Code, Data
 - **Flexible composition** for any content type
 - **Consistent design** across all components

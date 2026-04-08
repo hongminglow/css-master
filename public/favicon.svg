@@ -1,6 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
-  <!-- Background -->
-  <rect width="48" height="48" rx="4" fill="#0f172a"/>
+  <!-- Removed background for raw image look -->
   
   <!-- CSS3 Shield Shape - Larger -->
   <path d="M24 4L40 9L37.5 36L24 42L10.5 36L8 9L24 4Z" fill="#2563eb"/>

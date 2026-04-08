@@ -1,11 +1,11 @@
 /* Google Fonts */
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap");
 
 @import "tailwindcss";
 
 @layer base {
   :root {
-    --font-sans: "IBM Plex Sans", system-ui, sans-serif;
+    --font-sans: "Inter", system-ui, sans-serif;
     --font-mono: "JetBrains Mono", monospace;
   }
 
@@ -15,7 +15,7 @@
 
   body {
     margin: 0;
-    font-family: var(--font-mono);
+    font-family: var(--font-sans);
     background-color: #0f172a;
     color: #f8fafc;
     line-height: 1.6;
@@ -27,7 +27,7 @@
   h4,
   h5,
   h6 {
-    font-family: var(--font-mono);
+    font-family: var(--font-sans);
     font-weight: 600;
     line-height: 1.2;
   }
@@ -52,5 +52,21 @@
   :focus-visible {
     outline: 2px solid #3b82f6;
     outline-offset: 2px;
+  }
+
+  /* Thin Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #475569;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #64748b;
   }
 }

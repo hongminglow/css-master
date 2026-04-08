@@ -5,8 +5,7 @@
  */
 
 import { categories } from "@/data/categories";
-import type { Tag } from "@/data/tags";
-import { tags } from "@/data/tags";
+
 import { topics } from "@/data/topics/index";
 import type { Category } from "@/types/category";
 import type { Topic } from "@/types/topic";
@@ -35,7 +34,7 @@ export function getCategoryById(id: string): Category | undefined {
  * @returns True if the tag exists, false otherwise
  */
 export function hasTag(tag: string): boolean {
-  return tags.includes(tag as Tag);
+  return getAllTags().includes(tag);
 }
 
 /**
@@ -55,9 +54,11 @@ export function getAllCategories(): Category[] {
 }
 
 /**
- * Get all tags
- * @returns Array of all tags
+ * Get all tags dynamically extracted from items
+ * @returns Array of all unique tags
  */
-export function getAllTags(): readonly Tag[] {
-  return tags;
+export function getAllTags(): string[] {
+  const allTags = new Set<string>();
+  topics.forEach((t) => t.tags.forEach((tag) => allTags.add(tag)));
+  return Array.from(allTags);
 }
