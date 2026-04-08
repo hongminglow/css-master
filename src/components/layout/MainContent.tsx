@@ -36,7 +36,7 @@ interface MainContentProps {
 export function MainContent({ topic, onTopicSelect }: MainContentProps) {
   if (!topic) {
     return (
-      <main className="flex-1 bg-slate-900 overflow-y-auto">
+      <main className="flex-1 bg-slate-900 min-w-0">
         <div className="max-w-5xl mx-auto p-8 flex flex-col gap-8">
           {/* Hero Section */}
           <header className="flex flex-col gap-4 pt-8">
@@ -274,7 +274,7 @@ export function MainContent({ topic, onTopicSelect }: MainContentProps) {
   }
 
   return (
-    <main className="flex-1 bg-slate-900 overflow-y-auto">
+    <main className="flex-1 bg-slate-900 min-w-0">
       <div className="max-w-5xl mx-auto p-8 flex flex-col gap-6">
         {/* Content Header */}
         <header className="flex flex-col gap-3">

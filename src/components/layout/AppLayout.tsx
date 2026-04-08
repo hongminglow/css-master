@@ -14,7 +14,7 @@ export function AppLayout({
   onSearchClick,
 }: AppLayoutProps) {
   return (
-    <div className="flex h-screen bg-slate-900">
+    <div className="flex min-h-screen bg-slate-900">
       <Sidebar
         currentTopicId={currentTopic?.id}
         onTopicSelect={onTopicSelect}

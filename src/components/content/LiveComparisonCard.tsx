@@ -52,7 +52,7 @@ function Panel({ label, variant, code, html, css, description }: PanelProps) {
 
       {/* Code block */}
       <div className="bg-[#0a0f1e] p-4 overflow-x-auto">
-        <pre className="font-mono text-xs leading-relaxed">
+        <pre className="font-mono text-xs leading-relaxed whitespace-pre-wrap break-words">
           <code className="text-slate-200">{code}</code>
         </pre>
       </div>
@@ -127,7 +127,7 @@ export function LiveComparisonCard({ data }: LiveComparisonCardProps) {
       </div>
 
       {/* Two panels side by side */}
-      <div className="p-6 grid grid-cols-2 gap-4">
+      <div className="p-6 grid grid-cols-1 lg:grid-cols-2 gap-4">
         <Panel
           label={data.left.label}
           variant="bad"

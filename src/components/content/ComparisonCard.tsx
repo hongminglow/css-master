@@ -15,7 +15,7 @@ export function ComparisonCard({ data }: ComparisonCardProps) {
       </div>
 
       {/* Comparison Grid */}
-      <div className="grid grid-cols-2 divide-x divide-slate-700">
+      <div className="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-slate-700">
         {/* Left Side */}
         <div className="p-6 flex flex-col gap-3">
           <div className="flex items-center gap-2">
@@ -25,7 +25,7 @@ export function ComparisonCard({ data }: ComparisonCardProps) {
             </h4>
           </div>
           <div className="bg-[#0a0f1e] rounded-lg p-4">
-            <pre className="font-mono text-xs leading-relaxed">
+            <pre className="font-mono text-xs leading-relaxed whitespace-pre-wrap break-words">
               <code className="text-slate-200">{data.left.code}</code>
             </pre>
           </div>
@@ -43,7 +43,7 @@ export function ComparisonCard({ data }: ComparisonCardProps) {
             </h4>
           </div>
           <div className="bg-[#0a0f1e] rounded-lg p-4">
-            <pre className="font-mono text-xs leading-relaxed">
+            <pre className="font-mono text-xs leading-relaxed whitespace-pre-wrap break-words">
               <code className="text-slate-200">{data.right.code}</code>
             </pre>
           </div>
