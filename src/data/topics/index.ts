@@ -50,6 +50,8 @@ import { gpuAcceleratedAnimations, scrollDrivenAnimations } from "./animations";
 
 import { dynamicColorMix } from "./colors";
 
+import { uncommonUnits } from "./typography";
+
 // ── Master list ───────────────────────────────────────────────────────────────
 // Order controls the sidebar and the home page quick-links order.
 export const topics: Topic[] = [
@@ -77,4 +79,7 @@ export const topics: Topic[] = [
 
   // Colors
   dynamicColorMix,
+
+  // Typography
+  uncommonUnits,
 ];
