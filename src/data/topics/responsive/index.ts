@@ -5,3 +5,4 @@
  */
 export { objectFitImages } from "./object-fit-images";
 export { the100vhTrap } from "./the-100vh-trap";
+export { containerQueries } from "./container-queries";

@@ -39,11 +39,14 @@ import {
   gridAutoFit,
   stickyFooter,
   hasSelectorParent,
+  cssLogicalProperties,
 } from "./layout";
 
-import { objectFitImages, the100vhTrap } from "./responsive";
+import { objectFitImages, the100vhTrap, containerQueries } from "./responsive";
 
-import { gpuAcceleratedAnimations } from "./animations";
+import { gpuAcceleratedAnimations, scrollDrivenAnimations } from "./animations";
+
+import { dynamicColorMix } from "./colors";
 
 // ── Master list ───────────────────────────────────────────────────────────────
 // Order controls the sidebar and the home page quick-links order.
@@ -57,11 +60,17 @@ export const topics: Topic[] = [
   gridAutoFit,
   stickyFooter,
   hasSelectorParent,
+  cssLogicalProperties,
 
   // Animations
   gpuAcceleratedAnimations,
+  scrollDrivenAnimations,
 
   // Responsive
   objectFitImages,
   the100vhTrap,
+  containerQueries,
+
+  // Colors
+  dynamicColorMix,
 ];
