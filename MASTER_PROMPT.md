@@ -1,65 +1,35 @@
 # CSS Tricks Platform - Master Prompt
 
-## Project Overview
+**Platform Name**: CSS Tricks Platform
 
-A knowledge sharing platform for CSS tricks that developers commonly miss. Built with React 19, Vite 8, Tailwind 4, and TypeScript 6. Features dark theme, collapsible sidebar with category navigation, debounced fuzzy search, and interactive code previews.
-
-## Core Identity
-
-**What We Do**: Curate and present CSS tricks in an organized, searchable, visually appealing platform with live code previews.
+**What We Do**: Curate and present CSS tricks that developers commonly miss with live code previews.
 
 **Target Audience**: Developers looking to discover CSS techniques they might have missed.
 
-**Key Differentiator**: Side-by-side code and preview visualization with keyboard-first navigation and intelligent search.
+**Key Differentiator**: Side-by-side code and preview visualization with keyboard-first navigation.
+
+**PROJECT_CONFIG.md**: Refer project specific configuration and requirements here
+
+
+## Core Features
+
+- **Collapsible Sidebar** - Category-based navigation with icon-only mode
+- **Global Search** - Debounced fuzzy search with keyboard shortcuts (Ctrl+K / Cmd+K)
+- **Content Organization** - Category → Topics → Content sections
+- **Custom Routing** - Client-side routing using History API
+- **Scroll Restoration** - Maintains scroll position on navigation
+- **Dark Theme** - Professional developer-focused aesthetic
+- **Keyboard Navigation** - Full keyboard support throughout
 
 ## Technology Stack
 
 - **Framework**: React 19 with React Compiler
 - **Build Tool**: Vite 8
-- **Styling**: Tailwind 4 (CSS-based configuration, NO tailwind.config.js file)
+- **Styling**: Tailwind 4 (CSS-based configuration, NO tailwind.config.js)
 - **Language**: TypeScript 6
 - **Routing**: Custom client-side routing using History API
-- **Search**: Custom fuzzy search implementation with debouncing
+- **Search**: Custom fuzzy search with debouncing
 - **Testing**: fast-check for property-based testing
-
-## Design System
-
-### Colors (Dark Theme Only)
-
-```css
-/* Background Colors */
---bg-primary: #0f172a /* slate-900 - Main background */ --bg-secondary: #1e293b
-  /* slate-800 - Cards, sidebar */ --bg-tertiary: #334155
-  /* slate-700 - Inputs, buttons */ /* Text Colors */ --text-primary: #f8fafc
-  /* slate-50 - Headings */ --text-secondary: #cbd5e1
-  /* slate-300 - Body text */ --text-muted: #94a3b8 /* slate-400 - Muted text */
-  /* Accent Colors */ --accent-primary: #2563eb
-  /* blue-600 - CTA, active states */ --accent-secondary: #475569
-  /* slate-600 - Badges, borders */ /* Code Colors */ --code-bg: #0a0f1e
-  /* Darker than bg-primary */ --code-text: #e2e8f0 /* slate-200 */;
-```
-
-### Typography
-
-- **Headings**: JetBrains Mono (700, 600, 500)
-- **Body**: IBM Plex Sans (400, 500, 600)
-- **Code**: JetBrains Mono (400)
-
-**Google Fonts Import**:
-
-```css
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap");
-```
-
-### Spacing Scale
-
-Use Tailwind's default spacing scale:
-
-- `gap-2` (8px) - Tight spacing
-- `gap-4` (16px) - Standard spacing
-- `gap-6` (24px) - Section spacing
-- `p-6` (24px) - Card padding
-- `p-8` (32px) - Page padding
 
 ## Architecture Principles
 
@@ -101,19 +71,16 @@ All content (topics, categories, tags) lives in `src/data/` as TypeScript consta
 ### Tailwind 4 Usage
 
 **DO**:
-
 - Use Tailwind utility classes for ALL styling
 - Use CSS variables for theme colors in `src/styles/index.css`
 - Use `@theme` directive for custom values (Tailwind 4 feature)
 
 **DON'T**:
-
 - Create `tailwind.config.js` (Tailwind 4 doesn't need it)
 - Write custom CSS unless absolutely necessary
 - Use inline styles
 
 **Example Tailwind 4 CSS**:
-
 ```css
 @import "tailwindcss";
 
@@ -126,14 +93,12 @@ All content (topics, categories, tags) lives in `src/data/` as TypeScript consta
 ### Component Patterns
 
 **DO**:
-
 - Extract reusable components
 - Use TypeScript interfaces for props
 - Keep components small and focused
 - Use composition over inheritance
 
 **DON'T**:
-
 - Put business logic in components
 - Hardcode content in components
 - Create monolithic components
@@ -141,15 +106,14 @@ All content (topics, categories, tags) lives in `src/data/` as TypeScript consta
 ### Data Structure
 
 **Topic Structure**:
-
 ```typescript
 interface Topic {
-  id: string; // kebab-case
+  id: string;              // kebab-case
   name: string;
   categoryId: string;
   description: string;
   tags: string[];
-  route: string; // /topics/{id}
+  route: string;           // /topics/{id}
   content: TopicContent;
 }
 
@@ -168,46 +132,33 @@ interface ContentSection {
 ### 1. Collapsible Sidebar with Category Navigation
 
 **Expanded State (280px width)**:
-
 - Full category names with icons
 - Item count badges
 - Expand/collapse arrows
 - Topic list when expanded
 - Version label at bottom
-- "CSS Tricks" text logo
+- Platform name/logo
 
 **Collapsed State (80px width)**:
-
 - Category icons only (w-6 h-6, 24px)
-- Larger app logo (w-12 h-12, 48px CSS shield)
+- Larger app logo (w-12 h-12, 48px)
 - Search icon only
 - Taller buttons (h-12, 48px) for better visibility
 - Click icon to navigate to first topic in category
 
 **Toggle Button**:
-
 - Fixed position, floating outside sidebar
 - Smooth transition (300ms)
 - Position: 268px (expanded), 68px (collapsed)
 - Arrow icon rotates 180° when collapsed
 
 **Auto-Expand on Selection**:
-
 - When topic selected from search, automatically expand its category
 - Uses `useEffect` to detect currentTopicId changes
-
-**Category Icons** (using CategoryIcon component):
-
-- Layout: Grid/layout icon
-- Typography: Text/type icon
-- Colors & Effects: Palette icon
-- Animations: Lightning/zap icon
-- Responsive: Smartphone icon
 
 ### 2. Global Search (Ctrl+K / Cmd+K)
 
 **Search Modal Design**:
-
 - Full-screen overlay with backdrop blur
 - Centered modal (560px width)
 - Table-like results (not card-like)
@@ -215,20 +166,17 @@ interface ContentSection {
 - SVG search icon (not emoji)
 
 **Debounced Search**:
-
 - 300ms debounce delay using `useDebounce` hook
 - Prevents excessive re-renders
 - Query updates immediately, results update after delay
 
 **Search Results**:
-
 - Clean, minimal design with border separators
 - Selected item: blue background with arrow icon
 - Hover state: subtle background change
 - Each result shows: topic name + tags (separated by •)
 
 **Keyboard Navigation**:
-
 - ↑↓ arrows to navigate
 - Enter to select
 - Escape to close
@@ -237,53 +185,41 @@ interface ContentSection {
 ### 3. Meaningful Home Content
 
 **Hero Section**:
-
-- Large title: "CSS Tricks Platform"
+- Large title with platform name
 - Descriptive subtitle explaining the platform
 - Professional, welcoming tone
 
 **Quick Stats Grid** (3 columns):
-
-- Total CSS tricks count
+- Total content count
 - Number of categories
-- "100% Dark Mode" indicator
+- Key feature highlight
 
-**Features Grid** (2x2):
-
+**Features Grid** (2x2 or 2x3):
 - Fuzzy Search with ⌘K hint
-- Live Code Preview
-- Organized by Category
+- Content organization
 - Keyboard Navigation
+- Additional platform-specific features
 - Each with icon and description
 
 **Browse by Category Section**:
-
-- All categories listed with trick counts
+- All categories listed with content counts
 - Quick links to first 6 topics per category
 - Clickable topic buttons that navigate
 - "+X more" indicator for additional topics
 
 **Getting Started Guide**:
-
 - Numbered steps (1, 2, 3)
 - Clear, actionable instructions
 - Visual step indicators (blue circles)
 
-### 4. Side-by-Side Code & Preview
-
-- Left: Code snippet with syntax highlighting
-- Right: Live preview showing visual output
-- Equal width split
-- Dark code background, light preview background
-
-### 5. Scroll Restoration
+### 4. Scroll Restoration
 
 - Save scroll position before navigation
 - Restore on back button
 - Scroll to top for new routes
 - Store in memory (Map), not localStorage
 
-### 6. Unique Routes
+### 5. Unique Routes
 
 - Format: `/topics/{topic-id}`
 - Use History API (pushState, popstate)
@@ -317,8 +253,8 @@ interface ContentSection {
 ### Favicon Design
 
 1. **Minimal padding** - Use full canvas space
-2. **Brand colors** - Match platform theme (#2563eb blue, #0f172a dark)
-3. **Clear iconography** - CSS shield with "CSS" text
+2. **Brand colors** - Match platform theme
+3. **Clear iconography** - Recognizable symbol
 4. **Proper meta tags** - Include title and description
 
 ## Content Guidelines
@@ -326,56 +262,10 @@ interface ContentSection {
 ### Writing Topics
 
 **Structure**:
-
 1. Title (clear, concise)
-2. Description (one sentence explaining the trick)
+2. Description (one sentence explaining the content)
 3. Tags (3-5 relevant keywords)
-4. Content sections:
-   - Card: Explanation of why/when to use
-   - Workflow: Step-by-step implementation
-   - Code: Actual CSS code
-   - Preview: Visual demonstration
-
-**Example Topic**:
-
-```typescript
-{
-  id: "flexbox-centering",
-  name: "Flexbox Centering",
-  categoryId: "layout",
-  description: "Learn the most reliable way to center elements using Flexbox",
-  tags: ["flexbox", "centering", "layout"],
-  route: "/topics/flexbox-centering",
-  content: {
-    sections: [
-      {
-        type: "card",
-        data: {
-          title: "Why This Works",
-          content: "Flexbox's justify-content and align-items properties..."
-        }
-      },
-      {
-        type: "workflow",
-        data: {
-          steps: [
-            { number: 1, title: "Set display: flex", description: "..." },
-            { number: 2, title: "Center horizontally", description: "..." }
-          ]
-        }
-      },
-      {
-        type: "code",
-        data: {
-          code: ".container {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}",
-          language: "css",
-          title: "CSS"
-        }
-      }
-    ]
-  }
-}
-```
+4. Content sections (varies by platform type)
 
 ### Organizing Categories
 
@@ -384,18 +274,6 @@ interface ContentSection {
 - Use clear, descriptive names
 - Assign appropriate icons
 - Order by popularity/importance
-
-**Example Categories**:
-
-```typescript
-export const categories: Category[] = [
-  { id: "layout", name: "Layout", icon: "layout", order: 1 },
-  { id: "typography", name: "Typography", icon: "type", order: 2 },
-  { id: "colors", name: "Colors & Effects", icon: "palette", order: 3 },
-  { id: "animations", name: "Animations", icon: "zap", order: 4 },
-  { id: "responsive", name: "Responsive", icon: "smartphone", order: 5 },
-];
-```
 
 ## Testing Strategy
 
@@ -411,19 +289,18 @@ fc.assert(
     results.forEach((result) => {
       const matchesName = fuzzyMatch(query, result.topic.name) > 0;
       const matchesTags = result.topic.tags.some(
-        (tag) => fuzzyMatch(query, tag) > 0,
+        (tag) => fuzzyMatch(query, tag) > 0
       );
       expect(matchesName || matchesTags).toBe(true);
     });
   }),
-  { numRuns: 100 },
+  { numRuns: 100 }
 );
 ```
 
 ### Integration Tests
 
 Test user flows end-to-end:
-
 - Search → Navigate → Scroll Restore
 - Category Click → Topic Select → Content Display
 - Direct URL → Content Load → Sidebar Highlight
@@ -488,7 +365,6 @@ Test user flows end-to-end:
 ## Implementation Checklist
 
 ### Sidebar
-
 - [ ] Collapsible with smooth 300ms transition
 - [ ] Expanded: 280px, Collapsed: 80px
 - [ ] Large icons when collapsed (w-6 h-6)
@@ -501,7 +377,6 @@ Test user flows end-to-end:
 - [ ] Tooltips on collapsed icons
 
 ### Search
-
 - [ ] Debounced input (300ms delay)
 - [ ] Table-like results with border separators
 - [ ] SVG search icon (not emoji)
@@ -512,16 +387,14 @@ Test user flows end-to-end:
 - [ ] Centered modal (560px)
 
 ### Home Content
-
 - [ ] Hero section with title and description
 - [ ] Quick stats grid (3 columns)
-- [ ] Features grid (2x2) with icons
+- [ ] Features grid with icons
 - [ ] Browse by category with quick links
 - [ ] Getting started guide with numbered steps
 - [ ] All sections properly spaced
 
 ### General
-
 - [ ] Custom favicon with minimal padding
 - [ ] Proper page title and meta description
 - [ ] All icons from consistent set
@@ -534,116 +407,32 @@ Test user flows end-to-end:
 
 ```bash
 # Install dependencies
-npm install
+pnpm install
 
 # Development server
-npm run dev
+pnpm run dev
 
 # Build for production
-npm run build
+pnpm run build
 
 # Run tests
-npm test
+pnpm test
 
 # Run property-based tests
-npm test -- --grep "Property"
+pnpm test -- --grep "Property"
 
 # Type check
-npm run type-check
+pnpm run type-check
 ```
-
-## File References
-
-- **Spec Files**: `.kiro/specs/css-tricks-platform/`
-  - `requirements.md` - All requirements with acceptance criteria
-  - `design.md` - Technical design and architecture
-  - `tasks.md` - Implementation task list
-- **Design System**: `design-system/css-tricks-platform/MASTER.md`
-- **Pencil Designs**: `./pencil-new.pen`
-
-## When Making Changes
-
-1. **Adding a new topic**: Edit `src/data/topics.ts`
-2. **Adding a category**: Edit `src/data/categories.ts` (include icon name)
-3. **Changing colors**: Edit `src/styles/index.css` (CSS variables)
-4. **Adding a component**: Follow folder structure, create in appropriate subfolder
-5. **Modifying search**: Update `src/services/searchService.ts`
-6. **Changing routes**: Update `src/services/routeService.ts`
-7. **Adding category icon**: Update `src/components/common/CategoryIcon.tsx`
-8. **Adjusting debounce**: Modify delay in `SearchModal.tsx` (default 300ms)
-
-## Design Decisions & Rationale
-
-### Why Custom Routing?
-
-- Simpler for single-page app
-- Full control over logic
-- No additional dependencies
-- Educational value
-
-### Why Custom Fuzzy Search?
-
-- Small dataset (50-100 topics)
-- More testable with property-based tests
-- Smaller bundle size
-- Full control over matching logic
-- Easy to add debouncing
-
-### Why Dark Theme Only?
-
-- Developer tool aesthetic
-- Reduces eye strain for long sessions
-- Simpler implementation
-- Consistent experience
-
-### Why Tailwind 4?
-
-- No config file needed
-- Modern CSS features
-- Better performance
-- Future-proof
-
-### Why Collapsible Sidebar?
-
-- Maximizes content viewing area
-- Better for smaller screens
-- Professional UX pattern
-- Maintains functionality in both states
-
-### Why Debounced Search?
-
-- Prevents excessive re-renders
-- Better performance
-- Smoother user experience
-- Industry standard pattern
-
-### Why Table-like Search Results?
-
-- Cleaner, more professional appearance
-- Better information density
-- Easier to scan
-- Less visual clutter than cards
-
-## Success Metrics
-
-- **User Engagement**: Time spent on platform, topics viewed
-- **Search Usage**: Search queries, click-through rate, debounce effectiveness
-- **Navigation**: Category usage, direct URL access, sidebar collapse rate
-- **Performance**: Load time, interaction latency, search response time
-- **Content**: Topic completion rate, popular topics, category distribution
-
 ---
 
+## Getting Started with This Template
+
+1. Copy this template to your project as `PLATFORM_TEMPLATE.md`
+2. Create a `PROJECT_CONFIG.md` file with your specific configuration
+3. Reference both files in your main `MASTER_PROMPT.md`
+4. Update `PROJECT_CONFIG.md` with your platform's unique details
+5. Keep the template unchanged for reusability across projects
+
+**Template Version**: 1.0
 **Last Updated**: 2026-04-08
-**Version**: 1.1
-**Status**: Production Ready
-
-**Recent Enhancements**:
-
-- Added collapsible sidebar with icon-only mode
-- Implemented debounced search (300ms)
-- Redesigned search results (table-like)
-- Added meaningful home content with quick links
-- Auto-expand category on topic selection
-- Improved favicon design
-- Enhanced collapsed state visibility
