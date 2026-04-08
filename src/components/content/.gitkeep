@@ -1,0 +1,8 @@
+# Content Components
+
+This directory contains reusable content display components.
+
+Components:
+- Card.tsx - Information block component
+- Workflow.tsx - Step-by-step process display
+- CodeSnippet.tsx - Syntax-highlighted code display

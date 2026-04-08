@@ -1,0 +1,9 @@
+# Custom Hooks
+
+This directory contains reusable React hooks.
+
+Hooks:
+- useKeyboardShortcut.ts - Keyboard shortcut handling
+- useScrollRestoration.ts - Scroll position restoration
+- useSearch.ts - Search functionality hook
+- useRoute.ts - Routing hook

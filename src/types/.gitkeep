@@ -1,0 +1,8 @@
+# TypeScript Type Definitions
+
+This directory contains TypeScript interfaces and type definitions.
+
+Files:
+- topic.ts - Topic-related types
+- category.ts - Category-related types
+- search.ts - Search-related types

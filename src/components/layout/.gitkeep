@@ -1,0 +1,8 @@
+# Layout Components
+
+This directory contains layout components that define the overall structure of the application.
+
+Components:
+- Sidebar.tsx - Persistent navigation panel
+- MainContent.tsx - Content area displaying current topic
+- AppLayout.tsx - Root layout component

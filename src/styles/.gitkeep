@@ -1,0 +1,6 @@
+# Styles
+
+This directory contains global styles and CSS configuration.
+
+Files:
+- index.css - Global styles and Tailwind imports

@@ -1,0 +1,8 @@
+# Services
+
+This directory contains business logic and service layer implementations.
+
+Services:
+- searchService.ts - Fuzzy search implementation
+- routeService.ts - Client-side routing management
+- scrollService.ts - Scroll position management

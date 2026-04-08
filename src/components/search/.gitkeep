@@ -1,0 +1,9 @@
+# Search Components
+
+This directory contains search functionality components.
+
+Components:
+- SearchModal.tsx - Global search interface
+- SearchInput.tsx - Search input field with debouncing
+- SearchResults.tsx - Search results container
+- SearchResultItem.tsx - Individual search result item

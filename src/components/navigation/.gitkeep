@@ -1,0 +1,8 @@
+# Navigation Components
+
+This directory contains navigation-related components.
+
+Components:
+- CategoryAccordion.tsx - Collapsible category container
+- TopicLink.tsx - Individual topic link with active state
+- Breadcrumb.tsx - Breadcrumb navigation

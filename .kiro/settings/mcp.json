@@ -1,0 +1,22 @@
+{
+  "mcpServers": {
+    "pencil": {
+      "command": "/Users/lowhongming/.pencil/mcp/kiro/out/mcp-server-darwin-arm64",
+      "args": [
+        "--app",
+        "kiro"
+      ],
+      "disabled": false,
+      "autoApprove": [
+        "get_editor_state",
+        "open_document",
+        "batch_design",
+        "batch_design",
+        "get_screenshot",
+        "get_screenshot",
+        "batch_get",
+        "batch_get"
+      ]
+    }
+  }
+}

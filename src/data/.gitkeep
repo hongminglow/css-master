@@ -1,0 +1,8 @@
+# Data Constants
+
+This directory contains static data and content definitions.
+
+Files:
+- topics.ts - Topic content and metadata
+- categories.ts - Category definitions
+- tags.ts - Tag definitions

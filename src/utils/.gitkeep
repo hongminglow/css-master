@@ -1,0 +1,7 @@
+# Utility Functions
+
+This directory contains helper functions and utilities.
+
+Files:
+- fuzzyMatch.ts - Fuzzy string matching algorithm
+- routeUtils.ts - Route generation and parsing utilities
