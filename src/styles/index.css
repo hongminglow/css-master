@@ -78,7 +78,7 @@
 }
 
 @layer utilities {
-  [data-tooltip] {
+  [data-tooltip]:not(.fixed):not(.absolute):not(.sticky) {
     position: relative;
   }
 

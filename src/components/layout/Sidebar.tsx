@@ -52,7 +52,7 @@ export function Sidebar({
 
   return (
     <aside
-      className={`h-full shrink-0 bg-slate-800 flex flex-col gap-4 overflow-y-auto overflow-x-hidden transition-all duration-300 ${
+      className={`h-full bg-slate-800 flex flex-col gap-4 overflow-y-auto overflow-x-hidden transition-all duration-300 relative ${
         isCollapsed ? "w-[80px] p-4" : "w-[280px] px-4 py-6"
       }`}
     >
