@@ -1,4 +1,5 @@
 import { topics } from "@/data/topics";
+import { useDebounce } from "@/hooks/useDebounce";
 import { searchService } from "@/services/searchService";
 import type { Topic } from "@/types/topic";
 import { useEffect, useRef, useState } from "react";
@@ -13,12 +14,19 @@ export function SearchModal({ onClose, onTopicSelect }: SearchModalProps) {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const results = searchService.search(query, topics, { limit: 10 });
+  // Debounce search query
+  const debouncedQuery = useDebounce(query, 300);
+  const results = searchService.search(debouncedQuery, topics, { limit: 10 });
 
   // Focus input on mount
   useEffect(() => {
     inputRef.current?.focus();
   }, []);
+
+  // Reset selected index when query changes
+  useEffect(() => {
+    setSelectedIndex(0);
+  }, [query]);
 
   // Handle keyboard navigation
   useEffect(() => {
@@ -41,11 +49,6 @@ export function SearchModal({ onClose, onTopicSelect }: SearchModalProps) {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [results, selectedIndex, onClose, onTopicSelect]);
 
-  // Reset selected index when query changes
-  useEffect(() => {
-    setSelectedIndex(0);
-  }, [query]);
-
   return (
     <div
       className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50"
@@ -56,8 +59,20 @@ export function SearchModal({ onClose, onTopicSelect }: SearchModalProps) {
         onClick={(e) => e.stopPropagation()}
       >
         {/* Search Input */}
-        <div className="h-13 bg-slate-700 flex items-center gap-2 px-4">
-          <span className="text-lg">🔍</span>
+        <div className="h-13 bg-slate-700 flex items-center gap-3 px-4 border-b border-slate-600">
+          <svg
+            className="w-5 h-5 text-slate-400"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
+          </svg>
           <input
             ref={inputRef}
             type="text"
@@ -69,13 +84,13 @@ export function SearchModal({ onClose, onTopicSelect }: SearchModalProps) {
         </div>
 
         {/* Search Results */}
-        <div className="max-h-[400px] overflow-y-auto p-1.5">
-          {results.length === 0 && query && (
+        <div className="max-h-[400px] overflow-y-auto">
+          {results.length === 0 && debouncedQuery && (
             <div className="p-4 text-center text-slate-400">
-              No results found for "{query}"
+              No results found for "{debouncedQuery}"
             </div>
           )}
-          {results.length === 0 && !query && (
+          {results.length === 0 && !debouncedQuery && (
             <div className="p-4 text-center text-slate-400">
               Start typing to search...
             </div>
@@ -84,26 +99,43 @@ export function SearchModal({ onClose, onTopicSelect }: SearchModalProps) {
             <button
               key={result.topic.id}
               onClick={() => onTopicSelect(result.topic)}
-              className={`w-full rounded-lg p-2.5 flex flex-col gap-1 text-left transition-colors cursor-pointer ${
+              className={`w-full px-4 py-3 flex items-center justify-between text-left transition-colors cursor-pointer border-b border-slate-700 last:border-b-0 ${
                 index === selectedIndex
                   ? "bg-blue-600"
-                  : "bg-slate-700 hover:bg-slate-600"
+                  : "hover:bg-slate-700/50"
               }`}
             >
-              <span
-                className={`text-sm font-semibold ${
-                  index === selectedIndex ? "text-white" : "text-slate-50"
-                }`}
-              >
-                {result.topic.name}
-              </span>
-              <span
-                className={`text-xs ${
-                  index === selectedIndex ? "text-blue-100" : "text-slate-400"
-                }`}
-              >
-                {result.topic.tags.join(" • ")}
-              </span>
+              <div className="flex flex-col gap-1">
+                <span
+                  className={`text-sm font-semibold ${
+                    index === selectedIndex ? "text-white" : "text-slate-50"
+                  }`}
+                >
+                  {result.topic.name}
+                </span>
+                <span
+                  className={`text-xs ${
+                    index === selectedIndex ? "text-blue-100" : "text-slate-400"
+                  }`}
+                >
+                  {result.topic.tags.join(" • ")}
+                </span>
+              </div>
+              {index === selectedIndex && (
+                <svg
+                  className="w-5 h-5 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              )}
             </button>
           ))}
         </div>

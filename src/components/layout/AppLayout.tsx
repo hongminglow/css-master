@@ -20,7 +20,7 @@ export function AppLayout({
         onTopicSelect={onTopicSelect}
         onSearchClick={onSearchClick}
       />
-      <MainContent topic={currentTopic} />
+      <MainContent topic={currentTopic} onTopicSelect={onTopicSelect} />
     </div>
   );
 }
