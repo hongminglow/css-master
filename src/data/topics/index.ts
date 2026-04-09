@@ -40,18 +40,29 @@ import {
   heightVsMinHeight,
   isolationIsolate,
   marginCollapse,
+  minWidthZero,
   positionStickyGotchas,
   stickyFooter,
+  subgridAlignment,
   zIndexStackingContext,
 } from "./layout";
 
-import { containerQueries, objectFitImages, the100vhTrap } from "./responsive";
+import {
+  containerQueries,
+  intrinsicSizingFunctions,
+  objectFitImages,
+  the100vhTrap,
+} from "./responsive";
 
-import { gpuAcceleratedAnimations, scrollDrivenAnimations } from "./animations";
+import {
+  gpuAcceleratedAnimations,
+  scrollDrivenAnimations,
+  startingStyleEntryTransitions,
+} from "./animations";
 
-import { dynamicColorMix } from "./colors";
+import { dynamicColorMix, maskImageFades } from "./colors";
 
-import { uncommonUnits } from "./typography";
+import { textWrapBalance, uncommonUnits } from "./typography";
 
 // ── Master list ───────────────────────────────────────────────────────────────
 // Order controls the sidebar and the home page quick-links order.
@@ -69,19 +80,25 @@ export const topics: Topic[] = [
   cssLogicalProperties,
   isolationIsolate,
   heightVsMinHeight,
+  minWidthZero,
+  subgridAlignment,
 
   // Animations
   gpuAcceleratedAnimations,
   scrollDrivenAnimations,
+  startingStyleEntryTransitions,
 
   // Responsive
   objectFitImages,
   the100vhTrap,
   containerQueries,
+  intrinsicSizingFunctions,
 
   // Colors
   dynamicColorMix,
+  maskImageFades,
 
   // Typography
   uncommonUnits,
+  textWrapBalance,
 ];

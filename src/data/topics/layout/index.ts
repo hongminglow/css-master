@@ -13,6 +13,8 @@ export { hasSelectorParent } from "./has-selector-parent";
 export { heightVsMinHeight } from "./height-vs-min-height";
 export { isolationIsolate } from "./isolation-isolate";
 export { marginCollapse } from "./margin-collapse";
+export { minWidthZero } from "./min-width-zero";
 export { positionStickyGotchas } from "./position-sticky-gotchas";
 export { stickyFooter } from "./sticky-footer";
+export { subgridAlignment } from "./subgrid-alignment";
 export { zIndexStackingContext } from "./z-index-stacking";
