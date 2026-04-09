@@ -1,2 +1,7 @@
+export * from "./fluid-type-clamp";
+export * from "./font-size-adjust-fallbacks";
+export * from "./hyphens-overflow-wrap";
+export * from "./text-wrap-pretty";
 export * from "./uncommon-units";
 export * from "./text-wrap-balance";
+export * from "./underline-offset-thickness";

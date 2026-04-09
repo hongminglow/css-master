@@ -31,7 +31,10 @@ import type { Topic } from "@/types/topic";
 
 // ── Category imports ──────────────────────────────────────────────────────────
 import {
+  aspectRatioPreventsLayoutJumps,
+  anchorPositioningPopovers,
   boxSizingBorderBox,
+  contentVisibilityLongPages,
   cssLogicalProperties,
   dynamicGalleryGrid,
   flexboxCentering,
@@ -39,9 +42,11 @@ import {
   hasSelectorParent,
   heightVsMinHeight,
   isolationIsolate,
+  logicalBorderRadius,
   marginCollapse,
   minWidthZero,
   positionStickyGotchas,
+  scrollbarGutterStableLayout,
   stickyFooter,
   subgridAlignment,
   zIndexStackingContext,
@@ -49,25 +54,53 @@ import {
 
 import {
   containerQueries,
+  containerQueryUnits,
+  fieldSizingInputs,
   intrinsicSizingFunctions,
   objectFitImages,
+  overscrollBehaviorScrollChaining,
+  safeAreaInsetPadding,
+  scrollSnapCarousels,
   the100vhTrap,
 } from "./responsive";
 
 import {
   gpuAcceleratedAnimations,
+  interpolateSizeAutoDimensions,
+  prefersReducedMotionStrategy,
   scrollDrivenAnimations,
+  staggeredEntryAnimations,
   startingStyleEntryTransitions,
+  transitionBehaviorDiscrete,
+  viewTransitionsPageMorphs,
 } from "./animations";
 
-import { dynamicColorMix, maskImageFades } from "./colors";
+import {
+  accentColorNativeControls,
+  backdropFilterLayering,
+  colorSchemeNativeDarkUi,
+  dynamicColorMix,
+  lightDarkThemeFunction,
+  maskImageFades,
+  relativeColorSyntax,
+} from "./colors";
 
-import { textWrapBalance, uncommonUnits } from "./typography";
+import {
+  fluidTypeClamp,
+  fontSizeAdjustFallbacks,
+  hyphensOverflowWrap,
+  textWrapBalance,
+  textWrapPretty,
+  underlineOffsetThickness,
+  uncommonUnits,
+} from "./typography";
 
 // ── Master list ───────────────────────────────────────────────────────────────
 // Order controls the sidebar and the home page quick-links order.
 export const topics: Topic[] = [
   // Layout
+  aspectRatioPreventsLayoutJumps,
+  anchorPositioningPopovers,
   flexboxCentering,
   marginCollapse,
   zIndexStackingContext,
@@ -79,26 +112,49 @@ export const topics: Topic[] = [
   hasSelectorParent,
   cssLogicalProperties,
   isolationIsolate,
+  logicalBorderRadius,
   heightVsMinHeight,
   minWidthZero,
   subgridAlignment,
+  contentVisibilityLongPages,
+  scrollbarGutterStableLayout,
 
   // Animations
   gpuAcceleratedAnimations,
+  interpolateSizeAutoDimensions,
+  prefersReducedMotionStrategy,
   scrollDrivenAnimations,
   startingStyleEntryTransitions,
+  transitionBehaviorDiscrete,
+  staggeredEntryAnimations,
+  viewTransitionsPageMorphs,
 
   // Responsive
   objectFitImages,
   the100vhTrap,
   containerQueries,
+  containerQueryUnits,
+  fieldSizingInputs,
   intrinsicSizingFunctions,
+  scrollSnapCarousels,
+  overscrollBehaviorScrollChaining,
+  safeAreaInsetPadding,
 
   // Colors
   dynamicColorMix,
   maskImageFades,
+  accentColorNativeControls,
+  backdropFilterLayering,
+  lightDarkThemeFunction,
+  relativeColorSyntax,
+  colorSchemeNativeDarkUi,
 
   // Typography
   uncommonUnits,
   textWrapBalance,
+  textWrapPretty,
+  fluidTypeClamp,
+  fontSizeAdjustFallbacks,
+  underlineOffsetThickness,
+  hyphensOverflowWrap,
 ];

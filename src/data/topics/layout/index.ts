@@ -4,7 +4,10 @@
  * Add new layout topic files here and export them.
  * File per topic → import and re-export below.
  */
+export { aspectRatioPreventsLayoutJumps } from "./aspect-ratio-prevents-layout-jumps";
+export { anchorPositioningPopovers } from "./anchor-positioning-popovers";
 export { boxSizingBorderBox } from "./box-sizing-border-box";
+export { contentVisibilityLongPages } from "./content-visibility-long-pages";
 export { cssLogicalProperties } from "./css-logical-properties";
 export { dynamicGalleryGrid } from "./dynamic-gallery-grid";
 export { flexboxCentering } from "./flexbox-centering";
@@ -12,9 +15,11 @@ export { gridAutoFit } from "./grid-auto-fit";
 export { hasSelectorParent } from "./has-selector-parent";
 export { heightVsMinHeight } from "./height-vs-min-height";
 export { isolationIsolate } from "./isolation-isolate";
+export { logicalBorderRadius } from "./logical-border-radius";
 export { marginCollapse } from "./margin-collapse";
 export { minWidthZero } from "./min-width-zero";
 export { positionStickyGotchas } from "./position-sticky-gotchas";
+export { scrollbarGutterStableLayout } from "./scrollbar-gutter-stable-layout";
 export { stickyFooter } from "./sticky-footer";
 export { subgridAlignment } from "./subgrid-alignment";
 export { zIndexStackingContext } from "./z-index-stacking";
