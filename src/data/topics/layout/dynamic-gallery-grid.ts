@@ -199,38 +199,325 @@ window.addEventListener('resize', () => {
         },
       },
       {
+        type: "card",
+        data: {
+          title: "Alternative Approaches to Gallery Layouts",
+          content:
+            "While `grid-auto-flow: dense` is powerful for dynamic content, there are several other CSS Grid techniques for creating gallery layouts. Each has different trade-offs in terms of control, flexibility, and complexity. Let's explore the main approaches.",
+        } as CardData,
+      },
+      {
         type: "table",
         data: {
-          title: "Grid Auto-Flow Options Comparison",
-          headers: ["Property Value", "Behavior", "Use Case"],
+          title: "Gallery Layout Methods Comparison",
+          headers: ["Method", "Control", "Dynamic", "Complexity", "Best For"],
           rows: [
             [
-              "row (default)",
-              "Fills row by row, leaves gaps",
-              "Standard grids with uniform items",
+              "grid-auto-flow: dense",
+              "Low",
+              "✓ Yes",
+              "Low",
+              "Dynamic content, any item count",
             ],
             [
-              "column",
-              "Fills column by column, leaves gaps",
-              "Vertical-first layouts",
+              "grid-template-areas",
+              "High",
+              "✗ No",
+              "Medium",
+              "Fixed layouts, hero sections",
             ],
             [
-              "dense",
-              "Fills gaps with smaller items",
-              "Galleries, Pinterest-style layouts",
+              "Explicit positioning",
+              "High",
+              "⚠ Partial",
+              "High",
+              "Featured items, custom patterns",
             ],
             [
-              "row dense",
-              "Row-first, then fills gaps",
-              "Horizontal galleries with gap filling",
+              "Subgrid",
+              "Medium",
+              "✓ Yes",
+              "Medium",
+              "Nested galleries, alignment",
             ],
             [
-              "column dense",
-              "Column-first, then fills gaps",
-              "Vertical galleries with gap filling",
+              "CSS Columns",
+              "Low",
+              "✓ Yes",
+              "Low",
+              "Vertical masonry (Pinterest)",
             ],
           ],
         } as TableData,
+      },
+      {
+        type: "code",
+        data: {
+          language: "css",
+          title: "Method 1: Grid Template Areas (Designer Control)",
+          code: `.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 200px);
+  gap: 1rem;
+  
+  /* Visual layout definition */
+  grid-template-areas:
+    "hero hero    small1 small2"
+    "hero hero    small3 small4"
+    "med1 med2    med2   small5";
+}
+
+/* Assign items to named areas */
+.item-1 { grid-area: hero; }
+.item-2 { grid-area: small1; }
+.item-3 { grid-area: small2; }
+.item-4 { grid-area: small3; }
+.item-5 { grid-area: small4; }
+.item-6 { grid-area: med1; }
+.item-7 { grid-area: med2; }
+.item-8 { grid-area: small5; }
+
+/* Pros: Visual layout in code, precise control
+   Cons: Not dynamic, requires manual class assignment */`,
+        } as CodeData,
+      },
+      {
+        type: "code",
+        data: {
+          language: "css",
+          title: "Method 2: Explicit Grid Positioning (Hybrid Approach)",
+          code: `.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 200px;
+  gap: 1rem;
+}
+
+/* Position specific featured items */
+.item:nth-child(1) {
+  grid-column: 1 / 3;  /* span columns 1-2 */
+  grid-row: 1 / 3;     /* span rows 1-2 */
+}
+
+.item:nth-child(5) {
+  grid-column: 3 / 5;  /* span columns 3-4 */
+  grid-row: 2 / 3;
+}
+
+/* Or use span syntax */
+.item:nth-child(8) {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+/* Regular items auto-place in remaining space
+   Pros: Mix of control and flexibility
+   Cons: Need to calculate positions manually */`,
+        } as CodeData,
+      },
+      {
+        type: "code",
+        data: {
+          language: "css",
+          title: "Method 3: CSS Multi-Column (True Masonry)",
+          code: `.gallery {
+  /* Vertical masonry like Pinterest */
+  column-count: 4;
+  column-gap: 1rem;
+}
+
+.item {
+  /* Prevent items from breaking across columns */
+  break-inside: avoid;
+  margin-bottom: 1rem;
+}
+
+/* Responsive columns */
+@media (max-width: 1200px) {
+  .gallery { column-count: 3; }
+}
+
+@media (max-width: 768px) {
+  .gallery { column-count: 2; }
+}
+
+@media (max-width: 480px) {
+  .gallery { column-count: 1; }
+}
+
+/* Pros: True masonry, items flow naturally
+   Cons: Fills vertically (not horizontally), harder to control order */`,
+        } as CodeData,
+      },
+      {
+        type: "preview",
+        data: {
+          html: `<div class="gallery-areas">
+  <div class="item i-hero">Hero</div>
+  <div class="item i-s1">1</div>
+  <div class="item i-s2">2</div>
+  <div class="item i-s3">3</div>
+  <div class="item i-s4">4</div>
+  <div class="item i-m1">Med</div>
+  <div class="item i-m2">Medium</div>
+  <div class="item i-s5">5</div>
+</div>`,
+          css: `.gallery-areas {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 60px);
+  gap: 6px;
+  padding: 12px;
+  background: #1e293b;
+  grid-template-areas:
+    "hero hero s1 s2"
+    "hero hero s3 s4"
+    "m1 m2 m2 s5";
+}
+.item {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 11px;
+}
+.i-hero { grid-area: hero; background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); }
+.i-s1 { grid-area: s1; }
+.i-s2 { grid-area: s2; }
+.i-s3 { grid-area: s3; }
+.i-s4 { grid-area: s4; }
+.i-m1 { grid-area: m1; background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
+.i-m2 { grid-area: m2; background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
+.i-s5 { grid-area: s5; }`,
+        },
+      },
+      {
+        type: "code",
+        data: {
+          language: "css",
+          title: "Method 4: Subgrid (Modern Nested Galleries)",
+          code: `.main-gallery {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+}
+
+/* Nested gallery inherits parent columns */
+.gallery-section {
+  display: grid;
+  grid-column: span 3;  /* Take 3 columns */
+  grid-template-columns: subgrid;  /* Inherit parent's 3 columns */
+  gap: 1rem;
+}
+
+.gallery-section .item:first-child {
+  grid-column: span 2;  /* Span 2 of the inherited columns */
+}
+
+/* Pros: Perfect alignment across nested grids
+   Cons: Limited browser support (Safari 16+, Chrome 117+) */`,
+        } as CodeData,
+      },
+      {
+        type: "comparison",
+        data: {
+          title: "Dynamic vs Fixed Layouts",
+          left: {
+            label: "Dynamic (Auto-Flow Dense)",
+            code: `.gallery {
+  display: grid;
+  grid-template-columns: 
+    repeat(auto-fill, minmax(200px, 1fr));
+  grid-auto-rows: 200px;
+  grid-auto-flow: dense;
+  gap: 1rem;
+}
+
+/* Items can have size classes */
+.large { 
+  grid-column: span 2;
+  grid-row: span 2;
+}`,
+            description:
+              "Works with any number of items, responsive, fills gaps automatically",
+          },
+          right: {
+            label: "Fixed (Template Areas)",
+            code: `.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 200px);
+  gap: 1rem;
+  grid-template-areas:
+    "a a b c"
+    "a a d e"
+    "f g g h";
+}
+
+.item-1 { grid-area: a; }`,
+            description:
+              "Precise control, visual layout definition, requires exact item count",
+          },
+        } as ComparisonData,
+      },
+      {
+        type: "dosdонts",
+        data: {
+          title: "Choosing the Right Method",
+          dos: [
+            "Use `auto-flow dense` for dynamic content (blogs, feeds, CMS)",
+            "Use `grid-template-areas` for fixed hero sections or landing pages",
+            "Use explicit positioning for featured items in otherwise dynamic grids",
+            "Use CSS columns for true vertical masonry (Pinterest-style)",
+            "Use subgrid for nested galleries that need perfect alignment",
+            "Combine methods: explicit positioning for hero + auto-flow for rest",
+          ],
+          donts: [
+            "Don't use `grid-template-areas` for user-generated content",
+            "Don't use `auto-flow dense` when visual order matters (articles, forms)",
+            "Don't use CSS columns if you need horizontal flow control",
+            "Don't use subgrid yet if you need broad browser support",
+            "Don't over-engineer: start simple, add complexity only when needed",
+            "Don't forget responsive breakpoints for all methods",
+          ],
+        } as DosDontsData,
+      },
+      {
+        type: "code",
+        data: {
+          language: "css",
+          title: "Hybrid Approach: Best of Both Worlds",
+          code: `.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-auto-rows: 200px;
+  grid-auto-flow: dense;
+  gap: 1rem;
+}
+
+/* Explicitly position hero item */
+.item:first-child {
+  grid-column: 1 / 3;
+  grid-row: 1 / 3;
+}
+
+/* Let other items auto-place with dense packing */
+.item-large {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.item-wide {
+  grid-column: span 2;
+}
+
+/* Pros: Control where it matters, flexibility everywhere else
+   Use case: Featured content + dynamic feed */`,
+        } as CodeData,
       },
       {
         type: "dosdонts",
