@@ -31,20 +31,21 @@ import type { Topic } from "@/types/topic";
 
 // ── Category imports ──────────────────────────────────────────────────────────
 import {
-  flexboxCentering,
-  marginCollapse,
-  zIndexStackingContext,
-  positionStickyGotchas,
   boxSizingBorderBox,
-  gridAutoFit,
-  stickyFooter,
-  hasSelectorParent,
   cssLogicalProperties,
-  isolationIsolate,
+  dynamicGalleryGrid,
+  flexboxCentering,
+  gridAutoFit,
+  hasSelectorParent,
   heightVsMinHeight,
+  isolationIsolate,
+  marginCollapse,
+  positionStickyGotchas,
+  stickyFooter,
+  zIndexStackingContext,
 } from "./layout";
 
-import { objectFitImages, the100vhTrap, containerQueries } from "./responsive";
+import { containerQueries, objectFitImages, the100vhTrap } from "./responsive";
 
 import { gpuAcceleratedAnimations, scrollDrivenAnimations } from "./animations";
 
@@ -62,6 +63,7 @@ export const topics: Topic[] = [
   positionStickyGotchas,
   boxSizingBorderBox,
   gridAutoFit,
+  dynamicGalleryGrid,
   stickyFooter,
   hasSelectorParent,
   cssLogicalProperties,

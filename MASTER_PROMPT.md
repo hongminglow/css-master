@@ -10,6 +10,42 @@
 
 **PROJECT_CONFIG.md**: Refer project specific configuration and requirements here
 
+---
+
+## 🤖 AI Agent Behavior: Automatic Topic Creation
+
+**CRITICAL INSTRUCTION FOR AI AGENTS:**
+
+When a user asks about, discusses, or mentions ANY CSS-related concept, technique, trick, or problem, you MUST **automatically create a new topic** without asking for permission. This includes:
+
+- Questions about CSS properties, selectors, or features
+- Discussions about layout techniques (grid, flexbox, positioning)
+- Mentions of CSS tricks, hacks, or best practices
+- Requests to explain CSS concepts
+- Comparisons between CSS approaches
+- Bug fixes or solutions to CSS problems
+- Modern CSS features or browser APIs
+
+**Trigger Keywords (Non-Exhaustive):**
+
+- CSS properties: `display`, `position`, `grid`, `flexbox`, `transform`, `animation`, etc.
+- Layout terms: `centering`, `responsive`, `gallery`, `masonry`, `sticky`, `fixed`
+- Techniques: `clamp()`, `min()`, `max()`, `calc()`, `var()`, `@container`, `@layer`
+- Concepts: `z-index`, `stacking context`, `specificity`, `cascade`, `inheritance`
+- Visual effects: `blur`, `gradient`, `shadow`, `backdrop-filter`, `clip-path`
+
+**Default Behavior:**
+
+1. **Immediately create the topic** - Don't ask "Would you like me to create a topic?"
+2. **Research thoroughly** - Provide production-ready, high-quality content
+3. **Use multiple components** - Combine 4-8 visualization components per topic
+4. **Include live previews** - Always add PreviewCard for visual demonstration
+5. **Follow the 4-step process** (see "Adding New Topics" section below)
+
+**Exception:** Only ask for clarification if the user's request is genuinely ambiguous or incomplete.
+
+---
+
 ## Core Features
 
 - **Collapsible Sidebar** - Category-based navigation with icon-only mode
@@ -405,12 +441,139 @@ interface ContentSection {
 
 ### Adding New Topics (Instructions for AI Agents)
 
-When an AI Agent is asked to add a new topic, it MUST autonomously execute these steps without needing a reminder:
+**MANDATORY PROCESS - Execute Automatically Without Asking:**
 
-1. **Deep Dive & Research** - Conduct thorough technical research, summarize the best practices, and architect solid CSS code examples. Provide high-quality content; do not just output placeholder text.
-2. **File Creation** - Determine the correct category (`layout`, `responsive`, etc.) and create a new file specifically for it at `src/data/topics/<category>/<topic-name>.ts`. Use the 12 available visualization components to build the sections.
-3. **Architecture Registration** - Export the new topic safely from the category barrel and add it to the master index array inside `src/data/topics/index.ts`.
-4. **Component Ecosystem Updates** - If a *new* visualization component type was created to serve the topic, be sure to update `COMPONENT_ECOSYSTEM.md` and `PROJECT_CONFIG.md` to reflect the new addition.
+When a user mentions ANY CSS-related topic (see trigger keywords above), you MUST autonomously execute these steps:
+
+**Step 1: Deep Dive & Research**
+
+- Conduct thorough technical research on the CSS concept
+- Identify the problem it solves and why developers miss it
+- Find real-world use cases and browser support information
+- Architect solid, production-ready CSS code examples
+- **Never use placeholder text** - provide complete, working code
+
+**Step 2: File Creation**
+
+- Determine the correct category:
+  - `layout` - Grid, Flexbox, positioning, spacing, stacking
+  - `responsive` - Media queries, container queries, viewport units
+  - `animations` - Transitions, keyframes, transforms, scroll-driven
+  - `colors` - Color functions, gradients, blend modes, filters
+  - `typography` - Font properties, text effects, units, line-height
+- Create file at: `src/data/topics/<category>/<topic-name>.ts`
+- Use kebab-case for filename (e.g., `dynamic-gallery-grid.ts`)
+- Build 4-8 content sections using the 12 available components:
+  - Start with `ContentCard` (introduction)
+  - Add `ComparisonCard` (old vs new approach)
+  - Include `CodeSnippet` (complete working code)
+  - Add `PreviewCard` (live visual demonstration)
+  - Use `DosDontsCard` (best practices)
+  - Add `TipCard` (warnings, browser support, accessibility)
+  - Optional: `TableCard`, `WorkflowCard`, `TimelineCard`, `ListCard`
+
+**Step 3: Architecture Registration**
+
+- **Export from category barrel**: `src/data/topics/<category>/index.ts`
+
+  ```typescript
+  export { yourNewTopic } from "./your-new-topic";
+  ```
+
+- **Import in master index**: `src/data/topics/index.ts` (add to import statement)
+
+  ```typescript
+  // Add to the existing import from your category
+  import {
+    existingTopic1,
+    existingTopic2,
+    yourNewTopic, // ← ADD THIS LINE (alphabetically sorted)
+  } from "./<category>";
+  ```
+
+- **Add to topics array**: `src/data/topics/index.ts` (add to array)
+  ```typescript
+  export const topics: Topic[] = [
+    // ... existing topics
+    yourNewTopic, // ← ADD THIS LINE (in category group)
+  ];
+  ```
+
+**CRITICAL**: You must update BOTH the import statement AND the topics array!
+
+**Step 4: Component Ecosystem Updates** (Only if creating NEW component types)
+
+- If you created a new visualization component (not using the existing 12):
+  - Update `COMPONENT_ECOSYSTEM.md` with component hierarchy
+  - Update `PROJECT_CONFIG.md` with usage guidelines
+  - Add TypeScript interfaces to `src/types/topic.ts`
+
+**Quality Checklist:**
+
+- [ ] Topic has 4-8 content sections
+- [ ] Includes live PreviewCard demonstration
+- [ ] Code examples are complete and working
+- [ ] Includes browser support information
+- [ ] Has accessibility notes (if relevant)
+- [ ] Uses proper TypeScript types
+- [ ] Exported from category barrel (`<category>/index.ts`)
+- [ ] Imported in master index (import statement at top)
+- [ ] Added to topics array in master index
+- [ ] Tags are relevant and searchable
+- [ ] No TypeScript errors (run `getDiagnostics`)
+
+**Example Topic Structure:**
+
+```typescript
+export const yourTopic: Topic = {
+  id: "your-topic-id",
+  name: "Your Topic Name",
+  categoryId: "layout", // or responsive, animations, colors, typography
+  description: "One-sentence description of what this teaches",
+  tags: ["css", "grid", "responsive", "modern"],
+  route: "/topics/your-topic-id",
+  content: {
+    sections: [
+      {
+        type: "card",
+        data: {
+          /* intro */
+        },
+      },
+      {
+        type: "comparison",
+        data: {
+          /* old vs new */
+        },
+      },
+      {
+        type: "code",
+        data: {
+          /* complete code */
+        },
+      },
+      {
+        type: "preview",
+        data: {
+          /* live demo */
+        },
+      },
+      {
+        type: "dosdонts",
+        data: {
+          /* best practices */
+        },
+      },
+      {
+        type: "tip",
+        data: {
+          /* important notes */
+        },
+      },
+    ],
+  },
+};
+```
 
 ## Testing Strategy
 
