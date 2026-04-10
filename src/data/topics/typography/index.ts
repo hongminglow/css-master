@@ -5,3 +5,5 @@ export * from "./text-wrap-pretty";
 export * from "./uncommon-units";
 export * from "./text-wrap-balance";
 export * from "./underline-offset-thickness";
+export * from "./font-display-strategies";
+export * from "./multi-line-truncation";

@@ -50,6 +50,11 @@ import {
   stickyFooter,
   subgridAlignment,
   zIndexStackingContext,
+  cssColumnsMasonry,
+  displayContentsFlattening,
+  flexAutoMargins,
+  pointerEventsOverlays,
+  shapeOutsideTextWrap,
 } from "./layout";
 
 import {
@@ -62,6 +67,7 @@ import {
   safeAreaInsetPadding,
   scrollSnapCarousels,
   the100vhTrap,
+  touchActionGestures,
 } from "./responsive";
 
 import {
@@ -83,6 +89,8 @@ import {
   lightDarkThemeFunction,
   maskImageFades,
   relativeColorSyntax,
+  conicGradientsCharts,
+  mixBlendModeEffects,
 } from "./colors";
 
 import {
@@ -93,6 +101,8 @@ import {
   textWrapPretty,
   underlineOffsetThickness,
   uncommonUnits,
+  fontDisplayStrategies,
+  multiLineTruncation,
 } from "./typography";
 
 // ── Master list ───────────────────────────────────────────────────────────────
@@ -118,6 +128,11 @@ export const topics: Topic[] = [
   subgridAlignment,
   contentVisibilityLongPages,
   scrollbarGutterStableLayout,
+  cssColumnsMasonry,
+  displayContentsFlattening,
+  flexAutoMargins,
+  pointerEventsOverlays,
+  shapeOutsideTextWrap,
 
   // Animations
   gpuAcceleratedAnimations,
@@ -139,6 +154,7 @@ export const topics: Topic[] = [
   scrollSnapCarousels,
   overscrollBehaviorScrollChaining,
   safeAreaInsetPadding,
+  touchActionGestures,
 
   // Colors
   dynamicColorMix,
@@ -148,6 +164,8 @@ export const topics: Topic[] = [
   lightDarkThemeFunction,
   relativeColorSyntax,
   colorSchemeNativeDarkUi,
+  conicGradientsCharts,
+  mixBlendModeEffects,
 
   // Typography
   uncommonUnits,
@@ -157,4 +175,6 @@ export const topics: Topic[] = [
   fontSizeAdjustFallbacks,
   underlineOffsetThickness,
   hyphensOverflowWrap,
+  fontDisplayStrategies,
+  multiLineTruncation,
 ];

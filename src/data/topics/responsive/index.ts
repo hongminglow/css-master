@@ -12,3 +12,4 @@ export { containerQueries } from "./container-queries";
 export { containerQueryUnits } from "./container-query-units";
 export { intrinsicSizingFunctions } from "./intrinsic-sizing-functions";
 export { safeAreaInsetPadding } from "./safe-area-inset-padding";
+export { touchActionGestures } from "./touch-action-gestures";

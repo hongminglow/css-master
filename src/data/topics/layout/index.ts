@@ -23,3 +23,8 @@ export { scrollbarGutterStableLayout } from "./scrollbar-gutter-stable-layout";
 export { stickyFooter } from "./sticky-footer";
 export { subgridAlignment } from "./subgrid-alignment";
 export { zIndexStackingContext } from "./z-index-stacking";
+export { cssColumnsMasonry } from "./css-columns-masonry";
+export { displayContentsFlattening } from "./display-contents-flattening";
+export { flexAutoMargins } from "./flex-auto-margins";
+export { pointerEventsOverlays } from "./pointer-events-overlays";
+export { shapeOutsideTextWrap } from "./shape-outside-text-wrap";
