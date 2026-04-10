@@ -12,3 +12,6 @@ export { maskImageFades } from "./mask-image-fades";
 export { relativeColorSyntax } from "./relative-color-syntax";
 export { conicGradientsCharts } from "./conic-gradients-charts";
 export { mixBlendModeEffects } from "./mix-blend-mode-effects";
+export { currentcolorKeyword } from "./currentcolor-keyword";
+export { outlineVsBoxShadowFocus } from "./outline-vs-box-shadow-focus";
+export { gradientTextBackgroundClip } from "./gradient-text-background-clip";

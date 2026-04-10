@@ -28,3 +28,8 @@ export { displayContentsFlattening } from "./display-contents-flattening";
 export { flexAutoMargins } from "./flex-auto-margins";
 export { pointerEventsOverlays } from "./pointer-events-overlays";
 export { shapeOutsideTextWrap } from "./shape-outside-text-wrap";
+export { paddingPercentageTrap } from "./padding-percentage-trap";
+export { nativeDialogBackdrop } from "./native-dialog-backdrop";
+export { isVsWhereSpecificity } from "./is-vs-where-specificity";
+export { placeholderShownFloatingLabels } from "./placeholder-shown-floating-labels";
+export { focusWithinParent } from "./focus-within-parent";

@@ -55,6 +55,11 @@ import {
   flexAutoMargins,
   pointerEventsOverlays,
   shapeOutsideTextWrap,
+  paddingPercentageTrap,
+  nativeDialogBackdrop,
+  isVsWhereSpecificity,
+  placeholderShownFloatingLabels,
+  focusWithinParent,
 } from "./layout";
 
 import {
@@ -68,6 +73,7 @@ import {
   scrollSnapCarousels,
   the100vhTrap,
   touchActionGestures,
+  clampFluidSpacing,
 } from "./responsive";
 
 import {
@@ -91,6 +97,9 @@ import {
   relativeColorSyntax,
   conicGradientsCharts,
   mixBlendModeEffects,
+  currentcolorKeyword,
+  outlineVsBoxShadowFocus,
+  gradientTextBackgroundClip,
 } from "./colors";
 
 import {
@@ -133,6 +142,11 @@ export const topics: Topic[] = [
   flexAutoMargins,
   pointerEventsOverlays,
   shapeOutsideTextWrap,
+  paddingPercentageTrap,
+  nativeDialogBackdrop,
+  isVsWhereSpecificity,
+  placeholderShownFloatingLabels,
+  focusWithinParent,
 
   // Animations
   gpuAcceleratedAnimations,
@@ -143,6 +157,7 @@ export const topics: Topic[] = [
   transitionBehaviorDiscrete,
   staggeredEntryAnimations,
   viewTransitionsPageMorphs,
+  animationPlayStateHover,
 
   // Responsive
   objectFitImages,
@@ -155,6 +170,7 @@ export const topics: Topic[] = [
   overscrollBehaviorScrollChaining,
   safeAreaInsetPadding,
   touchActionGestures,
+  clampFluidSpacing,
 
   // Colors
   dynamicColorMix,
@@ -166,6 +182,9 @@ export const topics: Topic[] = [
   colorSchemeNativeDarkUi,
   conicGradientsCharts,
   mixBlendModeEffects,
+  currentcolorKeyword,
+  outlineVsBoxShadowFocus,
+  gradientTextBackgroundClip,
 
   // Typography
   uncommonUnits,

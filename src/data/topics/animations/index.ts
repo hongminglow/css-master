@@ -6,3 +6,4 @@ export { staggeredEntryAnimations } from "./staggered-entry-animations";
 export { startingStyleEntryTransitions } from "./starting-style-entry-transitions";
 export { transitionBehaviorDiscrete } from "./transition-behavior-discrete";
 export { viewTransitionsPageMorphs } from "./view-transitions-page-morphs";
+export { animationPlayStateHover } from "./animation-play-state-hover";
