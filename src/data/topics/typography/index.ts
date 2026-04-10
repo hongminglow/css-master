@@ -9,3 +9,7 @@ export * from "./font-display-strategies";
 export * from "./multi-line-truncation";
 export * from "./tabular-nums-jitter";
 export * from "./vertical-writing-mode";
+export * from "./animate-variable-fonts";
+export * from "./drop-cap-first-letter";
+export * from "./font-feature-settings-opentype";
+export * from "./word-break-long-urls";

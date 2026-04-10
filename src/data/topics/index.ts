@@ -63,6 +63,13 @@ import {
   scrollPaddingStickyHeaders,
   targetPseudoClass,
   resizePropertyElements,
+  nativeDetailsAccordion,
+  hideEmptyElements,
+  customScrollbarStyling,
+  fileSelectorButton,
+  customCheckboxCheckedSibling,
+  fitContentCentering,
+  tableLayoutFixed,
 } from "./layout";
 
 import {
@@ -78,6 +85,8 @@ import {
   touchActionGestures,
   clampFluidSpacing,
   mediaHoverPointer,
+  responsiveIframeAspectRatio,
+  orientationMediaQueries,
 } from "./responsive";
 
 import {
@@ -91,6 +100,10 @@ import {
   viewTransitionsPageMorphs,
   animationPlayStateHover,
   animatingGradientsAtProperty,
+  pingPongAnimationAlternate,
+  stepsTimingFunction,
+  asymmetricTransitionDelays,
+  springBounceCubicBezier,
 } from "./animations";
 
 import {
@@ -109,6 +122,9 @@ import {
   dropShadowVsBoxShadow,
   customTextSelection,
   pixelatedImageRendering,
+  differenceBlendModeText,
+  terminalCaretStyling,
+  userInvalidForms,
 } from "./colors";
 
 import {
@@ -123,6 +139,10 @@ import {
   multiLineTruncation,
   tabularNumsJitter,
   verticalWritingMode,
+  animateVariableFonts,
+  dropCapFirstLetter,
+  fontFeatureSettingsOpentype,
+  wordBreakLongUrls,
 } from "./typography";
 
 // ── Master list ───────────────────────────────────────────────────────────────
@@ -161,6 +181,13 @@ export const topics: Topic[] = [
   scrollPaddingStickyHeaders,
   targetPseudoClass,
   resizePropertyElements,
+  nativeDetailsAccordion,
+  hideEmptyElements,
+  customScrollbarStyling,
+  fileSelectorButton,
+  customCheckboxCheckedSibling,
+  fitContentCentering,
+  tableLayoutFixed,
 
   // Animations
   gpuAcceleratedAnimations,
@@ -173,6 +200,10 @@ export const topics: Topic[] = [
   viewTransitionsPageMorphs,
   animationPlayStateHover,
   animatingGradientsAtProperty,
+  pingPongAnimationAlternate,
+  stepsTimingFunction,
+  asymmetricTransitionDelays,
+  springBounceCubicBezier,
 
   // Responsive
   objectFitImages,
@@ -187,6 +218,8 @@ export const topics: Topic[] = [
   touchActionGestures,
   clampFluidSpacing,
   mediaHoverPointer,
+  responsiveIframeAspectRatio,
+  orientationMediaQueries,
 
   // Colors
   dynamicColorMix,
@@ -204,6 +237,9 @@ export const topics: Topic[] = [
   dropShadowVsBoxShadow,
   customTextSelection,
   pixelatedImageRendering,
+  differenceBlendModeText,
+  terminalCaretStyling,
+  userInvalidForms,
 
   // Typography
   uncommonUnits,
@@ -217,4 +253,8 @@ export const topics: Topic[] = [
   multiLineTruncation,
   tabularNumsJitter,
   verticalWritingMode,
+  animateVariableFonts,
+  dropCapFirstLetter,
+  fontFeatureSettingsOpentype,
+  wordBreakLongUrls,
 ];

@@ -8,3 +8,7 @@ export { transitionBehaviorDiscrete } from "./transition-behavior-discrete";
 export { viewTransitionsPageMorphs } from "./view-transitions-page-morphs";
 export { animationPlayStateHover } from "./animation-play-state-hover";
 export { animatingGradientsAtProperty } from "./animating-gradients-at-property";
+export { pingPongAnimationAlternate } from "./ping-pong-animation-alternate";
+export { stepsTimingFunction } from "./steps-timing-function";
+export { asymmetricTransitionDelays } from "./asymmetric-transition-delays";
+export { springBounceCubicBezier } from "./spring-bounce-cubic-bezier";

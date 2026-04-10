@@ -18,3 +18,6 @@ export { gradientTextBackgroundClip } from "./gradient-text-background-clip";
 export { dropShadowVsBoxShadow } from "./drop-shadow-vs-box-shadow";
 export { customTextSelection } from "./custom-text-selection";
 export { pixelatedImageRendering } from "./pixelated-image-rendering";
+export { differenceBlendModeText } from "./difference-blend-mode-text";
+export { terminalCaretStyling } from "./terminal-caret-styling";
+export { userInvalidForms } from "./user-invalid-forms";

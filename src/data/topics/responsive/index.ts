@@ -15,3 +15,5 @@ export { safeAreaInsetPadding } from "./safe-area-inset-padding";
 export { touchActionGestures } from "./touch-action-gestures";
 export { clampFluidSpacing } from "./clamp-fluid-spacing";
 export { mediaHoverPointer } from "./media-hover-pointer";
+export { responsiveIframeAspectRatio } from "./responsive-iframe-aspect-ratio";
+export { orientationMediaQueries } from "./orientation-media-queries";
