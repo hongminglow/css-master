@@ -47,12 +47,65 @@ export const interpolateSizeAutoDimensions: Topic = {
         },
       },
       {
+        type: "workflow",
+        data: {
+          title: "How to Use It Without Breaking the Accordion",
+          steps: [
+            {
+              number: 1,
+              title: "Keep the established fallback first",
+              description:
+                "Start from the ordinary `max-height` or measured-height approach your component already uses reliably in production.",
+            },
+            {
+              number: 2,
+              title: "Gate intrinsic interpolation behind supports checks",
+              description:
+                "Use feature detection to opt into keyword-size interpolation only where it exists, instead of rewriting the whole component around a still-emerging behavior.",
+            },
+            {
+              number: 3,
+              title: "Test with real content lengths",
+              description:
+                "These patterns matter most when disclosures contain unpredictable copy or rich content, not just tiny demo strings.",
+            },
+          ],
+        },
+      },
+      {
+        type: "code",
+        data: {
+          language: "css",
+          title: "Practical Fallback Pattern",
+          code: `.panel {
+  overflow: clip;
+}
+
+/* Broad fallback */
+.panel__content {
+  max-height: 0;
+  transition: max-height 250ms ease;
+}
+
+.panel[data-open="true"] .panel__content {
+  max-height: 32rem;
+}
+
+/* Progressive enhancement path */
+@supports (interpolate-size: allow-keywords) {
+  :root {
+    interpolate-size: allow-keywords;
+  }
+}`,
+        },
+      },
+      {
         type: "tip",
         data: {
           variant: "info",
           title: "Still an emerging feature area",
           content:
-            "This is worth teaching now because developers constantly fight auto-dimension animation bugs. Even when support is still evolving, the concept is widely discussed and very relevant.",
+            "This is worth teaching now because developers constantly fight auto-dimension animation bugs. Even when support is still evolving, the concept is widely discussed and very relevant. Just make sure the component still has a stable fallback path.",
         },
       },
     ],

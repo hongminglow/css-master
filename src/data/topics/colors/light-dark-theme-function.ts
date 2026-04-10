@@ -46,6 +46,22 @@ export const lightDarkThemeFunction: Topic = {
         },
       },
       {
+        type: "code",
+        data: {
+          language: "css",
+          title: "Best Paired with Color Scheme",
+          code: `:root {
+  color-scheme: light dark;
+}
+
+.card {
+  background: light-dark(white, #0f172a);
+  color: light-dark(#0f172a, #f8fafc);
+  border-color: light-dark(#cbd5e1, #334155);
+}`,
+        },
+      },
+      {
         type: "tip",
         data: {
           variant: "warning",

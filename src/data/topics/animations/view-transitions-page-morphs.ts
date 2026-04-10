@@ -39,6 +39,49 @@ export const viewTransitionsPageMorphs: Topic = {
         },
       },
       {
+        type: "workflow",
+        data: {
+          title: "The Practical Upgrade Path",
+          steps: [
+            {
+              number: 1,
+              title: "Wrap the important state change",
+              description:
+                "Start by placing the route navigation or major UI swap inside `document.startViewTransition(...)` so the browser can coordinate the before and after snapshots.",
+            },
+            {
+              number: 2,
+              title: "Name the elements that should persist",
+              description:
+                "Use `view-transition-name` on cards, thumbnails, or headings that conceptually continue into the next screen.",
+            },
+            {
+              number: 3,
+              title: "Keep the motion understated",
+              description:
+                "The best transitions simply preserve context. If the movement calls attention to itself more than the content, it is doing too much.",
+            },
+          ],
+        },
+      },
+      {
+        type: "code",
+        data: {
+          language: "css",
+          title: "Shared Element Example",
+          code: `/* Source card and destination hero share a transition identity */
+.product-card__image,
+.product-page__hero {
+  view-transition-name: product-hero;
+}
+
+/* Trigger the transition around the route update */
+document.startViewTransition(() => {
+  navigate("/product/42");
+});`,
+        },
+      },
+      {
         type: "tip",
         data: {
           variant: "info",

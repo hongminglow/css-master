@@ -54,6 +54,186 @@ export const transitionBehaviorDiscrete: Topic = {
         },
       },
       {
+        type: "livecomparison",
+        data: {
+          title: "Snapping Open vs Transitioning In",
+          subtitle:
+            "Both previews render the same dropdown panel. The right side layers discrete transition support with an explicit starting state so the panel feels less abrupt.",
+          left: {
+            label: "❌ Snaps into place",
+            code: `.menu {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}`,
+            html: `
+<div class="stage">
+  <button class="trigger">Actions</button>
+  <div class="menu">
+    <a>Edit</a>
+    <a>Duplicate</a>
+    <a>Archive</a>
+  </div>
+</div>`,
+            css: `
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #f8fafc;
+  font-family: Inter, system-ui, sans-serif;
+}
+.stage {
+  position: relative;
+  width: 240px;
+  height: 170px;
+}
+.trigger {
+  border: none;
+  border-radius: 999px;
+  padding: 10px 14px;
+  background: #ef4444;
+  color: white;
+  font-weight: 700;
+}
+.menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  width: 180px;
+  display: grid;
+  gap: 4px;
+  padding: 10px;
+  border-radius: 16px;
+  background: white;
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 16px 40px rgba(15,23,42,0.12);
+}
+.menu a {
+  display: block;
+  padding: 9px 10px;
+  border-radius: 10px;
+  color: #0f172a;
+  background: #f8fafc;
+}
+`,
+            description:
+              "The menu simply exists in its final state. Functional, but visually abrupt.",
+          },
+          right: {
+            label: "✅ Discrete transition path",
+            code: `.menu {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease,
+    display 180ms allow-discrete;
+  transition-behavior: allow-discrete;
+}
+
+@starting-style {
+  .menu {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}`,
+            html: `
+<div class="stage">
+  <button class="trigger">Actions</button>
+  <div class="menu">
+    <a>Edit</a>
+    <a>Duplicate</a>
+    <a>Archive</a>
+  </div>
+</div>`,
+            css: `
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #eff6ff;
+  font-family: Inter, system-ui, sans-serif;
+}
+.stage {
+  position: relative;
+  width: 240px;
+  height: 170px;
+}
+.trigger {
+  border: none;
+  border-radius: 999px;
+  padding: 10px 14px;
+  background: #2563eb;
+  color: white;
+  font-weight: 700;
+}
+.menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  width: 180px;
+  display: grid;
+  gap: 4px;
+  padding: 10px;
+  border-radius: 16px;
+  background: white;
+  border: 1px solid #bfdbfe;
+  box-shadow: 0 18px 42px rgba(37,99,235,0.14);
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease,
+    display 180ms allow-discrete;
+  transition-behavior: allow-discrete;
+}
+@starting-style {
+  .menu {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+.menu a {
+  display: block;
+  padding: 9px 10px;
+  border-radius: 10px;
+  color: #0f172a;
+  background: #eff6ff;
+}
+`,
+            description:
+              "The entry feels more natural because the browser has both a discrete state transition and an explicit starting snapshot to animate from.",
+          },
+        },
+      },
+      {
+        type: "code",
+        data: {
+          language: "css",
+          title: "Best Paired with Starting Style",
+          code: `.popover {
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease,
+    display 180ms allow-discrete;
+  transition-behavior: allow-discrete;
+}
+
+@starting-style {
+  .popover {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+}`,
+        },
+      },
+      {
         type: "tip",
         data: {
           variant: "info",

@@ -41,6 +41,125 @@ export const fieldSizingInputs: Topic = {
         },
       },
       {
+        type: "livecomparison",
+        data: {
+          title: "Full Width Field vs Content-Aware Utility Input",
+          subtitle:
+            "Both examples show a compact invite control. The right side behaves more like a utility input that grows around the actual content.",
+          left: {
+            label: "❌ Generic full-width field",
+            code: `.invite-input {
+  width: 100%;
+}`,
+            html: `
+<div class="panel">
+  <label>Email invite</label>
+  <input class="invite-input" value="alex@company.com" />
+</div>`,
+            css: `
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #f8fafc;
+  font-family: Inter, system-ui, sans-serif;
+}
+.panel {
+  width: 250px;
+  padding: 18px;
+  border-radius: 20px;
+  background: white;
+  border: 1px solid #cbd5e1;
+}
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #334155;
+}
+.invite-input {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 10px 12px;
+  font: inherit;
+}
+`,
+            description:
+              "This is still correct for most forms, but it feels oversized in compact utility interfaces.",
+          },
+          right: {
+            label: "✅ Content-aware field sizing",
+            code: `.invite-input {
+  field-sizing: content;
+  min-width: 12ch;
+  max-width: 100%;
+}`,
+            html: `
+<div class="panel">
+  <label>Email invite</label>
+  <input class="invite-input" value="alex@company.com" />
+</div>`,
+            css: `
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #eff6ff;
+  font-family: Inter, system-ui, sans-serif;
+}
+.panel {
+  width: 250px;
+  padding: 18px;
+  border-radius: 20px;
+  background: white;
+  border: 1px solid #bfdbfe;
+}
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #334155;
+}
+.invite-input {
+  field-sizing: content;
+  min-width: 12ch;
+  max-width: 100%;
+  border: 1px solid #93c5fd;
+  border-radius: 999px;
+  padding: 10px 12px;
+  font: inherit;
+}
+`,
+            description:
+              "This fits utility patterns more naturally because the control feels sized around the entered value instead of around a generic form grid.",
+          },
+        },
+      },
+      {
+        type: "code",
+        data: {
+          language: "css",
+          title: "Good Constraints Still Matter",
+          code: `.token-input {
+  field-sizing: content;
+  min-width: 10ch;
+  max-width: min(100%, 32ch);
+}
+
+.comment-box {
+  field-sizing: content;
+  min-height: 4lh;
+}`,
+        },
+      },
+      {
         type: "tip",
         data: {
           variant: "warning",

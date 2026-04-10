@@ -49,6 +49,61 @@ export const anchorPositioningPopovers: Topic = {
         },
       },
       {
+        type: "workflow",
+        data: {
+          title: "A Safer Way to Introduce It",
+          steps: [
+            {
+              number: 1,
+              title: "Keep your existing absolute fallback",
+              description:
+                "Start from the ordinary positioned overlay pattern you already trust, especially for menus and help bubbles that need broad support.",
+            },
+            {
+              number: 2,
+              title: "Layer anchor positioning behind supports checks",
+              description:
+                "Use `@supports` so capable browsers can switch to the cleaner anchor-based relationship without breaking older ones.",
+            },
+            {
+              number: 3,
+              title: "Use it where the trigger relationship matters most",
+              description:
+                "Anchor positioning is most compelling for menus, tooltips, callouts, and teaching UI that should stay semantically attached to a specific element.",
+            },
+          ],
+        },
+      },
+      {
+        type: "code",
+        data: {
+          language: "css",
+          title: "Progressive Enhancement Pattern",
+          code: `.trigger {
+  position: relative;
+}
+
+.menu {
+  position: absolute;
+  inset-block-start: calc(100% + 0.5rem);
+  inset-inline-start: 0;
+}
+
+@supports (anchor-name: --menu-button) {
+  .trigger {
+    anchor-name: --menu-button;
+  }
+
+  .menu {
+    position-anchor: --menu-button;
+    top: anchor(bottom);
+    left: anchor(left);
+    inset: auto;
+  }
+}`,
+        },
+      },
+      {
         type: "tip",
         data: {
           variant: "warning",

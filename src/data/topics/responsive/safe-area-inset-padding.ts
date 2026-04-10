@@ -41,12 +41,46 @@ export const safeAreaInsetPadding: Topic = {
         },
       },
       {
+        type: "comparison",
+        data: {
+          title: "Hard-Coded Padding vs Safe Area Aware Padding",
+          left: {
+            label: "Fixed bottom spacing",
+            code: `.bottom-nav {
+  padding: 0.75rem 1rem 0.75rem;
+}`,
+            description:
+              "Looks acceptable on rectangular screens, but can sit too close to hardware gestures or cutouts on edge-to-edge devices.",
+          },
+          right: {
+            label: "Safe area aware spacing",
+            code: `.bottom-nav {
+  padding:
+    0.75rem
+    1rem
+    max(0.75rem, env(safe-area-inset-bottom));
+}`,
+            description:
+              "The UI keeps a usable minimum padding while also respecting devices that report additional safe-area space.",
+          },
+        },
+      },
+      {
         type: "tip",
         data: {
           variant: "success",
           title: "Use it where hardware meets UI",
           content:
             "Safe-area variables are especially valuable for sticky toolbars, tab bars, immersive hero sections, and installable web apps that feel closer to native shells.",
+        },
+      },
+      {
+        type: "tip",
+        data: {
+          variant: "info",
+          title: "Prefer max with a normal baseline",
+          content:
+            "A good pattern is `max(regular-padding, env(...))` so the layout still has sensible spacing on devices that report zero safe-area insets.",
         },
       },
     ],

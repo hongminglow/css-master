@@ -56,7 +56,7 @@ export const verticalWritingMode: Topic = {
   
   <div style="flex: 1; color: #cbd5e1;">
     <h3>Full Layout Support</h3>
-    <p>The sidebar block perfectly scales its height to match the sideways text.<br><br>The English characters are naturally rotated on their side (`text-orientation: mixed` is the default). If this contained Chinese or Japanese characters, they would automatically flow upright natively!</p>
+    <p>The sidebar block perfectly scales its height to match the sideways text.<br><br>The English characters are naturally rotated on their side (text-orientation: mixed is the default). If this contained Chinese or Japanese characters, they would automatically flow upright natively!</p>
   </div>
 
 </div>`,
