@@ -14,3 +14,4 @@ export { intrinsicSizingFunctions } from "./intrinsic-sizing-functions";
 export { safeAreaInsetPadding } from "./safe-area-inset-padding";
 export { touchActionGestures } from "./touch-action-gestures";
 export { clampFluidSpacing } from "./clamp-fluid-spacing";
+export { mediaHoverPointer } from "./media-hover-pointer";

@@ -15,3 +15,6 @@ export { mixBlendModeEffects } from "./mix-blend-mode-effects";
 export { currentcolorKeyword } from "./currentcolor-keyword";
 export { outlineVsBoxShadowFocus } from "./outline-vs-box-shadow-focus";
 export { gradientTextBackgroundClip } from "./gradient-text-background-clip";
+export { dropShadowVsBoxShadow } from "./drop-shadow-vs-box-shadow";
+export { customTextSelection } from "./custom-text-selection";
+export { pixelatedImageRendering } from "./pixelated-image-rendering";

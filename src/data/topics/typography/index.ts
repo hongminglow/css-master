@@ -7,3 +7,5 @@ export * from "./text-wrap-balance";
 export * from "./underline-offset-thickness";
 export * from "./font-display-strategies";
 export * from "./multi-line-truncation";
+export * from "./tabular-nums-jitter";
+export * from "./vertical-writing-mode";

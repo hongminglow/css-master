@@ -7,3 +7,4 @@ export { startingStyleEntryTransitions } from "./starting-style-entry-transition
 export { transitionBehaviorDiscrete } from "./transition-behavior-discrete";
 export { viewTransitionsPageMorphs } from "./view-transitions-page-morphs";
 export { animationPlayStateHover } from "./animation-play-state-hover";
+export { animatingGradientsAtProperty } from "./animating-gradients-at-property";

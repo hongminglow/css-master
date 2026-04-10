@@ -60,6 +60,9 @@ import {
   isVsWhereSpecificity,
   placeholderShownFloatingLabels,
   focusWithinParent,
+  scrollPaddingStickyHeaders,
+  targetPseudoClass,
+  resizePropertyElements,
 } from "./layout";
 
 import {
@@ -74,6 +77,7 @@ import {
   the100vhTrap,
   touchActionGestures,
   clampFluidSpacing,
+  mediaHoverPointer,
 } from "./responsive";
 
 import {
@@ -85,6 +89,8 @@ import {
   startingStyleEntryTransitions,
   transitionBehaviorDiscrete,
   viewTransitionsPageMorphs,
+  animationPlayStateHover,
+  animatingGradientsAtProperty,
 } from "./animations";
 
 import {
@@ -100,6 +106,9 @@ import {
   currentcolorKeyword,
   outlineVsBoxShadowFocus,
   gradientTextBackgroundClip,
+  dropShadowVsBoxShadow,
+  customTextSelection,
+  pixelatedImageRendering,
 } from "./colors";
 
 import {
@@ -112,6 +121,8 @@ import {
   uncommonUnits,
   fontDisplayStrategies,
   multiLineTruncation,
+  tabularNumsJitter,
+  verticalWritingMode,
 } from "./typography";
 
 // ── Master list ───────────────────────────────────────────────────────────────
@@ -147,6 +158,9 @@ export const topics: Topic[] = [
   isVsWhereSpecificity,
   placeholderShownFloatingLabels,
   focusWithinParent,
+  scrollPaddingStickyHeaders,
+  targetPseudoClass,
+  resizePropertyElements,
 
   // Animations
   gpuAcceleratedAnimations,
@@ -158,6 +172,7 @@ export const topics: Topic[] = [
   staggeredEntryAnimations,
   viewTransitionsPageMorphs,
   animationPlayStateHover,
+  animatingGradientsAtProperty,
 
   // Responsive
   objectFitImages,
@@ -171,6 +186,7 @@ export const topics: Topic[] = [
   safeAreaInsetPadding,
   touchActionGestures,
   clampFluidSpacing,
+  mediaHoverPointer,
 
   // Colors
   dynamicColorMix,
@@ -185,6 +201,9 @@ export const topics: Topic[] = [
   currentcolorKeyword,
   outlineVsBoxShadowFocus,
   gradientTextBackgroundClip,
+  dropShadowVsBoxShadow,
+  customTextSelection,
+  pixelatedImageRendering,
 
   // Typography
   uncommonUnits,
@@ -196,4 +215,6 @@ export const topics: Topic[] = [
   hyphensOverflowWrap,
   fontDisplayStrategies,
   multiLineTruncation,
+  tabularNumsJitter,
+  verticalWritingMode,
 ];
