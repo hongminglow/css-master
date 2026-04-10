@@ -1,4 +1,4 @@
-import { Topic } from "@/types/topic";
+import type { Topic } from "@/types/topic";
 
 export const displayContentsFlattening: Topic = {
   id: "display-contents-flattening",
@@ -20,7 +20,6 @@ export const displayContentsFlattening: Topic = {
         type: "comparison",
         data: {
           title: "Standard Wrapper vs Display Contents",
-          description: "See how the wrapper breaks the flex layout and how `display: contents` fixes it.",
           left: {
             label: "Regular Wrapper",
             code: `.flex-container {

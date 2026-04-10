@@ -1,4 +1,4 @@
-import { Topic } from "@/types/topic";
+import type { Topic } from "@/types/topic";
 
 export const cssColumnsMasonry: Topic = {
   id: "css-columns-masonry",
@@ -20,7 +20,6 @@ export const cssColumnsMasonry: Topic = {
         type: "comparison",
         data: {
           title: "Grid vs Columns",
-          description: "Why standard Grid fails at masonry and how Columns fix it.",
           left: {
             label: "CSS Grid (Leaves gaps)",
             code: `.grid {

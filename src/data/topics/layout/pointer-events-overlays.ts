@@ -1,4 +1,4 @@
-import { Topic } from "@/types/topic";
+import type { Topic } from "@/types/topic";
 
 export const pointerEventsOverlays: Topic = {
   id: "pointer-events-overlays",
@@ -20,7 +20,6 @@ export const pointerEventsOverlays: Topic = {
         type: "comparison",
         data: {
           title: "Blocking vs Non-Blocking",
-          description: "Restoring interactivity to specific children.",
           left: {
             label: "The Problem",
             code: `.notification-wrapper {

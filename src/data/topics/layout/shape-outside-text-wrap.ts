@@ -1,4 +1,4 @@
-import { Topic } from "@/types/topic";
+import type { Topic } from "@/types/topic";
 
 export const shapeOutsideTextWrap: Topic = {
   id: "shape-outside-text-wrap",

@@ -1,4 +1,4 @@
-import { Topic } from "@/types/topic";
+import type { Topic } from "@/types/topic";
 
 export const conicGradientsCharts: Topic = {
   id: "conic-gradients-charts",
@@ -20,7 +20,6 @@ export const conicGradientsCharts: Topic = {
         type: "comparison",
         data: {
           title: "Soft vs Hard Stops",
-          description: "How to turn a smooth gradient into a sharp pie chart.",
           left: {
             label: "Smooth (Color Wheel)",
             code: `.wheel {

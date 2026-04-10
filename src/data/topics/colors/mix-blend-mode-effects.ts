@@ -1,4 +1,4 @@
-import { Topic } from "@/types/topic";
+import type { Topic } from "@/types/topic";
 
 export const mixBlendModeEffects: Topic = {
   id: "mix-blend-mode-effects",

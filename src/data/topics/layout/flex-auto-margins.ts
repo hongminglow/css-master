@@ -1,4 +1,4 @@
-import { Topic } from "@/types/topic";
+import type { Topic } from "@/types/topic";
 
 export const flexAutoMargins: Topic = {
   id: "flex-auto-margins",
@@ -60,9 +60,21 @@ export const flexAutoMargins: Topic = {
         data: {
           title: "Common Margin Auto Patterns",
           steps: [
-            "`margin-left: auto` - Pushes element and trailing siblings to the right.",
-            "`margin-top: auto` - Excellent for sticky footers within a column flex container without hard height calculations.",
-            "`margin: auto` - Perfectly centers a single item both horizontally and vertically inside a flex container.",
+            {
+              number: 1,
+              title: "Horizontal Push",
+              description: "`margin-left: auto` - Pushes element and trailing siblings to the right.",
+            },
+            {
+              number: 2,
+              title: "Sticky Footer",
+              description: "`margin-top: auto` - Excellent for sticky footers within a column flex container without hard height calculations.",
+            },
+            {
+              number: 3,
+              title: "Dead Centering",
+              description: "`margin: auto` - Perfectly centers a single item both horizontally and vertically inside a flex container.",
+            },
           ],
         },
       },

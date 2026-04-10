@@ -1,4 +1,4 @@
-import { Topic } from "@/types/topic";
+import type { Topic } from "@/types/topic";
 
 export const fontDisplayStrategies: Topic = {
   id: "font-display-strategies",
