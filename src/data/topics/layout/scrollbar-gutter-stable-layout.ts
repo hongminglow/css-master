@@ -19,25 +19,109 @@ export const scrollbarGutterStableLayout: Topic = {
         },
       },
       {
-        type: "comparison",
+        type: "livecomparison",
         data: {
           title: "Natural Scrollbar Toggle vs Reserved Gutter",
+          subtitle: "Hover over each container to expand its content and trigger a vertical scrollbar.",
           left: {
             label: "Without reserved gutter",
-            code: `html {
+            code: `.container {
   overflow-y: auto;
 }`,
+            html: `<div class="container">
+  <div class="centered-box">Centered</div>
+  <div class="trigger">Hover to add content &darr;</div>
+  <div class="spacer"></div>
+</div>`,
+            css: `body { margin: 0; }
+.container {
+  height: 140px;
+  overflow-y: auto;
+  background: #0f172a;
+  color: #f8fafc;
+  font-family: system-ui, sans-serif;
+  padding-top: 20px;
+}
+.centered-box {
+  background: #ef4444;
+  width: 120px;
+  margin: 0 auto 20px;
+  padding: 10px;
+  text-align: center;
+  border-radius: 6px;
+  font-weight: bold;
+}
+.trigger {
+  border: 1px dashed #475569;
+  margin: 0 20px;
+  padding: 10px;
+  text-align: center;
+  color: #94a3b8;
+  cursor: crosshair;
+}
+.spacer {
+  height: 0;
+}
+.container:hover .spacer {
+  height: 200px;
+}
+.container:hover .trigger {
+  background: #1e293b;
+  color: white;
+}`,
             description:
-              "When the scrollbar appears or disappears, the available inline size changes and centered UI can shift.",
+              "When the scrollbar appears, the available inline size changes and the red box abruptly shifts left.",
           },
           right: {
             label: "With stable gutter",
-            code: `html {
+            code: `.container {
   overflow-y: auto;
   scrollbar-gutter: stable;
 }`,
+            html: `<div class="container">
+  <div class="centered-box">Centered</div>
+  <div class="trigger">Hover to add content &darr;</div>
+  <div class="spacer"></div>
+</div>`,
+            css: `body { margin: 0; }
+.container {
+  height: 140px;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+  background: #0f172a;
+  color: #f8fafc;
+  font-family: system-ui, sans-serif;
+  padding-top: 20px;
+}
+.centered-box {
+  background: #10b981;
+  width: 120px;
+  margin: 0 auto 20px;
+  padding: 10px;
+  text-align: center;
+  border-radius: 6px;
+  font-weight: bold;
+}
+.trigger {
+  border: 1px dashed #475569;
+  margin: 0 20px;
+  padding: 10px;
+  text-align: center;
+  color: #94a3b8;
+  cursor: crosshair;
+}
+.spacer {
+  height: 0;
+}
+.container:hover .spacer {
+  height: 200px;
+}
+.container:hover .trigger {
+  background: #1e293b;
+  color: white;
+}`,
             description:
-              "The scrollbar area is accounted for, reducing those small but noticeable horizontal layout jumps.",
+              "The scrollbar area is already accounted for, so the green box stays perfectly still.",
           },
         },
       },
