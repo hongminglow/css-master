@@ -345,6 +345,28 @@ This platform provides 12 content visualization components. Each serves a specif
 }
 ```
 
+| Result visual proof | Custom |
+
+#### 13. FeatureComparisonCard
+**Purpose**: Side-by-side list comparison of features, pros/cons, or use cases.
+
+**When to use**:
+- Comparing qualitative features (not code snippets)
+- Best for vs. best for comparisons
+- Detailed pros/cons side-by-side
+
+**Example**:
+```typescript
+{
+  type: "featurecomparison",
+  data: {
+    title: "Feature Comparison",
+    left: { label: "Standard", variant: "info", items: ["Fast", "Simple"] },
+    right: { label: "Premium", variant: "success", items: ["Advanced", "Scale"] }
+  }
+}
+```
+
 ### Component Selection Guidelines
 
 **For explaining concepts**: Use ContentCard
@@ -357,6 +379,7 @@ This platform provides 12 content visualization components. Each serves a specif
 **For simple lists**: Use ListCard
 **For highlighting principles**: Use QuoteCard
 **For best practices**: Use DosDontsCard
+**For qualitative comparison**: Use FeatureComparisonCard
 **For bug/fix visual comparison**: Use LiveComparisonCard
 
 ### Topic Content Sections

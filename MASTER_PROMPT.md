@@ -105,7 +105,7 @@ This platform provides 12 pre-built content visualization components. When start
 
 **Step 2: Assess Sufficiency**
 
-- Existing components: ContentCard, WorkflowCard, CodeSnippet, PreviewCard, ComparisonCard, TimelineCard, TipCard, TableCard, ListCard, QuoteCard, DosDontsCard, LiveComparisonCard
+- Existing components: ContentCard, WorkflowCard, CodeSnippet, PreviewCard, ComparisonCard, TimelineCard, TipCard, TableCard, ListCard, QuoteCard, DosDontsCard, LiveComparisonCard, FeatureComparisonCard
 - These cover most common content visualization patterns
 - Suitable for documentation, tutorials, comparisons, and reference materials
 

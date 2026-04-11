@@ -3,7 +3,7 @@
 ## Component Hierarchy
 
 ```
-Content Visualization Components (12 Total)
+Content Visualization Components (13 Total)
 │
 ├── Informational Components
 │   ├── ContentCard          → General explanations, concepts
@@ -23,7 +23,8 @@ Content Visualization Components (12 Total)
 │
 └── Data Components
     ├── TableCard            → Structured data in rows/columns
-    └── DosDontsCard         → Best practices vs anti-patterns
+    ├── DosDontsCard         → Best practices vs anti-patterns
+    └── FeatureComparisonCard → Side-by-side feature/qualitative analysis
 ```
 
 ## Component Relationships
@@ -86,7 +87,8 @@ What do you need to show?
 ├── Structured data?
 │   ├── Rows and columns? → Use TableCard
 │   ├── Simple list? → Use ListCard
-│   └── Do's and don'ts? → Use DosDontsCard
+│   ├── Do's and don'ts? → Use DosDontsCard
+│   └── Feature comparison? → Use FeatureComparisonCard
 │
 └── Quote or principle?
     └── Use QuoteCard
@@ -149,8 +151,9 @@ What do you need to show?
 | TableCard | Medium | 3 | Medium |
 | TimelineCard | Medium | 2 | High |
 | ComparisonCard | High | 3 | Very High |
-| LiveComparisonCard | High | 4 | Very High |
 | DosDontsCard | High | 3 | High |
+| FeatureComparisonCard | High | 3 | High |
+| LiveComparisonCard | High | 4 | Very High |
 
 ## Visual Design Patterns
 
@@ -313,7 +316,7 @@ sections: [
 
 ## Summary
 
-- **12 components** covering all common visualization needs
+- **13 components** covering all common visualization needs
 - **4 categories**: Informational, Instructional, Code, Data
 - **Flexible composition** for any content type
 - **Consistent design** across all components

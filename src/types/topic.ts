@@ -13,8 +13,8 @@ export interface TopicContent {
 }
 
 export interface ContentSection {
-  type: "card" | "workflow" | "code" | "preview" | "comparison" | "timeline" | "tip" | "table" | "list" | "quote" | "dosdонts" | "livecomparison";
-  data: CardData | WorkflowData | CodeData | PreviewData | ComparisonData | TimelineData | TipData | TableData | ListData | QuoteData | DosDontsData | LiveComparisonData;
+  type: "card" | "workflow" | "code" | "preview" | "comparison" | "timeline" | "tip" | "table" | "list" | "quote" | "dosdонts" | "livecomparison" | "featurecomparison";
+  data: CardData | WorkflowData | CodeData | PreviewData | ComparisonData | TimelineData | TipData | TableData | ListData | QuoteData | DosDontsData | LiveComparisonData | FeatureComparisonData;
 }
 
 export interface CardData {
@@ -101,6 +101,19 @@ export interface DosDontsData {
   title: string;
   dos: string[];
   donts: string[];
+}
+
+export interface FeatureComparisonData {
+  title: string;
+  left: FeatureList;
+  right: FeatureList;
+}
+
+export interface FeatureList {
+  label: string;
+  items: string[];
+  icon?: "check" | "dot" | "plus";
+  variant?: "info" | "success" | "danger" | "warning";
 }
 
 /** LiveComparisonCard: two side-by-side panels each with code + live iframe preview */

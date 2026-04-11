@@ -10,6 +10,7 @@ import { TableCard } from "@/components/content/TableCard";
 import { TimelineCard } from "@/components/content/TimelineCard";
 import { TipCard } from "@/components/content/TipCard";
 import { WorkflowCard } from "@/components/content/WorkflowCard";
+import { FeatureComparisonCard } from "@/components/content/FeatureComparisonCard";
 import { categories } from "@/data/categories";
 import { topics } from "@/data/topics/index";
 import { useScrollRestoration } from "@/hooks/useScrollRestoration";
@@ -26,6 +27,7 @@ import type {
   TimelineData,
   TipData,
   WorkflowData,
+  FeatureComparisonData,
 } from "@/types/topic";
 import type { Topic } from "@/types/topic";
 
@@ -326,6 +328,8 @@ export function MainContent({ topic, onTopicSelect }: MainContentProps) {
               return <DosDontsCard key={index} data={section.data as DosDontsData} />;
             case "livecomparison":
               return <LiveComparisonCard key={index} data={section.data as LiveComparisonData} />;
+            case "featurecomparison":
+              return <FeatureComparisonCard key={index} data={section.data as FeatureComparisonData} />;
             default:
               return null;
           }

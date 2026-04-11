@@ -21,11 +21,33 @@ export const pictureVsSrcset: Topic = {
       {
         type: "comparison",
         data: {
+          title: "srcset vs picture Syntax",
+          left: {
+            label: "srcset",
+            code: `<img 
+  srcset="800.jpg 800w, 1600.jpg 1600w" 
+  sizes="100vw" src="800.jpg"
+/>`,
+          },
+          right: {
+            label: "<picture>",
+            code: `<picture>
+  <source media="(max-width: 600px)" srcset="mob.jpg" />
+  <img src="desk.jpg" />
+</picture>`,
+          },
+        },
+      },
+      {
+        type: "featurecomparison",
+        data: {
           title: "srcset vs picture: Pick the Right Tool",
           left: {
             label: "srcset — Resolution Switching",
-            points: [
-              "Same image content, different file sizes",
+            variant: "info",
+            icon: "dot",
+            items: [
+              "Same image content, just different file sizes",
               "Browser chooses the most appropriate resolution",
               "Combine with sizes to give layout hints",
               "Best for: hero images, thumbnails, avatars",
@@ -34,7 +56,9 @@ export const pictureVsSrcset: Topic = {
           },
           right: {
             label: "<picture> — Art Direction",
-            points: [
+            variant: "success",
+            icon: "check",
+            items: [
               "Different image crops or compositions per breakpoint",
               "You control exactly which source is used",
               "Uses media queries inside <source> elements",
