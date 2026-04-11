@@ -2,9 +2,9 @@
 
 **Platform Name**: CSS Tricks Platform
 
-**What We Do**: Curate and present CSS tricks that developers commonly miss with live code previews.
+**What We Do**: Curate and present front-end web tricks — CSS, HTML, and browser APIs — that developers commonly miss, with live code previews.
 
-**Target Audience**: Developers looking to discover CSS techniques they might have missed.
+**Target Audience**: Developers looking to discover CSS and HTML techniques they might have missed.
 
 **Key Differentiator**: Side-by-side code and preview visualization with keyboard-first navigation.
 
@@ -16,15 +16,17 @@
 
 **CRITICAL INSTRUCTION FOR AI AGENTS:**
 
-When a user asks about, discusses, or mentions ANY CSS-related concept, technique, trick, or problem, you MUST **automatically create a new topic** without asking for permission. This includes:
+When a user asks about, discusses, or mentions ANY front-end concept (CSS, HTML, browser APIs, media, performance, etc.), you MUST **automatically create a new topic** without asking for permission. This includes:
 
 - Questions about CSS properties, selectors, or features
 - Discussions about layout techniques (grid, flexbox, positioning)
 - Mentions of CSS tricks, hacks, or best practices
 - Requests to explain CSS concepts
-- Comparisons between CSS approaches
-- Bug fixes or solutions to CSS problems
-- Modern CSS features or browser APIs
+- Comparisons between CSS or HTML approaches
+- Bug fixes or solutions to CSS/HTML problems
+- Modern CSS features, HTML elements, or browser APIs
+- Media handling: images, video, audio, responsive assets
+- HTML semantics, accessibility, and form controls
 
 **Trigger Keywords (Non-Exhaustive):**
 
@@ -33,6 +35,9 @@ When a user asks about, discusses, or mentions ANY CSS-related concept, techniqu
 - Techniques: `clamp()`, `min()`, `max()`, `calc()`, `var()`, `@container`, `@layer`
 - Concepts: `z-index`, `stacking context`, `specificity`, `cascade`, `inheritance`
 - Visual effects: `blur`, `gradient`, `shadow`, `backdrop-filter`, `clip-path`
+- HTML elements: `picture`, `srcset`, `details`, `dialog`, `template`, `slot`
+- Media: `srcset`, `sizes`, `picture`, `loading`, `decoding`, `fetchpriority`
+- Performance: `content-visibility`, `will-change`, `contain`, lazy loading
 
 **Default Behavior:**
 
@@ -753,5 +758,43 @@ pnpm run type-check
 5. **Update documentation** - Keep PROJECT_CONFIG.md and related docs current
 
 **Template Version**: 1.2
+
+---
+
+## 🗂️ Category Management
+
+### Existing Categories
+
+| ID | Name | Icon | Scope |
+|----|------|------|-------|
+| `layout` | Layout | `layout` | CSS layout, positioning, flexbox, grid, overflow |
+| `typography` | Typography | `type` | Fonts, text-wrap, line-height, `ch`/`ex` units |
+| `colors` | Colors & Effects | `palette` | Colors, gradients, blend modes, filters |
+| `animations` | Animations | `zap` | Transitions, keyframes, scroll-driven, view transitions |
+| `responsive` | Responsive | `smartphone` | Container queries, media queries, viewport units |
+| `html` | HTML & Media | `code` | HTML elements, images, srcset, forms, media |
+
+### When to Create a New Category
+
+**Create a new category** when a topic does not logically fit any existing category and there is potential for at least 3–5 more topics in the same domain. Examples:
+- `performance` — lazy loading, paint performance, resource hints
+- `accessibility` — ARIA, focus management, contrast
+- `forms` — custom inputs, validation styling
+
+**Reuse an existing category** for most topics. When in doubt:
+- CSS technique → `layout`, `colors`, `animations`, `responsive`, or `typography`
+- HTML elements/APIs → `html`
+
+### How to Create a New Category
+
+**4-step process:**
+
+1. **Add icon** to `src/components/common/CategoryIcon.tsx` — add a new `case "iconname":` with SVG path
+2. **Register category** in `src/data/categories.ts` — add `{ id, name, icon, order }` entry
+3. **Create folder + barrel** — `src/data/topics/<categoryid>/index.ts`
+4. **Import in master index** — add import from the new barrel in `src/data/topics/index.ts`
+
+> **Note:** The sidebar, search, and home page all automatically pick up new categories — no component changes needed.
+
 **Last Updated**: 2026-04-08
 **Components**: 12 content visualization components ready to use

@@ -11,4 +11,5 @@ export const categories: Category[] = [
   { id: "colors", name: "Colors & Effects", icon: "palette", order: 3 },
   { id: "animations", name: "Animations", icon: "zap", order: 4 },
   { id: "responsive", name: "Responsive", icon: "smartphone", order: 5 },
+  { id: "html", name: "HTML & Media", icon: "code", order: 6 },
 ];

@@ -146,6 +146,8 @@ import {
   wordBreakLongUrls,
 } from "./typography";
 
+import { pictureVsSrcset } from "./html";
+
 // ── Master list ───────────────────────────────────────────────────────────────
 // Order controls the sidebar and the home page quick-links order.
 export const topics: Topic[] = [
@@ -259,4 +261,7 @@ export const topics: Topic[] = [
   dropCapFirstLetter,
   fontFeatureSettingsOpentype,
   wordBreakLongUrls,
+
+  // HTML & Media
+  pictureVsSrcset,
 ];
