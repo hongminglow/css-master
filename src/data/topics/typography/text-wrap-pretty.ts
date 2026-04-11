@@ -19,25 +19,87 @@ export const textWrapPretty: Topic = {
         },
       },
       {
-        type: "comparison",
+        type: "livecomparison",
         data: {
-          title: "Normal Paragraph Wrapping vs Pretty Wrapping",
+          title: "Default Paragraph Wrapping vs Pretty Wrapping",
+          subtitle:
+            "Both blocks contain identical text. text-wrap: pretty prevents orphans (single words alone on the last line) in longer paragraphs.",
           left: {
-            label: "Default paragraph wrap",
+            label: "❌ Default wrapping",
             code: `.copy {
-  max-inline-size: 42ch;
+  max-inline-size: 38ch;
+}`,
+            html: `
+<article class="card">
+  <p class="copy">
+    This sentence is specifically designed to end with an orphan now.
+  </p>
+</article>`,
+            css: `
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #0f172a;
+  font-family: system-ui, sans-serif;
+}
+.card {
+  width: 155px; /* Forced narrow width to trigger orphan */
+  padding: 16px;
+  border-radius: 12px;
+  background: #1e293b;
+  border: 1px solid #334155;
+}
+.copy {
+  margin: 0;
+  color: #f8fafc;
+  line-height: 1.5;
+  font-size: 16px;
+  /* text-wrap: wrap is default */
 }`,
             description:
-              "The browser uses its normal wrapping behavior, which can still produce awkward short last lines or less pleasing breaks.",
+              "Default wrapping may leave a single word (orphan) on the last line, which creates visual awkwardness in editorial content.",
           },
           right: {
-            label: "Pretty wrapping",
+            label: "✅ `text-wrap: pretty`",
             code: `.copy {
-  max-inline-size: 42ch;
+  max-inline-size: 38ch;
+  text-wrap: pretty;
+}`,
+            html: `
+<article class="card">
+  <p class="copy">
+    This sentence is specifically designed to end with an orphan now.
+  </p>
+</article>`,
+            css: `
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #0f172a;
+  font-family: system-ui, sans-serif;
+}
+.card {
+  width: 155px;
+  padding: 16px;
+  border-radius: 12px;
+  background: #1e293b;
+  border: 1px solid #334155;
+}
+.copy {
+  margin: 0;
+  color: #f8fafc;
+  line-height: 1.5;
+  font-size: 16px;
   text-wrap: pretty;
 }`,
             description:
-              "The browser makes slightly better wrapping decisions for body copy without requiring manual editing or hard line breaks.",
+              "Pretty wrapping avoids orphans by redistributing words across lines, creating a more polished paragraph shape for body copy.",
           },
         },
       },
