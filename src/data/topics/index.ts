@@ -70,6 +70,7 @@ import {
   customCheckboxCheckedSibling,
   fitContentCentering,
   tableLayoutFixed,
+  displayProperties,
 } from "./layout";
 
 import {
@@ -149,6 +150,7 @@ import {
 // Order controls the sidebar and the home page quick-links order.
 export const topics: Topic[] = [
   // Layout
+  displayProperties,
   aspectRatioPreventsLayoutJumps,
   anchorPositioningPopovers,
   flexboxCentering,

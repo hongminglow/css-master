@@ -32,7 +32,7 @@ export function TipCard({ data }: TipCardProps) {
     },
   };
 
-  const variant = variantStyles[data.variant || "info"];
+  const variant = variantStyles[data.variant as keyof typeof variantStyles] || variantStyles.info;
 
   return (
     <div
