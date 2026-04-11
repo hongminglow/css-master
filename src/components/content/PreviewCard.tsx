@@ -47,7 +47,7 @@ export function PreviewCard({ data }: PreviewCardProps) {
           ref={iframeRef}
           title="Preview"
           className="w-full h-[180px] border-0"
-          sandbox="allow-same-origin"
+          sandbox="allow-same-origin allow-scripts allow-modals"
         />
       </div>
     </div>

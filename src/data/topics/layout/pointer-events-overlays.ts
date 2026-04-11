@@ -49,19 +49,35 @@ export const pointerEventsOverlays: Topic = {
         type: "preview",
         data: {
           html: `<div style="position: relative; height: 160px; background: #1e293b; border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-  <button style="background: #3b82f6; padding: 0.75rem 1.5rem; border-radius: 6px; cursor: pointer; color: white; border: none; font-weight: bold; position: relative; z-index: 1;" onclick="alert('Button Clicked!')">
+  <button style="background: #3b82f6; padding: 0.75rem 1.5rem; border-radius: 6px; cursor: pointer; color: white; border: none; font-weight: bold; position: relative; z-index: 1;" onclick="alert('Underlying Button Clicked!')">
     Try to Click Me!
   </button>
   
   <!-- Full wrapper overlay -->
-  <div style="position: absolute; inset: 0; background: linear-gradient(to right, rgba(255,0,0,0.2), rgba(0,0,255,0.2)); z-index: 10; pointer-events: none; display: flex; flex-direction: column; justify-content: flex-end; padding: 1rem;">
+  <div style="position: absolute; inset: 0; background: linear-gradient(to right, rgba(255,0,0,0.1), rgba(0,0,255,0.1)); z-index: 10; pointer-events: none; display: flex; flex-direction: column; justify-content: flex-end; padding: 1rem;">
     <!-- Child toast restoring events -->
-    <div style="background: #0f172a; border: 1px solid #334155; padding: 1rem; border-radius: 6px; pointer-events: auto; color: white;">
+    <div class="toast-item" style="background: #0f172a; border: 1px solid #334155; padding: 1rem; border-radius: 6px; pointer-events: auto; color: white; cursor: pointer;" onclick="alert('Toast Notification Clicked!')">
       Toast Notification (Hover/Click me too)
     </div>
   </div>
 </div>`,
-          css: `/* The gradient overlay covers the button visually but pointer-events: none allows the click to pass through to the button */`,
+          css: `button:active { 
+  transform: translateY(1px); 
+  filter: brightness(0.9); 
+}
+
+.toast-item {
+  transition: all 0.2s;
+}
+
+.toast-item:hover {
+  background: #1e293b !important;
+}
+
+.toast-item:active {
+  transform: translateY(1px);
+  filter: brightness(0.9);
+}`,
         },
       },
       {

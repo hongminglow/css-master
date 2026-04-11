@@ -89,7 +89,7 @@ function Panel({ label, variant, code, html, css, description }: PanelProps) {
           ref={iframeRef}
           title={`Preview: ${label}`}
           className="w-full h-[160px] border-0"
-          sandbox="allow-same-origin"
+          sandbox="allow-same-origin allow-scripts allow-modals"
         />
       </div>
 
