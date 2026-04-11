@@ -106,6 +106,54 @@ export const displayProperties: Topic = {
         }
       },
       {
+        type: "livecomparison",
+        data: {
+          title: "flex vs inline-flex",
+          subtitle: "Just like grid, the outer display type dictates how the flex container sits with its neighbors.",
+          left: {
+            label: "flex",
+            code: ".container { display: flex; /* Block-level flex container */ }",
+            html: `<span>Top</span>
+<div class="flex-wrap">
+  <div class="item">1</div>
+  <div class="item">2</div>
+</div>
+<span>Bottom</span>`,
+            css: `body { color: white; font-family: sans-serif; }
+.flex-wrap {
+  display: flex;
+  gap: 10px;
+  background: #1e293b;
+  padding: 10px;
+  border-radius: 8px;
+  margin: 10px 0;
+}
+.item { background: #3b82f6; padding: 10px 20px; border-radius: 4px; font-weight: bold; }`
+          },
+          right: {
+            label: "inline-flex",
+            code: ".container { display: inline-flex; /* Inline-level flex container */ }",
+            html: `<span>Left</span>
+<div class="inline-flex-wrap">
+  <div class="item">1</div>
+  <div class="item">2</div>
+</div>
+<span>Right</span>`,
+            css: `body { color: white; font-family: sans-serif; }
+.inline-flex-wrap {
+  display: inline-flex;
+  gap: 10px;
+  background: #1e293b;
+  padding: 10px;
+  border-radius: 8px;
+  margin: 0 10px;
+  vertical-align: middle;
+}
+.item { background: #10b981; padding: 10px 20px; border-radius: 4px; font-weight: bold; }`
+          }
+        }
+      },
+      {
         type: "table",
         data: {
           title: "The Display Comparison Matrix",

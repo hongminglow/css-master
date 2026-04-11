@@ -30,6 +30,40 @@ export const nativeDetailsAccordion: Topic = {
         },
       },
       {
+        type: "code",
+        data: {
+          language: "css",
+          code: `/* 1. Option A: Style the native marker directly */
+.faq-accordion summary::marker {
+  color: #3b82f6; 
+  /* Note: You can only style limited properties on ::marker (like color and font) */
+}
+
+/* ---------------------------------------------------- */
+
+/* 2. Option B: Remove it entirely and build a custom animated arrow */
+.faq-accordion summary {
+  list-style: none; /* Removes default triangle in Chrome/Firefox/Edge */
+}
+.faq-accordion summary::-webkit-details-marker {
+  display: none; /* Removes default triangle in Safari */
+}
+
+/* Build a custom chevron using ::before */
+.faq-accordion summary::before {
+  content: '▶';
+  display: inline-block;
+  margin-right: 10px;
+  transition: transform 0.2s ease;
+}
+
+/* Animate it natively by targeting the [open] state */
+.faq-accordion[open] summary::before {
+  transform: rotate(90deg);
+}`,
+        },
+      },
+      {
         type: "preview",
         data: {
           html: `<style>
