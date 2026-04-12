@@ -58,21 +58,29 @@ export const transitionBehaviorDiscrete: Topic = {
         data: {
           title: "Snapping Open vs Transitioning In",
           subtitle:
-            "Both previews render the same dropdown panel. The right side layers discrete transition support with an explicit starting state so the panel feels less abrupt.",
+            "Hover each preview. The left menu pops into existence because `display` flips instantly. The right menu starts from `display: none` too, but `allow-discrete` plus `@starting-style` gives it a visible entry transition.",
           left: {
             label: "❌ Snaps into place",
             code: `.menu {
-  display: block;
-  opacity: 1;
-  transform: translateY(0);
+  display: none;
+}
+
+.stage:hover .menu {
+  display: grid;
 }`,
             html: `
-<div class="stage">
-  <button class="trigger">Actions</button>
-  <div class="menu">
-    <a>Edit</a>
-    <a>Duplicate</a>
-    <a>Archive</a>
+<div class="stage bad-stage">
+  <div class="toolbar">
+    <button class="trigger">Hover to open</button>
+    <span class="state">snap</span>
+  </div>
+  <div class="slot">
+    <div class="ghost">menu mount area</div>
+    <div class="menu">
+      <a>Edit</a>
+      <a>Duplicate</a>
+      <a>Archive</a>
+    </div>
   </div>
 </div>`,
             css: `
@@ -83,12 +91,21 @@ body {
   display: grid;
   place-items: center;
   background: #f8fafc;
-  font-family: Inter, system-ui, sans-serif;
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
 }
 .stage {
-  position: relative;
   width: 240px;
-  height: 170px;
+  padding: 16px;
+  border-radius: 20px;
+  background: white;
+  border: 1px solid #fecaca;
+  box-shadow: 0 18px 40px rgba(239, 68, 68, 0.12);
+}
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
 }
 .trigger {
   border: none;
@@ -98,18 +115,56 @@ body {
   color: white;
   font-weight: 700;
 }
+.state {
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #b91c1c;
+  background: #fee2e2;
+}
+.slot {
+  position: relative;
+  margin-top: 14px;
+  min-height: 106px;
+}
+.ghost {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  border: 1px dashed #fda4af;
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(254, 226, 226, 0.9),
+    rgba(254, 226, 226, 0.9) 10px,
+    rgba(255, 255, 255, 0.95) 10px,
+    rgba(255, 255, 255, 0.95) 20px
+  );
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #b91c1c;
+}
 .menu {
   position: absolute;
-  top: calc(100% + 10px);
+  top: 0;
   left: 0;
-  width: 180px;
-  display: grid;
+  width: 100%;
+  display: none;
   gap: 4px;
   padding: 10px;
   border-radius: 16px;
   background: white;
-  border: 1px solid #cbd5e1;
+  border: 1px solid #fecaca;
   box-shadow: 0 16px 40px rgba(15,23,42,0.12);
+}
+.stage:hover .menu {
+  display: grid;
 }
 .menu a {
   display: block;
@@ -120,34 +175,46 @@ body {
 }
 `,
             description:
-              "The menu simply exists in its final state. Functional, but visually abrupt.",
+              "Hovering flips `display` from none to grid, so the menu simply teleports into the mount area with no in-between state.",
           },
           right: {
             label: "✅ Discrete transition path",
             code: `.menu {
-  display: block;
-  opacity: 1;
-  transform: translateY(0);
+  display: none;
+  opacity: 0;
+  transform: translateY(-12px);
   transition:
-    opacity 180ms ease,
-    transform 180ms ease,
-    display 180ms allow-discrete;
+    opacity 220ms ease,
+    transform 220ms ease,
+    display 220ms allow-discrete;
   transition-behavior: allow-discrete;
 }
 
+.stage:hover .menu {
+  display: grid;
+  opacity: 1;
+  transform: translateY(0);
+}
+
 @starting-style {
-  .menu {
+  .stage:hover .menu {
     opacity: 0;
-    transform: translateY(-8px);
+    transform: translateY(-12px);
   }
 }`,
             html: `
-<div class="stage">
-  <button class="trigger">Actions</button>
-  <div class="menu">
-    <a>Edit</a>
-    <a>Duplicate</a>
-    <a>Archive</a>
+<div class="stage good-stage">
+  <div class="toolbar">
+    <button class="trigger">Hover to open</button>
+    <span class="state">eases in</span>
+  </div>
+  <div class="slot">
+    <div class="ghost">menu mount area</div>
+    <div class="menu">
+      <a>Edit</a>
+      <a>Duplicate</a>
+      <a>Archive</a>
+    </div>
   </div>
 </div>`,
             css: `
@@ -158,12 +225,21 @@ body {
   display: grid;
   place-items: center;
   background: #eff6ff;
-  font-family: Inter, system-ui, sans-serif;
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
 }
 .stage {
-  position: relative;
   width: 240px;
-  height: 170px;
+  padding: 16px;
+  border-radius: 20px;
+  background: white;
+  border: 1px solid #bfdbfe;
+  box-shadow: 0 18px 42px rgba(37,99,235,0.14);
+}
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
 }
 .trigger {
   border: none;
@@ -173,30 +249,70 @@ body {
   color: white;
   font-weight: 700;
 }
+.state {
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #1d4ed8;
+  background: #dbeafe;
+}
+.slot {
+  position: relative;
+  margin-top: 14px;
+  min-height: 106px;
+}
+.ghost {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  border: 1px dashed #93c5fd;
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(219, 234, 254, 0.92),
+    rgba(219, 234, 254, 0.92) 10px,
+    rgba(255, 255, 255, 0.96) 10px,
+    rgba(255, 255, 255, 0.96) 20px
+  );
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #1d4ed8;
+}
 .menu {
   position: absolute;
-  top: calc(100% + 10px);
+  top: 0;
   left: 0;
-  width: 180px;
-  display: grid;
+  width: 100%;
+  display: none;
   gap: 4px;
   padding: 10px;
   border-radius: 16px;
   background: white;
   border: 1px solid #bfdbfe;
   box-shadow: 0 18px 42px rgba(37,99,235,0.14);
-  opacity: 1;
-  transform: translateY(0);
+  opacity: 0;
+  transform: translateY(-12px);
   transition:
-    opacity 180ms ease,
-    transform 180ms ease,
-    display 180ms allow-discrete;
+    opacity 220ms ease,
+    transform 220ms ease,
+    display 220ms allow-discrete;
   transition-behavior: allow-discrete;
 }
+.stage:hover .menu {
+  display: grid;
+  opacity: 1;
+  transform: translateY(0);
+}
 @starting-style {
-  .menu {
+  .stage:hover .menu {
     opacity: 0;
-    transform: translateY(-8px);
+    transform: translateY(-12px);
   }
 }
 .menu a {
@@ -208,7 +324,7 @@ body {
 }
 `,
             description:
-              "The entry feels more natural because the browser has both a discrete state transition and an explicit starting snapshot to animate from.",
+              "The menu still mounts from `display: none`, but the browser now has a starting snapshot and permission to transition that discrete state instead of snapping.",
           },
         },
       },
