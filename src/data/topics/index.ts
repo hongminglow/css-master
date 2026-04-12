@@ -61,6 +61,7 @@ import {
   placeholderShownFloatingLabels,
   focusWithinParent,
   scrollPaddingStickyHeaders,
+  scopeAtRule,
   targetPseudoClass,
   resizePropertyElements,
   nativeDetailsAccordion,
@@ -85,6 +86,7 @@ import {
   the100vhTrap,
   touchActionGestures,
   clampFluidSpacing,
+  cssIfFunction,
   mediaHoverPointer,
   responsiveIframeAspectRatio,
   orientationMediaQueries,
@@ -146,7 +148,7 @@ import {
   wordBreakLongUrls,
 } from "./typography";
 
-import { pictureVsSrcset } from "./html";
+import { dataAttributesStateStyling, pictureVsSrcset } from "./html";
 
 // ── Master list ───────────────────────────────────────────────────────────────
 // Order controls the sidebar and the home page quick-links order.
@@ -183,6 +185,7 @@ export const topics: Topic[] = [
   placeholderShownFloatingLabels,
   focusWithinParent,
   scrollPaddingStickyHeaders,
+  scopeAtRule,
   targetPseudoClass,
   resizePropertyElements,
   nativeDetailsAccordion,
@@ -221,6 +224,7 @@ export const topics: Topic[] = [
   safeAreaInsetPadding,
   touchActionGestures,
   clampFluidSpacing,
+  cssIfFunction,
   mediaHoverPointer,
   responsiveIframeAspectRatio,
   orientationMediaQueries,
@@ -263,5 +267,6 @@ export const topics: Topic[] = [
   wordBreakLongUrls,
 
   // HTML & Media
+  dataAttributesStateStyling,
   pictureVsSrcset,
 ];

@@ -34,6 +34,7 @@ export { isVsWhereSpecificity } from "./is-vs-where-specificity";
 export { placeholderShownFloatingLabels } from "./placeholder-shown-floating-labels";
 export { focusWithinParent } from "./focus-within-parent";
 export { scrollPaddingStickyHeaders } from "./scroll-padding-sticky-headers";
+export { scopeAtRule } from "./scope-at-rule";
 export { targetPseudoClass } from "./target-pseudo-class";
 export { resizePropertyElements } from "./resize-property-elements";
 export { nativeDetailsAccordion } from "./native-details-accordion";
