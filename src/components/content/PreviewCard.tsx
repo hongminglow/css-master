@@ -47,27 +47,30 @@ export function PreviewCard({ data }: PreviewCardProps) {
       return;
     }
 
-    if (iframeRef.current) {
-      const doc = iframeRef.current.contentDocument;
-      if (doc) {
-        doc.open();
-        doc.write(`
-          <!DOCTYPE html>
-          <html>
-            <head>
-              <style>
-                body { margin: 0; padding: 0; }
-                ${data.css}
-              </style>
-            </head>
-            <body>
-              ${data.html}
-            </body>
-          </html>
-        `);
-        doc.close();
-      }
+    const iframe = iframeRef.current;
+    const doc = iframe?.contentDocument;
+    if (!iframe || !doc) {
+      return;
     }
+
+    doc.open();
+    doc.write(`
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <style>
+            html, body { margin: 0; padding: 0; }
+            ${data.css}
+          </style>
+        </head>
+        <body>
+          ${data.html}
+        </body>
+      </html>
+    `);
+    doc.close();
+
+    iframe.style.height = `${Math.min(doc.documentElement.scrollHeight, 320)}px`;
   }, [data, hasEnteredViewport, reloadToken]);
 
   const handleReplay = () => {
@@ -107,7 +110,8 @@ export function PreviewCard({ data }: PreviewCardProps) {
         <iframe
           ref={iframeRef}
           title="Preview"
-          className="w-full h-45 border-0"
+          className="w-full border-0"
+          style={{ height: 0 }}
           loading="lazy"
           sandbox="allow-same-origin allow-scripts allow-modals"
         />
