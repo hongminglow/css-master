@@ -34,6 +34,7 @@ function Panel({
       doc.open();
       doc.write(`<!DOCTYPE html><html><head><style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { height: 100%; }
         body { font-family: system-ui, sans-serif; padding: 12px; background: #f8fafc; min-height: 100%; }
         ${css}
       </style></head><body>${html}</body></html>`);
@@ -103,7 +104,7 @@ function Panel({
         <iframe
           ref={iframeRef}
           title={`Preview: ${label}`}
-          className="w-full h-40 border-0"
+          className="w-full h-80 lg:h-96 border-0"
           loading="lazy"
           sandbox="allow-same-origin allow-scripts allow-modals"
         />
