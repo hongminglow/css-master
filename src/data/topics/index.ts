@@ -72,6 +72,7 @@ import {
   fitContentCentering,
   tableLayoutFixed,
   displayProperties,
+  flexGridHiddenDefaults,
 } from "./layout";
 
 import {
@@ -131,6 +132,7 @@ import {
 } from "./colors";
 
 import {
+  cssCountersGeneratedNumbering,
   fluidTypeClamp,
   fontSizeAdjustFallbacks,
   hyphensOverflowWrap,
@@ -155,6 +157,7 @@ import { dataAttributesStateStyling, pictureVsSrcset } from "./html";
 export const topics: Topic[] = [
   // Layout
   displayProperties,
+  flexGridHiddenDefaults,
   aspectRatioPreventsLayoutJumps,
   anchorPositioningPopovers,
   flexboxCentering,
@@ -253,6 +256,7 @@ export const topics: Topic[] = [
   uncommonUnits,
   textWrapBalance,
   textWrapPretty,
+  cssCountersGeneratedNumbering,
   fluidTypeClamp,
   fontSizeAdjustFallbacks,
   underlineOffsetThickness,
