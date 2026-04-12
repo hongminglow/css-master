@@ -45,3 +45,4 @@ export { customCheckboxCheckedSibling } from "./custom-checkbox-checked-sibling"
 export { fitContentCentering } from "./fit-content-centering";
 export { tableLayoutFixed } from "./table-layout-fixed";
 export { displayProperties } from "./display-properties";
+export { flexGridHiddenDefaults } from "./flex-grid-hidden-defaults";

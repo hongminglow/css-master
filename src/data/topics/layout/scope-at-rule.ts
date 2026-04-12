@@ -2,7 +2,7 @@ import type { Topic } from "@/types/topic";
 
 export const scopeAtRule: Topic = {
   id: "scope-at-rule",
-  name: "@scope: Scoped CSS Without Selector Bloat",
+  name: "Scoped CSS Without Selector Bloat",
   categoryId: "layout",
   description:
     "`@scope` lets selectors operate inside a deliberate DOM subtree, which keeps component styles easier to override and reduces accidental leakage across nested UI.",
