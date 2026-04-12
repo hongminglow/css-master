@@ -41,7 +41,10 @@ export function MainContent({ topic, onTopicSelect }: MainContentProps) {
 
   if (!topic) {
     return (
-      <main ref={scrollRef} className="flex-1 bg-slate-900 overflow-y-auto min-w-0">
+      <main
+        ref={scrollRef}
+        className="flex-1 bg-slate-900 overflow-y-auto min-w-0"
+      >
         <div className="max-w-5xl mx-auto p-8 flex flex-col gap-8">
           {/* Hero Section */}
           <header className="flex flex-col gap-4 pt-8">
@@ -279,7 +282,10 @@ export function MainContent({ topic, onTopicSelect }: MainContentProps) {
   }
 
   return (
-    <main ref={scrollRef} className="flex-1 bg-slate-900 overflow-y-auto min-w-0">
+    <main
+      ref={scrollRef}
+      className="flex-1 bg-slate-900 overflow-y-auto min-w-0"
+    >
       <div className="max-w-5xl mx-auto p-8 flex flex-col gap-6">
         {/* Content Header */}
         <header className="flex flex-col gap-3">
@@ -305,17 +311,35 @@ export function MainContent({ topic, onTopicSelect }: MainContentProps) {
         {topic.content.sections.map((section, index) => {
           switch (section.type) {
             case "card":
-              return <ContentCard key={index} data={section.data as CardData} />;
+              return (
+                <ContentCard key={index} data={section.data as CardData} />
+              );
             case "workflow":
-              return <WorkflowCard key={index} data={section.data as WorkflowData} />;
+              return (
+                <WorkflowCard key={index} data={section.data as WorkflowData} />
+              );
             case "code":
-              return <CodeSnippet key={index} data={section.data as CodeData} />;
+              return (
+                <CodeSnippet key={index} data={section.data as CodeData} />
+              );
             case "preview":
-              return <PreviewCard key={index} data={section.data as PreviewData} />;
+              return (
+                <PreviewCard
+                  key={`${topic.id}-${index}`}
+                  data={section.data as PreviewData}
+                />
+              );
             case "comparison":
-              return <ComparisonCard key={index} data={section.data as ComparisonData} />;
+              return (
+                <ComparisonCard
+                  key={index}
+                  data={section.data as ComparisonData}
+                />
+              );
             case "timeline":
-              return <TimelineCard key={index} data={section.data as TimelineData} />;
+              return (
+                <TimelineCard key={index} data={section.data as TimelineData} />
+              );
             case "tip":
               return <TipCard key={index} data={section.data as TipData} />;
             case "table":
@@ -325,11 +349,23 @@ export function MainContent({ topic, onTopicSelect }: MainContentProps) {
             case "quote":
               return <QuoteCard key={index} data={section.data as QuoteData} />;
             case "dosd\u043e\u043dts":
-              return <DosDontsCard key={index} data={section.data as DosDontsData} />;
+              return (
+                <DosDontsCard key={index} data={section.data as DosDontsData} />
+              );
             case "livecomparison":
-              return <LiveComparisonCard key={index} data={section.data as LiveComparisonData} />;
+              return (
+                <LiveComparisonCard
+                  key={`${topic.id}-${index}`}
+                  data={section.data as LiveComparisonData}
+                />
+              );
             case "featurecomparison":
-              return <FeatureComparisonCard key={index} data={section.data as FeatureComparisonData} />;
+              return (
+                <FeatureComparisonCard
+                  key={index}
+                  data={section.data as FeatureComparisonData}
+                />
+              );
             default:
               return null;
           }

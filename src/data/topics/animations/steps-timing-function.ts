@@ -4,7 +4,8 @@ export const stepsTimingFunction: Topic = {
   id: "steps-timing-function",
   name: "Retro Sprite Animations with steps()",
   categoryId: "animations",
-  description: "Use the steps() CSS timing function to create frame-by-frame sprite animations, blinking cursors, and typing effects.",
+  description:
+    "Use the steps() CSS timing function to create frame-by-frame sprite animations, blinking cursors, and typing effects.",
   tags: ["animations", "keyframes", "steps", "sprite", "pixel-art"],
   route: "/topics/steps-timing-function",
   content: {
@@ -13,7 +14,8 @@ export const stepsTimingFunction: Topic = {
         type: "card",
         data: {
           title: "The Unsung Timing Function",
-          content: "When we write animations, we usually rely on `ease`, `linear`, or `cubic-bezier`. These create fluid interpolations from point A to point B. But what if you explicitly *don't* want fluid interpolation? What if you're animating a 2D RPG character walking, and you want to jump explicitly from Frame 1 to Frame 2 to Frame 3 without any smoothing? The `steps()` timing function slices an animation into distinct hardware-level 'jumps'.",
+          content:
+            "When we write animations, we usually rely on `ease`, `linear`, or `cubic-bezier`. These create fluid interpolations from point A to point B. But what if you explicitly *don't* want fluid interpolation? What if you're animating a 2D RPG character walking, and you want to jump explicitly from Frame 1 to Frame 2 to Frame 3 without any smoothing? The `steps()` timing function slices an animation into distinct hardware-level 'jumps'.",
         },
       },
       {
@@ -29,10 +31,10 @@ export const stepsTimingFunction: Topic = {
   overflow: hidden; /* Hide the overflowed letters */
   border-right: 2px solid white; /* The cursor */
   white-space: nowrap;
-  
-  /* If this 20-character sentence used 'linear', 
-     the letters would get sliced in half as they grew! 
-     With steps(20), it perfectly pops 
+
+  /* If this 20-character sentence used 'linear',
+     the letters would get sliced in half as they grew!
+     With steps(20), it perfectly pops
      one character onto screen at a time. */
   animation: typing 2s steps(20, end) forwards;
 }`,
@@ -46,11 +48,10 @@ export const stepsTimingFunction: Topic = {
     from, to { border-color: transparent }
     50% { border-color: #3b82f6; }
   }
-  
-  /* We use JS-less replay by making it infinite for the demo */
+
   @keyframes type-demo {
     0% { width: 0; }
-    50%, 100% { width: 14ch; } /* 14 characters long */
+    to { width: 14ch; }
   }
 
   .typing-demo {
@@ -62,10 +63,10 @@ export const stepsTimingFunction: Topic = {
     overflow: hidden;
     border-right: 3px solid #3b82f6;
     margin: 0 auto;
-    
+
     /* 14 steps perfectly matches the 14 characters in 'Hello, World!' */
-    animation: 
-      type-demo 4s steps(14) infinite,
+    animation:
+      type-demo 2.8s steps(14) 1 forwards,
       blink-cursor .5s step-end infinite alternate;
   }
 </style>
@@ -74,6 +75,8 @@ export const stepsTimingFunction: Topic = {
   <div class="typing-demo">Hello, World!</div>
   <p style="color: #64748b; font-size: 0.8rem; margin-top: 2rem;">Smooth linear transitions would painfully cut characters in half during animation.</p>
 </div>`,
+          replayable: true,
+          replayLabel: "Replay Typing",
           css: `/* Ensure you use a monospace font or 'ch' (character width) units so that every step is exactly equal to one letter's width. */`,
         },
       },
@@ -85,17 +88,20 @@ export const stepsTimingFunction: Topic = {
             {
               number: 1,
               title: "Typing Effects",
-              description: "Combine with `overflow: hidden` and monospace fonts to simulate a terminal.",
+              description:
+                "Combine with `overflow: hidden` and monospace fonts to simulate a terminal.",
             },
             {
               number: 2,
               title: "Video Game Sprite Sheets",
-              description: "Moving a background-image's `background-position` explicitly in `steps(8)` across an 8-frame walk cycle loaded as a single PNG image.",
+              description:
+                "Moving a background-image's `background-position` explicitly in `steps(8)` across an 8-frame walk cycle loaded as a single PNG image.",
             },
             {
               number: 3,
               title: "Blinking Cursors",
-              description: "Using `steps(1)` or `step-end` to make a cursor instantly toggle between transparent and visible without fading in or out.",
+              description:
+                "Using `steps(1)` or `step-end` to make a cursor instantly toggle between transparent and visible without fading in or out.",
             },
           ],
         },

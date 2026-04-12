@@ -6,7 +6,13 @@ export const transitionBehaviorDiscrete: Topic = {
   categoryId: "animations",
   description:
     "Properties like display traditionally snapped on and off. `transition-behavior: allow-discrete` opens the door to cleaner open and close states.",
-  tags: ["animations", "transitions", "display", "transition-behavior", "ui-state"],
+  tags: [
+    "animations",
+    "transitions",
+    "display",
+    "transition-behavior",
+    "ui-state",
+  ],
   route: "/topics/transition-behavior-discrete",
   content: {
     sections: [

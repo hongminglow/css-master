@@ -1,5 +1,5 @@
 import type { LiveComparisonData } from "@/types/topic";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface PanelProps {
   label: string;
@@ -8,12 +8,27 @@ interface PanelProps {
   html: string;
   css: string;
   description?: string;
+  active: boolean;
+  reloadToken: number;
 }
 
-function Panel({ label, variant, code, html, css, description }: PanelProps) {
+function Panel({
+  label,
+  variant,
+  code,
+  html,
+  css,
+  description,
+  active,
+  reloadToken,
+}: PanelProps) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
   useEffect(() => {
+    if (!active) {
+      return;
+    }
+
     const doc = iframeRef.current?.contentDocument;
     if (doc) {
       doc.open();
@@ -24,7 +39,7 @@ function Panel({ label, variant, code, html, css, description }: PanelProps) {
       </style></head><body>${html}</body></html>`);
       doc.close();
     }
-  }, [html, css]);
+  }, [active, html, css, reloadToken]);
 
   const isBad = variant === "bad";
 
@@ -52,7 +67,7 @@ function Panel({ label, variant, code, html, css, description }: PanelProps) {
 
       {/* Code block */}
       <div className="bg-[#0a0f1e] p-4 overflow-x-auto">
-        <pre className="font-mono text-xs leading-relaxed whitespace-pre-wrap break-words">
+        <pre className="font-mono text-xs leading-relaxed whitespace-pre-wrap wrap-break-word">
           <code className="text-slate-200">{code}</code>
         </pre>
       </div>
@@ -88,7 +103,8 @@ function Panel({ label, variant, code, html, css, description }: PanelProps) {
         <iframe
           ref={iframeRef}
           title={`Preview: ${label}`}
-          className="w-full h-[160px] border-0"
+          className="w-full h-40 border-0"
+          loading="lazy"
           sandbox="allow-same-origin allow-scripts allow-modals"
         />
       </div>
@@ -114,16 +130,78 @@ interface LiveComparisonCardProps {
 }
 
 export function LiveComparisonCard({ data }: LiveComparisonCardProps) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [hasEnteredViewport, setHasEnteredViewport] = useState(
+    !data.replayable,
+  );
+  const [reloadToken, setReloadToken] = useState(0);
+
+  useEffect(() => {
+    if (!data.replayable || hasEnteredViewport) {
+      return;
+    }
+
+    const node = cardRef.current;
+    if (!node) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setHasEnteredViewport(true);
+          observer.disconnect();
+        }
+      },
+      {
+        threshold: 0.35,
+      },
+    );
+
+    observer.observe(node);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [data.replayable, hasEnteredViewport]);
+
+  const handlePlay = () => {
+    setHasEnteredViewport(true);
+    setReloadToken((currentToken) => currentToken + 1);
+  };
+
   return (
-    <div className="bg-slate-800 rounded-xl overflow-hidden">
+    <div ref={cardRef} className="bg-slate-800 rounded-xl overflow-hidden">
       {/* Header */}
       <div className="px-6 py-4 border-b border-slate-700">
-        <h3 className="text-lg font-semibold text-slate-50 font-mono">
-          {data.title}
-        </h3>
-        {data.subtitle && (
-          <p className="text-sm text-slate-400 mt-1">{data.subtitle}</p>
-        )}
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <h3 className="text-lg font-semibold text-slate-50 font-mono">
+              {data.title}
+            </h3>
+            {data.subtitle && (
+              <p className="text-sm text-slate-400 mt-1">{data.subtitle}</p>
+            )}
+          </div>
+          {data.replayable && (
+            <button
+              type="button"
+              onClick={handlePlay}
+              className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-slate-500/70 bg-slate-900 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-slate-200 transition hover:border-sky-400 hover:text-sky-200"
+              aria-label={data.replayLabel ?? "Play comparison animation"}
+            >
+              <svg
+                className="h-3 w-3"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path d="M5.5 4.5a1 1 0 011.53-.848l7 4.5a1 1 0 010 1.696l-7 4.5A1 1 0 015.5 13.5v-9z" />
+              </svg>
+              <span>Play</span>
+            </button>
+          )}
+        </div>
       </div>
 
       {/* Two panels side by side */}
@@ -135,6 +213,8 @@ export function LiveComparisonCard({ data }: LiveComparisonCardProps) {
           html={data.left.html}
           css={data.left.css}
           description={data.left.description}
+          active={hasEnteredViewport}
+          reloadToken={reloadToken}
         />
         <Panel
           label={data.right.label}
@@ -143,6 +223,8 @@ export function LiveComparisonCard({ data }: LiveComparisonCardProps) {
           html={data.right.html}
           css={data.right.css}
           description={data.right.description}
+          active={hasEnteredViewport}
+          reloadToken={reloadToken}
         />
       </div>
     </div>

@@ -13,8 +13,34 @@ export interface TopicContent {
 }
 
 export interface ContentSection {
-  type: "card" | "workflow" | "code" | "preview" | "comparison" | "timeline" | "tip" | "table" | "list" | "quote" | "dosdонts" | "livecomparison" | "featurecomparison";
-  data: CardData | WorkflowData | CodeData | PreviewData | ComparisonData | TimelineData | TipData | TableData | ListData | QuoteData | DosDontsData | LiveComparisonData | FeatureComparisonData;
+  type:
+    | "card"
+    | "workflow"
+    | "code"
+    | "preview"
+    | "comparison"
+    | "timeline"
+    | "tip"
+    | "table"
+    | "list"
+    | "quote"
+    | "dosdонts"
+    | "livecomparison"
+    | "featurecomparison";
+  data:
+    | CardData
+    | WorkflowData
+    | CodeData
+    | PreviewData
+    | ComparisonData
+    | TimelineData
+    | TipData
+    | TableData
+    | ListData
+    | QuoteData
+    | DosDontsData
+    | LiveComparisonData
+    | FeatureComparisonData;
 }
 
 export interface CardData {
@@ -42,6 +68,8 @@ export interface CodeData {
 export interface PreviewData {
   html: string;
   css: string;
+  replayable?: boolean;
+  replayLabel?: string;
 }
 
 export interface ComparisonData {
@@ -120,6 +148,8 @@ export interface FeatureList {
 export interface LiveComparisonData {
   title: string;
   subtitle?: string;
+  replayable?: boolean;
+  replayLabel?: string;
   left: LiveComparisonPanel;
   right: LiveComparisonPanel;
 }

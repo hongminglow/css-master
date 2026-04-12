@@ -24,6 +24,8 @@ export const staggeredEntryAnimations: Topic = {
           title: "All at Once vs Gentle Stagger",
           subtitle:
             "Even a tiny delay difference makes the grid feel more deliberate and easier for the eye to scan.",
+          replayable: true,
+          replayLabel: "Play staggered animation",
           left: {
             label: "❌ All cards animate together",
             code: `.card {
