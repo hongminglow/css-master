@@ -21,3 +21,4 @@ export { pixelatedImageRendering } from "./pixelated-image-rendering";
 export { differenceBlendModeText } from "./difference-blend-mode-text";
 export { terminalCaretStyling } from "./terminal-caret-styling";
 export { userInvalidForms } from "./user-invalid-forms";
+export { forcedColorsHighContrast } from "./forced-colors-high-contrast";

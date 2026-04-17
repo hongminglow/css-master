@@ -12,3 +12,4 @@ export { pingPongAnimationAlternate } from "./ping-pong-animation-alternate";
 export { stepsTimingFunction } from "./steps-timing-function";
 export { asymmetricTransitionDelays } from "./asymmetric-transition-delays";
 export { springBounceCubicBezier } from "./spring-bounce-cubic-bezier";
+export { willChangeGotchas } from "./will-change-gotchas";

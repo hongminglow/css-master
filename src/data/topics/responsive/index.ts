@@ -18,3 +18,4 @@ export { cssIfFunction } from "./css-if-function";
 export { mediaHoverPointer } from "./media-hover-pointer";
 export { responsiveIframeAspectRatio } from "./responsive-iframe-aspect-ratio";
 export { orientationMediaQueries } from "./orientation-media-queries";
+export { printMediaQueries } from "./print-media-queries";

@@ -73,6 +73,8 @@ import {
   tableLayoutFixed,
   displayProperties,
   flexGridHiddenDefaults,
+  allUnsetRevert,
+  cascadeLayers,
 } from "./layout";
 
 import {
@@ -91,6 +93,7 @@ import {
   mediaHoverPointer,
   responsiveIframeAspectRatio,
   orientationMediaQueries,
+  printMediaQueries,
 } from "./responsive";
 
 import {
@@ -108,6 +111,7 @@ import {
   stepsTimingFunction,
   asymmetricTransitionDelays,
   springBounceCubicBezier,
+  willChangeGotchas,
 } from "./animations";
 
 import {
@@ -129,6 +133,7 @@ import {
   differenceBlendModeText,
   terminalCaretStyling,
   userInvalidForms,
+  forcedColorsHighContrast,
 } from "./colors";
 
 import {
@@ -150,7 +155,13 @@ import {
   wordBreakLongUrls,
 } from "./typography";
 
-import { dataAttributesStateStyling, pictureVsSrcset } from "./html";
+import {
+  dataAttributesStateStyling,
+  pictureVsSrcset,
+  lazyLoadingImages,
+  formValidationPseudoClasses,
+  openGraphMetaTags,
+} from "./html";
 
 // ── Master list ───────────────────────────────────────────────────────────────
 // Order controls the sidebar and the home page quick-links order.
@@ -198,6 +209,8 @@ export const topics: Topic[] = [
   customCheckboxCheckedSibling,
   fitContentCentering,
   tableLayoutFixed,
+  allUnsetRevert,
+  cascadeLayers,
 
   // Animations
   gpuAcceleratedAnimations,
@@ -214,6 +227,7 @@ export const topics: Topic[] = [
   stepsTimingFunction,
   asymmetricTransitionDelays,
   springBounceCubicBezier,
+  willChangeGotchas,
 
   // Responsive
   objectFitImages,
@@ -231,6 +245,7 @@ export const topics: Topic[] = [
   mediaHoverPointer,
   responsiveIframeAspectRatio,
   orientationMediaQueries,
+  printMediaQueries,
 
   // Colors
   dynamicColorMix,
@@ -251,6 +266,7 @@ export const topics: Topic[] = [
   differenceBlendModeText,
   terminalCaretStyling,
   userInvalidForms,
+  forcedColorsHighContrast,
 
   // Typography
   uncommonUnits,
@@ -273,4 +289,7 @@ export const topics: Topic[] = [
   // HTML & Media
   dataAttributesStateStyling,
   pictureVsSrcset,
+  lazyLoadingImages,
+  formValidationPseudoClasses,
+  openGraphMetaTags,
 ];
